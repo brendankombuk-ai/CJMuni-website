@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-heading: "Montserrat", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --muni-gold: #f1af21;
+  --muni-black: #000000;
+  --muni-red: #e12129;
+  --muni-charcoal: #4a4a4a;
+  --muni-white: #ffffff;
+}
+
+@layer base {
+  * {
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    background-color: var(--muni-white);
+    color: var(--muni-black);
+    font-family: var(--font-sans);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: var(--muni-gold);
+    color: var(--muni-black);
+  }
+
+  /* Visible, brand-consistent focus states */
+  :focus-visible {
+    outline: 2px solid var(--muni-gold);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  .frame {
+    @apply mx-auto w-full max-w-frame px-5 sm:px-8 lg:px-12;
+  }
+
+  /* Small technical label used above section headings */
+  .eyebrow {
+    @apply inline-flex items-center gap-3 font-sans text-[11px] font-semibold uppercase tracking-label;
+  }
+
+  .eyebrow::before {
+    content: "";
+    @apply block h-px w-8 bg-gold;
+  }
+
+  /* Fine gold rule */
+  .gold-rule {
+    @apply h-px w-full bg-gradient-to-r from-gold/70 via-gold/25 to-transparent;
+  }
+
+  .btn,
+  .btn-primary,
+  .btn-outline-light,
+  .btn-outline-dark {
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap font-sans text-[13px] font-bold uppercase tracking-[0.14em] transition-all duration-300 ease-muni focus-visible:outline-offset-4;
+  }
+
+  .btn-primary {
+    @apply bg-gold px-7 py-4 text-ink hover:bg-ink hover:text-gold;
+  }
+
+  .btn-outline-light {
+    @apply border border-white/40 px-7 py-4 text-white hover:border-gold hover:bg-gold hover:text-ink;
+  }
+
+  .btn-outline-dark {
+    @apply border border-ink/25 px-7 py-4 text-ink hover:border-ink hover:bg-ink hover:text-gold;
+  }
+
+  /* Diagonal cut inspired by the emblem geometry */
+  .clip-diagonal {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 0 14px);
+  }
+
+  .tech-panel {
+    @apply relative border border-white/10 bg-ink-800;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .grid-overlay {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+}
+
+/* Respect reduced-motion: strip transitions, animations and smooth scroll */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
