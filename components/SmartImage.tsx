@@ -15,6 +15,8 @@ type SmartImageProps = {
   height?: number;
   sizes?: string;
   priority?: boolean;
+  /** next/image quality (1-100). Defaults to next's built-in 75. */
+  quality?: number;
 };
 
 /**
@@ -32,6 +34,7 @@ export function SmartImage({
   height,
   sizes = "100vw",
   priority = false,
+  quality,
 }: SmartImageProps) {
   const [failed, setFailed] = useState(false);
 
@@ -48,6 +51,7 @@ export function SmartImage({
       height={fill ? undefined : height}
       sizes={sizes}
       priority={priority}
+      quality={quality}
       className={className}
       style={{ objectFit: "cover" }}
       onError={() => setFailed(true)}

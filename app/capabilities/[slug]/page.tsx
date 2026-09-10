@@ -49,7 +49,6 @@ export default async function CapabilityPage({
         <PageIntro
           eyebrow={`Capability ${capability.number}`}
           title={capability.title}
-          intro={capability.description}
           crumbs={[
             { label: "Home", href: "/" },
             { label: "Capabilities", href: "/capabilities" },
@@ -103,12 +102,13 @@ export default async function CapabilityPage({
             </div>
 
             <Reveal delay={0.1}>
-              <div className="relative aspect-[4/5] overflow-hidden border border-ink/10">
+              <div className="relative aspect-[16/10] overflow-hidden border border-ink/10">
                 <SmartImage
                   src={capability.image}
                   alt={capability.imageAlt}
                   slotLabel={capability.image}
-                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  sizes="(min-width: 1024px) 42vw, 100vw"
+                  quality={90}
                 />
                 <div className="absolute inset-0 bg-ink/20" />
                 <span className="absolute left-5 top-4 font-heading text-4xl font-extrabold text-white">
