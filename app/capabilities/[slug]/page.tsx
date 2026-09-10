@@ -49,6 +49,7 @@ export default async function CapabilityPage({
         <PageIntro
           eyebrow={`Capability ${capability.number}`}
           title={capability.title}
+          intro={capability.lead}
           crumbs={[
             { label: "Home", href: "/" },
             { label: "Capabilities", href: "/capabilities" },

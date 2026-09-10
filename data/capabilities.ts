@@ -22,6 +22,8 @@ export type Capability = {
   slug: string;
   /** Short description used on the landing-page card. */
   description: string;
+  /** Optional headline shown under the title on the detail page. */
+  lead?: string;
   /** Longer lead paragraph for a future dedicated service page. */
   overview: string;
   /** Supporting points — only included where the source material supports them. */
@@ -37,10 +39,10 @@ export const CAPABILITIES: Capability[] = [
     number: "01",
     title: "Explosives Distribution & Application",
     slug: "explosives-distribution",
-    description:
-      "Orica range of products, licensed explosives facilities and field application capability.",
+    description: "Powering PNG's Mines with Global Standard Technologies.",
+    lead: "Powering PNG's Mines with Global Standard Technologies.",
     overview:
-      "MUNI distributes the Orica range of products and operates licensed explosives facilities, combined with field application capability for demanding mining and civil work.",
+      "As the trusted local partner, distributor, and expert applicator for Orica Mining Services, MUNI delivers world-class blasting solutions, chemicals, and application expertise directly to your site.",
     points: [
       "Orica range of products",
       "Licensed explosives facilities",
