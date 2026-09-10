@@ -9,11 +9,14 @@ Match the **leading filename** to a slot (case / spaces / dashes don't matter):
 
 | Filename you save | Canonical file | Appears in |
 | --- | --- | --- |
-| `hero` / `drill-blast` / `blast` | `drill-blast.jpg` | Hero, Drill & Blast card, Mining environment, Project 01 |
+| `hero` / `drill-blast` / `blast` | `drill-blast.jpg` | Hero, Mining environment, Project 01 |
+| `drill-blast-services` | `drill-blast-services.jpg` | Drill & Blast Services card + service page |
 | `explosives` | `explosives.jpg` | Explosives Distribution & Application card |
-| `reagents` / `warehouse` | `reagents-warehouse.jpg` | Reagents & Fertilizers card, End-to-End Supply Chain card, Project 02 |
+| `reagents` / `warehouse` | `reagents-warehouse.jpg` | Project 02 |
+| `reagents-fertilizers` | `reagents-fertilizers.jpg` | Reagents & Fertilizers card + service page |
 | `supply-chain` / `manufacture-delivery` / `logistics` | `supply-chain-feature.jpg` | "From manufacture to delivery" cinematic section |
-| `engineering` / `civil` | `engineering-civil.jpg` | Engineering & Civil Works card, Infrastructure environment, Project 04 |
+| `engineering` / `civil` | `engineering-civil.jpg` | Infrastructure environment, Project 04 |
+| `engineering-civil-services` | `engineering-civil-services.jpg` | Engineering & Civil Works card + service page |
 | `marine` / `tug` / `barge` | `marine.jpg` | Tug & Barge Services card |
 | `sustainability` / `sustainable` | `sustainability.jpg` | Sustainable Project Development card, Agriculture environment |
 | `field` / `field-vehicle` / `landcruiser` | `field-vehicle.jpg` | Exploration environment, Project 03 |

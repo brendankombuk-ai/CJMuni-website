@@ -64,9 +64,9 @@ export const CAPABILITIES: Capability[] = [
       "Water and wastewater treatment",
       "Technical support",
     ],
-    image: "/images/library/reagents-warehouse.jpg",
+    image: "/images/library/reagents-fertilizers.jpg",
     imageAlt:
-      "MUNI personnel in a warehouse stocked with Orica reagent and UREA product",
+      "Two MUNI staff with tablets in a warehouse stacked with Orica UREA, ammonium nitrate, flocculant and collector product",
   },
   {
     number: "03",
@@ -81,9 +81,9 @@ export const CAPABILITIES: Capability[] = [
       "Exploration programmes",
       "Pioneer-road applications",
     ],
-    image: "/images/library/drill-blast.jpg",
+    image: "/images/library/drill-blast-services.jpg",
     imageAlt:
-      "MUNI crew at a drilled blast pattern with charged holes and a drill rig",
+      "Two MUNI crew in hi-vis at a charged blast pattern with a drill rig behind them at dusk",
   },
   {
     number: "04",
@@ -94,9 +94,9 @@ export const CAPABILITIES: Capability[] = [
     overview:
       "MUNI brings engineering and civil capability to industrial and infrastructure projects. Detailed scope is developed with each client around project requirements.",
     points: [],
-    image: "/images/library/engineering-civil.jpg",
+    image: "/images/library/engineering-civil-services.jpg",
     imageAlt:
-      "MUNI engineers reviewing drawings on a civil earthworks site with an excavator",
+      "Two MUNI civil crew with site drawings in front of a MUNI excavator and tip truck on a PNG earthworks site",
     highLevelOnly: true,
   },
   {

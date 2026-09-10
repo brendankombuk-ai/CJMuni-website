@@ -55,7 +55,7 @@ export function Hero() {
       <motion.div style={{ y: imageY }} className="absolute inset-0 z-0 scale-110">
         <SmartImage
           src="/images/hero/hero-main.jpg"
-          alt="MUNI crew with an explosives truck and drill rig on a Papua New Guinea mine bench"
+          alt="Two MUNI crew with a tablet at a charged blast pattern, drill rig and MUNI trucks behind them on a Papua New Guinea mine at sunset"
           slotLabel="/public/images/hero/hero-main.jpg"
           priority
           sizes="100vw"
