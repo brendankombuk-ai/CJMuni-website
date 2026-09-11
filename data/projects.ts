@@ -23,12 +23,14 @@ export const PROJECTS: Project[] = [
   {
     ref: "PROJECT 01",
     category: "Mining / Drill & Blast",
-    title: "Project title to be added.",
-    description: "Short project description to be added.",
+    title:
+      "Civil (Global Construction), Quarry (Yang Guang) and Mining (Pacific Cement & Limestone)",
+    description:
+      "MUNI recently delivered Drill & Blast services across civil construction, quarrying, and mining operations in Central Province, PNG, supporting major clients including Global Construction, Yang Guang, Pacific Cement, and Limestone.",
     location: "Central Province, PNG",
     image: "/images/library/project-01-drill-blast.jpg",
     imageAlt: "MUNI crew reviewing plans at a drill and blast site, Central Province, PNG",
-    detailsPending: true,
+    detailsPending: false,
   },
   {
     ref: "PROJECT 02",
