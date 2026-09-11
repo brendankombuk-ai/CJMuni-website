@@ -128,7 +128,7 @@ export const CAPABILITIES: Capability[] = [
       "Tailored delivery schedules",
       "Safe and secure materials storage and handling",
     ],
-    image: "/images/library/supply-chain.jpg",
+    image: "/images/library/supply-chain-feature.jpg",
     imageAlt: "MUNI logistics operations — from manufacture to delivery",
   },
   {
