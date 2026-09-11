@@ -34,13 +34,14 @@ export const PROJECTS: Project[] = [
   },
   {
     ref: "PROJECT 02",
-    category: "Supply Chain / Logistics",
-    title: "Project title to be added.",
-    description: "Short project description to be added.",
-    location: "National Capital District, PNG",
-    image: "/images/library/reagents-warehouse.jpg",
-    imageAlt: "MUNI warehouse and product handling operation",
-    detailsPending: true,
+    category: "Drill & Blast / Supply",
+    title: "Explosives Supply - Santos, Curtain Brothers, Corman Construction",
+    description:
+      "MUNI provided reliable explosives supply solutions to major civil construction and resource-sector clients across Papua New Guinea, including Santos, Curtain Brothers, and Corman Construction.",
+    location: "Central Province, PNG",
+    image: "/images/library/project-02-explosives-supply.jpg",
+    imageAlt: "MUNI explosives crates and Orica product staged dockside for delivery",
+    detailsPending: false,
   },
   {
     ref: "PROJECT 03",
