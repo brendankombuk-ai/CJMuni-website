@@ -26,8 +26,8 @@ export const PROJECTS: Project[] = [
     title: "Project title to be added.",
     description: "Short project description to be added.",
     location: "Central Province, PNG",
-    image: "/images/library/drill-blast.jpg",
-    imageAlt: "MUNI drill and blast crew on a mine bench",
+    image: "/images/library/project-01-drill-blast.jpg",
+    imageAlt: "MUNI crew reviewing plans at a drill and blast site, Central Province, PNG",
     detailsPending: true,
   },
   {
