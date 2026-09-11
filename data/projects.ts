@@ -45,13 +45,14 @@ export const PROJECTS: Project[] = [
   },
   {
     ref: "PROJECT 03",
-    category: "Field Operations / Access",
-    title: "Project title to be added.",
-    description: "Short project description to be added.",
-    location: "Gulf Province, PNG",
-    image: "/images/library/field-vehicle.jpg",
-    imageAlt: "MUNI field vehicle working through wet ground at a remote site",
-    detailsPending: true,
+    category: "Reagents Supply – Mining & Processing",
+    title: "Reagents Supply - AG Investment, Pioneer DG",
+    description:
+      "MUNI provides reliable reagent supply solutions to clients operating within Papua New Guinea's mining and resource sectors, including AG Investment and Pioneer DG. Our reagent supply services support mineral processing and mining operations.",
+    location: "Central Province, PNG",
+    image: "/images/library/project-03-reagents-supply.jpg",
+    imageAlt: "MUNI and Orica reagent product staged dockside for delivery",
+    detailsPending: false,
   },
   {
     ref: "PROJECT 04",
