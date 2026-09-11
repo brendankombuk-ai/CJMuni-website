@@ -56,12 +56,13 @@ export const PROJECTS: Project[] = [
   },
   {
     ref: "PROJECT 04",
-    category: "Engineering & Civil Works",
-    title: "Project title to be added.",
-    description: "Short project description to be added.",
-    location: "Morobe Province, PNG",
-    image: "/images/library/engineering-civil.jpg",
-    imageAlt: "MUNI engineering and civil earthworks in progress",
-    detailsPending: true,
+    category: "Logistics & Storage – Resource & Construction",
+    title: "Reliable logistics and storage solutions",
+    description:
+      "MUNI provides reliable logistics and storage solutions to clients across Papua New Guinea's construction, mining, and resource sectors, including Curtain Brothers, Pacific Limestone Cement, and Mayur Resources.",
+    location: "Central Province, PNG",
+    image: "/images/library/project-04-logistics-storage.jpg",
+    imageAlt: "MUNI warehouse team picking and moving palletised stock",
+    detailsPending: false,
   },
 ];
