@@ -40,19 +40,29 @@ export default async function CapabilityPage({
   const capability = getCapability(slug);
   if (!capability) notFound();
 
-  const others = CAPABILITIES.filter((c) => c.slug !== capability.slug).slice(0, 3);
+  // Prefer siblings from the same group (product / service), topped up from
+  // the full list so the row always renders three cards.
+  const sameGroup = CAPABILITIES.filter(
+    (c) => c.slug !== capability.slug && c.group === capability.group,
+  );
+  const otherGroup = CAPABILITIES.filter(
+    (c) => c.slug !== capability.slug && c.group !== capability.group,
+  );
+  const others = [...sameGroup, ...otherGroup].slice(0, 3);
+
+  const groupLabel = capability.group === "product" ? "Product" : "Service";
 
   return (
     <>
       <Navbar />
       <main id="main">
         <PageIntro
-          eyebrow={`Capability ${capability.number}`}
+          eyebrow={`${groupLabel} ${capability.number}`}
           title={capability.title}
           intro={capability.lead}
           crumbs={[
             { label: "Home", href: "/" },
-            { label: "Capabilities", href: "/capabilities" },
+            { label: "Products & Services", href: "/capabilities" },
             { label: capability.title },
           ]}
         />
@@ -84,7 +94,7 @@ export default async function CapabilityPage({
                 <Reveal delay={0.1}>
                   <p className="mt-8 border-l-2 border-gold/60 pl-5 text-sm leading-relaxed text-charcoal">
                     Detailed scope for this capability is developed with each
-                    client around project requirements. Talk to MUNI about your
+                    client around project requirements. Talk to CJ MUNI about your
                     specific need.
                   </p>
                 </Reveal>
@@ -96,7 +106,7 @@ export default async function CapabilityPage({
                     Request an Enquiry
                   </Link>
                   <Link href="/capabilities" className="btn-outline-dark">
-                    All Capabilities
+                    All Products &amp; Services
                   </Link>
                 </div>
               </Reveal>
@@ -125,7 +135,7 @@ export default async function CapabilityPage({
           <div className="frame">
             <span className="eyebrow text-white/60">Connected capability</span>
             <h2 className="mt-4 font-heading text-2xl font-extrabold uppercase tracking-headline text-white sm:text-3xl">
-              Explore other capabilities
+              Explore more capability
             </h2>
             <div className="mt-10 grid gap-px border border-white/10 bg-white/10 sm:grid-cols-3">
               {others.map((c) => (

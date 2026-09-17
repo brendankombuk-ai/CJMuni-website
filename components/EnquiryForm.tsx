@@ -52,7 +52,7 @@ export function EnquiryForm() {
       <div className="border border-gold/40 bg-ink-800 p-8">
         <span className="eyebrow text-gold">Enquiry received</span>
         <p className="mt-4 text-lg text-white">
-          Thank you — your enquiry has been logged. A member of the MUNI team will
+          Thank you — your enquiry has been logged. A member of the CJ MUNI team will
           be in touch.
         </p>
         <button

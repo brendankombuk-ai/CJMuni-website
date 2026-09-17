@@ -8,7 +8,7 @@ import { FinalCta } from "@/components/FinalCta";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "MUNI project and capability evidence. Structured and ready for real project photography and detail as projects are cleared for publication.",
+    "CJ MUNI project and capability evidence. Structured and ready for real project photography and detail as projects are cleared for publication.",
 };
 
 export default function ProjectsPage() {

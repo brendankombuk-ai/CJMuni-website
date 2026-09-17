@@ -12,7 +12,7 @@ export function Contact() {
           tone="light"
           eyebrow="Enquiries"
           title="Let's build the right partnership."
-          intro="Talk to MUNI about your next project, supply requirement or industrial capability need."
+          intro="Talk to CJ MUNI about your next project, supply requirement or industrial capability need."
         />
 
         <div className="mt-14 grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:gap-16">

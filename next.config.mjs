@@ -7,6 +7,28 @@ const nextConfig = {
     // large capability service-page photo.
     qualities: [75, 90],
   },
+  // Capability slugs renamed when the page was restructured into Products and
+  // Services. Permanent redirects keep any existing links and search results
+  // working instead of 404ing.
+  async redirects() {
+    return [
+      {
+        source: "/capabilities/explosives-distribution",
+        destination: "/capabilities/explosives-manufacture-supply",
+        permanent: true,
+      },
+      {
+        source: "/capabilities/reagents-fertilizers",
+        destination: "/capabilities/fertilizer-reagents",
+        permanent: true,
+      },
+      {
+        source: "/capabilities/engineering-civil",
+        destination: "/capabilities/civil-earth-moving",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

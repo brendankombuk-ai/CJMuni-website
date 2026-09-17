@@ -31,18 +31,18 @@ const PILLARS = [
 
 export function WhyMuni() {
   return (
-    <section id="why-muni" className="bg-white py-24 sm:py-32">
+    <section id="why-cj-muni" className="bg-white py-24 sm:py-32">
       <div className="frame">
         <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
           <SectionHeading
-            eyebrow="Why MUNI"
+            eyebrow="Why CJ MUNI"
             title={
               <>
                 Our difference is <span className="text-gold">connected</span>{" "}
                 capability.
               </>
             }
-            intro="MUNI is built around five commitments. They are how demanding projects get products, technical support and execution from one accountable partner."
+            intro="CJ MUNI is built around five commitments. They are how demanding projects get products, technical support and execution from one accountable partner."
           />
 
           <ul className="divide-y divide-ink/10 border-t border-ink/10">

@@ -1,30 +1,37 @@
 /**
- * The seven MUNI capability areas.
+ * CJ MUNI capability areas, split into the two things the business sells:
+ *
+ *   PRODUCTS — physical product lines manufactured, supplied and distributed.
+ *   SERVICES — capability delivered on site or across the supply chain.
  *
  * This is the single source of truth for capability content. The landing-page
- * grid and (in phase two) the individual /capabilities/[slug] pages both read
- * from here, so a capability can become its own service page without any
- * redesign — add richer fields to the object, render them on the detail route.
+ * product/service sections, the /capabilities index and the individual
+ * /capabilities/[slug] pages all read from here, so a capability can change
+ * name, copy or photography in one place.
  *
- * Copy is limited to the approved high-level descriptions from the MUNI
+ * Copy is limited to the approved high-level descriptions from the CJ MUNI
  * Corporate Brand Guidelines and the supplied business profile. Where the
- * source material is thin (engineering, marine, sustainable development) the
+ * source material is thin (quarry, civil, marine, sustainable development) the
  * copy is deliberately high-level and leaves room for future content.
  *
- * Images point at the shared photo library (public/images/library/). Several
- * slots deliberately reuse a photo until dedicated photography is supplied —
- * swap a single path here to change it everywhere it appears.
+ * Images point at the shared photo library (public/images/library/). A slot
+ * with no file yet renders the CJ MUNI image placeholder rather than breaking —
+ * drop the file at the listed path and it appears automatically.
  */
 
+export type CapabilityGroup = "product" | "service";
+
 export type Capability = {
+  /** Number shown on the card — restarts at 01 within each group. */
   number: string;
+  group: CapabilityGroup;
   title: string;
   slug: string;
   /** Short description used on the landing-page card. */
   description: string;
   /** Optional headline shown under the title on the detail page. */
   lead?: string;
-  /** Longer lead paragraph for a future dedicated service page. */
+  /** Longer lead paragraph for the dedicated service page. */
   overview: string;
   /** Supporting points — only included where the source material supports them. */
   points: string[];
@@ -34,50 +41,60 @@ export type Capability = {
   highLevelOnly?: boolean;
 };
 
-export const CAPABILITIES: Capability[] = [
+/** Product lines — what CJ MUNI manufactures, supplies and distributes. */
+export const PRODUCTS: Capability[] = [
   {
     number: "01",
-    title: "Explosives Distribution & Application",
-    slug: "explosives-distribution",
-    description: "Powering PNG's Mines with Global Standard Technologies.",
+    group: "product",
+    title: "Explosives Manufacture & Supply",
+    slug: "explosives-manufacture-supply",
+    description:
+      "Powering PNG mines with global-standard explosives technology.",
     lead: "Powering PNG's Mines with Global Standard Technologies.",
     overview:
-      "As the trusted local partner, distributor, and expert applicator for Orica Mining Services, MUNI delivers world-class blasting solutions, chemicals, and application expertise directly to your site.",
+      "As the trusted local partner, distributor and expert applicator for Orica Mining Services, CJ MUNI manufactures and supplies world-class blasting products, chemicals and application expertise directly to site.",
     points: [
       "Orica range of products",
       "Licensed explosives facilities",
+      "Manufacture and bulk supply",
       "Field application capability",
     ],
     image: "/images/library/explosives.jpg",
     imageAlt:
-      "MUNI crew with a MUNI explosives truck and drill rig on a mine bench",
+      "CJ MUNI crew charging a blast pattern beside an Orica Bulkmaster 7 delivery truck on a Papua New Guinea site at sunset",
   },
   {
     number: "02",
-    title: "Reagents & Fertilizers",
-    slug: "reagents-fertilizers",
+    group: "product",
+    title: "Fertilizer & Reagents",
+    slug: "fertilizer-reagents",
     description:
-      "Reagents for mining and metals, agriculture inputs and related product support.",
+      "Fertilizer and agriculture inputs alongside reagents for mining and metals processing.",
     overview:
-      "MUNI supplies reagents for mining and metals processing alongside agriculture inputs, backed by technical product support.",
+      "CJ MUNI supplies fertilizer and agriculture inputs alongside reagents for mining and metals processing, backed by technical product support.",
     points: [
-      "Xanthate, collectors and flocculants",
       "UREA and agriculture inputs",
+      "Xanthate, collectors and flocculants",
       "Water and wastewater treatment",
       "Technical support",
     ],
     image: "/images/library/reagents-fertilizers.jpg",
     imageAlt:
-      "Two MUNI staff with tablets in a warehouse stacked with Orica UREA, ammonium nitrate, flocculant and collector product",
+      "Two CJ MUNI staff with tablets in a warehouse stacked with CJ MUNI UREA, ammonium nitrate, flocculant and collector product",
   },
+];
+
+/** Services — capability delivered on site and across the supply chain. */
+export const SERVICES: Capability[] = [
   {
-    number: "03",
-    title: "Drill & Blast Services",
+    number: "01",
+    group: "service",
+    title: "Drill & Blast",
     slug: "drill-blast",
     description:
       "Drilling and blasting support for mining, quarries, exploration and pioneer-road applications.",
     overview:
-      "MUNI provides drilling and blasting support across mining, quarrying, exploration and pioneer-road applications.",
+      "CJ MUNI provides drilling and blasting support across mining, quarrying, exploration and pioneer-road applications.",
     points: [
       "Mining and quarry operations",
       "Exploration programmes",
@@ -85,43 +102,62 @@ export const CAPABILITIES: Capability[] = [
     ],
     image: "/images/library/drill-blast-services.jpg",
     imageAlt:
-      "Two MUNI crew in hi-vis at a charged blast pattern with a drill rig behind them at dusk",
+      "Two CJ MUNI crew in hi-vis at a charged blast pattern with a drill rig and explosives trucks behind them at sunset",
   },
   {
-    number: "04",
-    title: "Engineering & Civil Works",
-    slug: "engineering-civil",
+    number: "02",
+    group: "service",
+    title: "Quarry Services",
+    slug: "quarry-services",
     description:
-      "Engineering and civil capability supporting industrial and infrastructure projects.",
+      "Quarry development, production drilling and blasting that keeps aggregate supply moving.",
     overview:
-      "MUNI brings engineering and civil capability to industrial and infrastructure projects. Detailed scope is developed with each client around project requirements.",
+      "CJ MUNI supports quarry operations across Papua New Guinea with production drilling, blasting and the technical capability to keep aggregate supply moving. Detailed scope is developed with each client around site requirements.",
     points: [],
-    image: "/images/library/engineering-civil-services.jpg",
+    image: "/images/library/quarry-services.jpg",
     imageAlt:
-      "Two MUNI civil crew with site drawings in front of a MUNI excavator and tip truck on a PNG earthworks site",
+      "Two CJ MUNI crew at a charged quarry pattern with a drill rig, explosives trucks and quarry benches behind them at sunset",
     highLevelOnly: true,
   },
   {
-    number: "05",
-    title: "Tug & Barge Services",
+    number: "03",
+    group: "service",
+    title: "Civil & Earth Moving",
+    slug: "civil-earth-moving",
+    description:
+      "Civil works and earth moving supporting industrial and infrastructure projects.",
+    overview:
+      "CJ MUNI brings civil and earth-moving capability to industrial and infrastructure projects. Detailed scope is developed with each client around project requirements.",
+    points: [],
+    image: "/images/library/engineering-civil-services.jpg",
+    imageAlt:
+      "Two CJ MUNI civil crew with site drawings in front of a CJ MUNI excavator and tip truck on a PNG earthworks site",
+    highLevelOnly: true,
+  },
+  {
+    number: "04",
+    group: "service",
+    title: "Tug & Barge",
     slug: "tug-barge",
     description:
       "Marine transport and project support through tug and barge operations.",
     overview:
-      "MUNI supports projects with marine transport through tug and barge operations, coordinated with its wider supply-chain capability.",
+      "CJ MUNI supports projects with marine transport through tug and barge operations, coordinated with its wider supply-chain capability.",
     points: [],
     image: "/images/library/marine.jpg",
-    imageAlt: "MUNI marine crew on a wharf with a tug and loaded barge at a PNG port",
+    imageAlt:
+      "CJ MUNI marine crew on a wharf with a tug and loaded barge at a PNG port",
     highLevelOnly: true,
   },
   {
-    number: "06",
+    number: "05",
+    group: "service",
     title: "End-to-End Supply Chain",
     slug: "supply-chain",
     description:
       "Coordinated sourcing, logistics, storage, handling and delivery around customer requirements.",
     overview:
-      "MUNI coordinates sourcing, logistics, storage, handling and delivery around customer requirements — monitoring orders from manufacture through to delivery with tailored delivery schedules.",
+      "CJ MUNI coordinates sourcing, logistics, storage, handling and delivery around customer requirements — monitoring orders from manufacture through to delivery with tailored delivery schedules.",
     points: [
       "In-house logistics team",
       "Order monitoring from manufacture to delivery",
@@ -129,23 +165,27 @@ export const CAPABILITIES: Capability[] = [
       "Safe and secure materials storage and handling",
     ],
     image: "/images/library/supply-chain-feature.jpg",
-    imageAlt: "MUNI logistics operations — from manufacture to delivery",
+    imageAlt: "CJ MUNI logistics operations — from manufacture to delivery",
   },
   {
-    number: "07",
-    title: "Sustainable Project Development",
+    number: "06",
+    group: "service",
+    title: "Sustainable Development Projects",
     slug: "sustainable-development",
     description:
       "Project development with a focus on responsible delivery and long-term value.",
     overview:
-      "MUNI approaches project development with a focus on responsible delivery and long-term value for clients and communities.",
+      "CJ MUNI approaches project development with a focus on responsible delivery and long-term value for clients and communities.",
     points: [],
     image: "/images/library/sustainability.jpg",
     imageAlt:
-      "MUNI team with plans beside a solar array and tree planting above a PNG coastline",
+      "CJ MUNI team with plans beside a solar array and tree planting above a PNG coastline",
     highLevelOnly: true,
   },
 ];
+
+/** Every capability, products first — used by the index page and sitemap. */
+export const CAPABILITIES: Capability[] = [...PRODUCTS, ...SERVICES];
 
 export function getCapability(slug: string): Capability | undefined {
   return CAPABILITIES.find((c) => c.slug === slug);

@@ -30,7 +30,7 @@ export function ConnectedCapability() {
         <SectionHeading
           tone="light"
           eyebrow="Connected Capability"
-          title="From product to project, MUNI connects the chain."
+          title="From product to project, CJ MUNI connects the chain."
           intro="Each capability is useful on its own. Coordinated, they remove the gaps, handoffs and interfaces that slow demanding projects down."
         />
 

@@ -11,7 +11,7 @@ export function CapabilityGrid() {
           tone="light"
           eyebrow="Capabilities"
           title="One partner. Multiple capabilities."
-          intro="MUNI brings specialist products, technical capability, project execution, marine support and supply-chain delivery together — coordinated around one project through a single accountable partner."
+          intro="CJ MUNI brings specialist products, technical capability, project execution, marine support and supply-chain delivery together — coordinated around one project through a single accountable partner."
         />
 
         <div className="mt-14 grid gap-px border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
@@ -28,7 +28,7 @@ export function CapabilityGrid() {
                 07 /
               </span>
               <p className="relative font-heading text-lg font-bold uppercase leading-tight tracking-headline text-white">
-                From product to project, MUNI connects the chain.
+                From product to project, CJ MUNI connects the chain.
               </p>
             </div>
           </Reveal>

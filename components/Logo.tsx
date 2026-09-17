@@ -30,15 +30,15 @@ export function Logo({ variant = "lockup", tone = "light", className, href = "/"
     variant === "emblem" ? (
       <span className={`block h-9 ${className ?? ""}`}>
         <EmblemPlaceholder tone={tone} />
-        <span className="sr-only">MUNI</span>
+        <span className="sr-only">CJ MUNI</span>
       </span>
     ) : (
       <span className={`inline-flex items-center ${className ?? ""}`}>
         <Image
           src="/images/logo/muni-logo-light.png"
-          alt="MUNI — The Power of Partnership"
-          width={848}
-          height={315}
+          alt="CJ MUNI — The Power of Partnership"
+          width={900}
+          height={300}
           className="h-10 w-auto sm:h-16"
           priority
         />
@@ -48,7 +48,7 @@ export function Logo({ variant = "lockup", tone = "light", className, href = "/"
   if (href === null) return content;
 
   return (
-    <Link href={href} aria-label="MUNI home" className="inline-flex">
+    <Link href={href} aria-label="CJ MUNI home" className="inline-flex">
       {content}
     </Link>
   );

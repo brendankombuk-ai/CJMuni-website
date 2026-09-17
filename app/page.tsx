@@ -1,9 +1,8 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
-import { CapabilityGrid } from "@/components/CapabilityGrid";
-import { ConnectedCapability } from "@/components/ConnectedCapability";
-import { WhyMuni } from "@/components/WhyMuni";
-import { SupplyChainFeature } from "@/components/SupplyChainFeature";
+import { Products } from "@/components/Products";
+import { Services } from "@/components/Services";
+import { FrontierAgri } from "@/components/FrontierAgri";
 import { Projects } from "@/components/Projects";
 import { Contact } from "@/components/Contact";
 import { FinalCta } from "@/components/FinalCta";
@@ -11,8 +10,10 @@ import { Footer } from "@/components/Footer";
 
 /**
  * Page rhythm:
- * HERO -> CAPABILITY -> CONNECTION -> DIFFERENTIATION -> OPERATIONS
- *      -> EVIDENCE -> ENQUIRY -> CLOSE
+ * HERO -> PRODUCTS -> SERVICES -> FRONTIER AGRI -> EVIDENCE -> ENQUIRY -> CLOSE
+ *
+ * Products and services sit on black; Frontier Agri breaks to white so the
+ * agriculture arm reads as a separate part of the business.
  */
 export default function HomePage() {
   return (
@@ -20,10 +21,9 @@ export default function HomePage() {
       <Navbar />
       <main id="main">
         <Hero />
-        <CapabilityGrid />
-        <ConnectedCapability />
-        <WhyMuni />
-        <SupplyChainFeature />
+        <Products />
+        <Services />
+        <FrontierAgri />
         <Projects />
         <Contact />
         <FinalCta />

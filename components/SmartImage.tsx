@@ -21,7 +21,7 @@ type SmartImageProps = {
 
 /**
  * Renders a real photograph from /public/images when the file exists, and a
- * sophisticated MUNI-styled placeholder when it does not — never a broken
+ * sophisticated CJ MUNI-styled placeholder when it does not — never a broken
  * image. Drop a file at the given path and it appears automatically.
  */
 export function SmartImage({

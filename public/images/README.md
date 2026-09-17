@@ -1,8 +1,8 @@
-# MUNI image slots
+# CJ MUNI image slots
 
 Every image on the site is a **slot**. Drop a correctly named file into the
 folder below and it replaces the placeholder automatically — no code changes.
-If a file is missing, a MUNI-styled placeholder renders instead of a broken
+If a file is missing, a CJ MUNI-styled placeholder renders instead of a broken
 image.
 
 All images are rendered with `object-fit: cover` and responsive `sizes`. Supply
@@ -14,7 +14,7 @@ correct PPE. Avoid staged corporate handshake shots.
 
 | File | Use |
 | --- | --- |
-| `logo/muni-lockup.svg` | Full MUNI lockup — desktop header & footer |
+| `logo/muni-lockup.svg` | Full CJ MUNI lockup — desktop header & footer |
 | `logo/muni-emblem.svg` | Goat emblem — compact mark / favicon |
 
 Then update `components/Logo.tsx` to render the real files. Do **not** stretch,

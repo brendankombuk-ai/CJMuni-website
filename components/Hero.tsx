@@ -49,13 +49,13 @@ export function Hero() {
     <section
       ref={ref}
       className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden bg-ink"
-      aria-label="MUNI — Connected capability. Reliable delivery."
+      aria-label="CJ MUNI — Connected capability. Reliable delivery."
     >
       {/* Full-bleed hero image — replace at /public/images/hero/hero-main.jpg */}
       <motion.div style={{ y: imageY }} className="absolute inset-0 z-0 scale-110">
         <SmartImage
           src="/images/hero/hero-main.jpg"
-          alt="Two MUNI crew with a tablet at a charged blast pattern, drill rig and MUNI trucks behind them on a Papua New Guinea mine at sunset"
+          alt="CJ MUNI crew charging a blast pattern beside an Orica Bulkmaster Pro truck on a Papua New Guinea mine"
           slotLabel="/public/images/hero/hero-main.jpg"
           priority
           sizes="100vw"
@@ -102,7 +102,7 @@ export function Hero() {
           variants={item}
           className="mt-7 max-w-2xl text-base leading-relaxed text-white/80 sm:text-lg"
         >
-          MUNI connects specialist products, technical capability, project
+          CJ MUNI connects specialist products, technical capability, project
           execution, marine support and supply-chain delivery around the needs of
           demanding projects.
         </motion.p>
@@ -114,7 +114,7 @@ export function Hero() {
           <Link href="/#contact" className="btn-primary">
             Request an Enquiry
           </Link>
-          <Link href="/#capabilities" className="btn-outline-light">
+          <Link href="/#products" className="btn-outline-light">
             Explore Capabilities
           </Link>
         </motion.div>

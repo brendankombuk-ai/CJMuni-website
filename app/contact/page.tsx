@@ -6,7 +6,7 @@ import { Contact } from "@/components/Contact";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Talk to MUNI about your next project, supply requirement or industrial capability need in Papua New Guinea.",
+    "Talk to CJ MUNI about your next project, supply requirement or industrial capability need in Papua New Guinea.",
 };
 
 export default function ContactPage() {

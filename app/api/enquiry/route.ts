@@ -39,7 +39,7 @@ export async function POST(request: Request) {
   // await sendEnquiryEmail(parsed.data);
   // or: await fetch(process.env.CRM_WEBHOOK_URL!, { method: "POST", body: ... })
   // ---------------------------------------------------------------------
-  console.info("[MUNI enquiry]", {
+  console.info("[CJ MUNI enquiry]", {
     ...parsed.data,
     receivedAt: new Date().toISOString(),
   });

@@ -22,13 +22,13 @@ const siteUrl = "https://muni.com.pg";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "MUNI — Connected Capability. Reliable Delivery.",
-    template: "%s | MUNI",
+    default: "CJ MUNI — Connected Capability. Reliable Delivery.",
+    template: "%s | CJ MUNI",
   },
   description:
-    "MUNI is a Papua New Guinea-focused industrial partner connecting specialist products, technical capability, project execution, marine support and end-to-end supply-chain delivery for demanding projects.",
+    "CJ MUNI is a Papua New Guinea-focused industrial partner connecting specialist products, technical capability, project execution, marine support and end-to-end supply-chain delivery for demanding projects.",
   keywords: [
-    "MUNI",
+    "CJ MUNI",
     "Papua New Guinea",
     "industrial partner",
     "explosives distribution",
@@ -38,19 +38,19 @@ export const metadata: Metadata = {
     "tug and barge",
     "mining services PNG",
   ],
-  authors: [{ name: "MUNI" }],
+  authors: [{ name: "CJ MUNI" }],
   openGraph: {
     type: "website",
     locale: "en_PG",
     url: siteUrl,
-    siteName: "MUNI",
-    title: "MUNI — Connected Capability. Reliable Delivery.",
+    siteName: "CJ MUNI",
+    title: "CJ MUNI — Connected Capability. Reliable Delivery.",
     description:
       "One partner connecting products, technical capability, field execution, marine support and supply-chain delivery for demanding projects in Papua New Guinea.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "MUNI — Connected Capability. Reliable Delivery.",
+    title: "CJ MUNI — Connected Capability. Reliable Delivery.",
     description:
       "A PNG-focused industrial partner. The Power of Partnership.",
   },
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
 const orgJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "MUNI",
+  name: "CJ MUNI",
   slogan: "Connected Capability. Reliable Delivery.",
   description:
     "A Papua New Guinea-focused industrial partner delivering critical products, field services, engineering, marine logistics and end-to-end supply-chain support.",

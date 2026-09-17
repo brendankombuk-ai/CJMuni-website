@@ -16,7 +16,7 @@ export function CapabilityCard({ capability }: { capability: Capability }) {
   return (
     <Link
       href={`/capabilities/${capability.slug}`}
-      className="group relative flex flex-col overflow-hidden border border-white/10 bg-ink-800 transition-colors duration-500 ease-muni hover:border-gold/50 focus-visible:border-gold"
+      className="group relative flex w-full flex-col overflow-hidden border border-white/10 bg-ink-800 transition-colors duration-500 ease-muni hover:border-gold/50 focus-visible:border-gold"
     >
       {/* Image */}
       <div className="relative aspect-[16/10] overflow-hidden">

@@ -1,7 +1,7 @@
 /**
  * Project / capability-evidence entries.
  *
- * Photography is real MUNI operational imagery. The written project detail
+ * Photography is real CJ MUNI operational imagery. The written project detail
  * (title, description, exact location) is still to be confirmed — those fields
  * carry "to be added" copy and `detailsPending: true` so the UI stays honest
  * rather than inventing a project history.
@@ -26,10 +26,10 @@ export const PROJECTS: Project[] = [
     title:
       "Civil (Global Construction), Quarry (Yang Guang) and Mining (Pacific Cement & Limestone)",
     description:
-      "MUNI recently delivered Drill & Blast services across civil construction, quarrying, and mining operations in Central Province, PNG, supporting major clients including Global Construction, Yang Guang, Pacific Cement, and Limestone.",
+      "CJ MUNI recently delivered Drill & Blast services across civil construction, quarrying, and mining operations in Central Province, PNG, supporting major clients including Global Construction, Yang Guang, Pacific Cement, and Limestone.",
     location: "Central Province, PNG",
     image: "/images/library/project-01-drill-blast.jpg",
-    imageAlt: "MUNI crew reviewing plans at a drill and blast site, Central Province, PNG",
+    imageAlt: "CJ MUNI drill and blast crew reviewing plans and core trays at a Central Province site, PNG",
     detailsPending: false,
   },
   {
@@ -37,10 +37,10 @@ export const PROJECTS: Project[] = [
     category: "Drill & Blast / Supply",
     title: "Explosives Supply - Santos, Curtain Brothers, Corman Construction",
     description:
-      "MUNI provided reliable explosives supply solutions to major civil construction and resource-sector clients across Papua New Guinea, including Santos, Curtain Brothers, and Corman Construction.",
+      "CJ MUNI provided reliable explosives supply solutions to major civil construction and resource-sector clients across Papua New Guinea, including Santos, Curtain Brothers, and Corman Construction.",
     location: "Central Province, PNG",
     image: "/images/library/project-02-explosives-supply.jpg",
-    imageAlt: "MUNI explosives crates and Orica product staged dockside for delivery",
+    imageAlt: "CJ MUNI-branded explosives crates, detonators and ANFO pallets staged dockside for delivery",
     detailsPending: false,
   },
   {
@@ -48,10 +48,10 @@ export const PROJECTS: Project[] = [
     category: "Reagents Supply – Mining & Processing",
     title: "Reagents Supply - AG Investment, Pioneer DG",
     description:
-      "MUNI provides reliable reagent supply solutions to clients operating within Papua New Guinea's mining and resource sectors, including AG Investment and Pioneer DG. Our reagent supply services support mineral processing and mining operations.",
+      "CJ MUNI provides reliable reagent supply solutions to clients operating within Papua New Guinea's mining and resource sectors, including AG Investment and Pioneer DG. Our reagent supply services support mineral processing and mining operations.",
     location: "Central Province, PNG",
     image: "/images/library/project-03-reagents-supply.jpg",
-    imageAlt: "MUNI and Orica reagent product staged dockside for delivery",
+    imageAlt: "CJ MUNI and Orica reagent product — flocculant drums, caustic soda flakes, polymer and IBCs — staged dockside with a ship alongside",
     detailsPending: false,
   },
   {
@@ -59,10 +59,10 @@ export const PROJECTS: Project[] = [
     category: "Logistics & Storage – Resource & Construction",
     title: "Reliable logistics and storage solutions",
     description:
-      "MUNI provides reliable logistics and storage solutions to clients across Papua New Guinea's construction, mining, and resource sectors, including Curtain Brothers, Pacific Limestone Cement, and Mayur Resources.",
+      "CJ MUNI provides reliable logistics and storage solutions to clients across Papua New Guinea's construction, mining, and resource sectors, including Curtain Brothers, Pacific Limestone Cement, and Mayur Resources.",
     location: "Central Province, PNG",
     image: "/images/library/project-04-logistics-storage.jpg",
-    imageAlt: "MUNI warehouse team picking and moving palletised stock",
+    imageAlt: "CJ MUNI warehouse team checking palletised stock in racking with a forklift working the aisle",
     detailsPending: false,
   },
 ];

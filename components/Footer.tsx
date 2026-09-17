@@ -42,10 +42,10 @@ export function Footer() {
             </ul>
           </nav>
 
-          {/* Capabilities */}
-          <nav aria-label="Capabilities">
+          {/* Products & services */}
+          <nav aria-label="Products and services">
             <h2 className="font-sans text-[11px] font-bold uppercase tracking-label text-white/40">
-              Capabilities
+              Products &amp; Services
             </h2>
             <ul className="mt-4 space-y-2.5">
               {CAPABILITIES.map((c) => (
@@ -93,7 +93,7 @@ export function Footer() {
 
         <div className="mt-14 flex flex-col gap-3 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-white/40">
-            &copy; {year} MUNI. All rights reserved.
+            &copy; {year} CJ MUNI. All rights reserved.
           </p>
           <p className="text-xs text-white/40">
             Connected capability. Reliable delivery.

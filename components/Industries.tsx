@@ -11,7 +11,7 @@ export function Industries() {
           tone="light"
           eyebrow="Environments"
           title="Built for demanding operating environments."
-          intro="MUNI works around mining, metals, energy, agriculture and infrastructure projects across Papua New Guinea."
+          intro="CJ MUNI works around mining, metals, energy, agriculture and infrastructure projects across Papua New Guinea."
         />
 
         <div className="mt-14 grid grid-cols-2 gap-px border border-white/10 bg-white/10 sm:grid-cols-3">

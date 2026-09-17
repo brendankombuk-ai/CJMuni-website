@@ -26,7 +26,7 @@ export function SupplyChainFeature() {
       <motion.div style={{ y: imageY }} className="absolute inset-0 scale-110">
         <SmartImage
           src="/images/library/supply-chain-feature.jpg"
-          alt="MUNI supply chain — processing, warehousing, port handling and road transport"
+          alt="CJ MUNI supply chain — processing, warehousing, port handling and road transport"
           slotLabel="/public/images/library/supply-chain-feature.jpg"
           sizes="100vw"
         />
@@ -46,7 +46,7 @@ export function SupplyChainFeature() {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-5 text-base leading-relaxed text-white/75 sm:text-lg">
-              MUNI coordinates sourcing, logistics, storage, handling and
+              CJ MUNI coordinates sourcing, logistics, storage, handling and
               delivery around customer requirements.
             </p>
           </Reveal>
