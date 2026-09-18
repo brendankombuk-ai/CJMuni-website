@@ -12,7 +12,7 @@
  *
  * Usage:  node scripts/process-images.mjs
  */
-import { readdir, rename, unlink, stat } from "node:fs/promises";
+import { readdir, readFile, rename, unlink, writeFile } from "node:fs/promises";
 import path from "node:path";
 import sharp from "sharp";
 
@@ -82,30 +82,48 @@ async function main() {
     const target = CANON[norm(leading)] ?? `${base}.jpg`;
     const targetPath = path.join(DIR, target);
 
+    // Read the source into memory first. sharp reads a file path lazily and
+    // keeps a handle open, and Windows refuses to unlink a file that still has
+    // one, which left the original (e.g. project02.webp) sitting in the folder
+    // after the swap. Working from a buffer means nothing holds the source.
+    const source = await readFile(full);
+
     // Skip a canonical file that is already a lean JPEG and wasn't a bad drop
     if (file === target) {
-      const meta = await sharp(full).metadata();
-      const { size } = await stat(full);
-      if (meta.format === "jpeg" && meta.width <= MAX_WIDTH && size < 900_000) {
+      const meta = await sharp(source).metadata();
+      if (
+        meta.format === "jpeg" &&
+        meta.width <= MAX_WIDTH &&
+        source.length < 900_000
+      ) {
         console.log(`ok    ${file} (already optimised)`);
         continue;
       }
     }
 
-    const buf = await sharp(full)
+    const buf = await sharp(source)
       .rotate()
       .resize({ width: MAX_WIDTH, withoutEnlargement: true })
       .jpeg({ quality: QUALITY, mozjpeg: true })
       .toBuffer();
 
-    // write to a temp name then swap, so we never clobber the source mid-read
+    // write to a temp name then swap, so a crash never leaves a half-written
+    // photo on a canonical slot
     const tmp = targetPath + ".tmp";
-    await sharp(buf).toFile(tmp);
-    if (file !== target) await unlink(full).catch(() => {});
+    await writeFile(tmp, buf);
     await rename(tmp, targetPath).catch(async () => {
       await unlink(targetPath).catch(() => {});
       await rename(tmp, targetPath);
     });
+
+    // drop the source once the swap is done, so a renamed drop doesn't linger
+    if (file !== target) {
+      try {
+        await unlink(full);
+      } catch (err) {
+        console.warn(`warn  could not remove source ${file}: ${err.code ?? err}`);
+      }
+    }
 
     const kb = Math.round(buf.length / 1024);
     console.log(`done  ${file}  ->  ${target}  (${kb} KB)`);
