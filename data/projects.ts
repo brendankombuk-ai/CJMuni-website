@@ -40,7 +40,7 @@ export const PROJECTS: Project[] = [
       "CJ MUNI provided reliable explosives supply solutions to major civil construction and resource-sector clients across Papua New Guinea, including Santos, Curtain Brothers, and Corman Construction.",
     location: "Central Province, PNG",
     image: "/images/library/project-02-explosives-supply.jpg",
-    imageAlt: "CJ MUNI-branded explosives crates, detonators and ANFO pallets staged dockside for delivery",
+    imageAlt: "Orica-branded explosives crates, detonator cartons, Exel coils, ANFO and Pentex pallets staged dockside beside a CJ MUNI truck",
     detailsPending: false,
   },
   {
@@ -51,7 +51,7 @@ export const PROJECTS: Project[] = [
       "CJ MUNI provides reliable reagent supply solutions to clients operating within Papua New Guinea's mining and resource sectors, including AG Investment and Pioneer DG. Our reagent supply services support mineral processing and mining operations.",
     location: "Central Province, PNG",
     image: "/images/library/project-03-reagents-supply.jpg",
-    imageAlt: "CJ MUNI and Orica reagent product — flocculant drums, caustic soda flakes, polymer and IBCs — staged dockside with a ship alongside",
+    imageAlt: "CJ MUNI crew loading Orica reagent product — flocculant drums, caustic soda flakes, polymer and IBCs — into a container at the wharf with a ship alongside",
     detailsPending: false,
   },
   {
@@ -62,7 +62,7 @@ export const PROJECTS: Project[] = [
       "CJ MUNI provides reliable logistics and storage solutions to clients across Papua New Guinea's construction, mining, and resource sectors, including Curtain Brothers, Pacific Limestone Cement, and Mayur Resources.",
     location: "Central Province, PNG",
     image: "/images/library/project-04-logistics-storage.jpg",
-    imageAlt: "CJ MUNI warehouse team checking palletised stock in racking with a forklift working the aisle",
+    imageAlt: "CJ MUNI warehouse team checking palletised Orica stock in racking with a CJ MUNI forklift working the aisle",
     detailsPending: false,
   },
 ];
