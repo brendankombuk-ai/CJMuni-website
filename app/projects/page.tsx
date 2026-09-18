@@ -3,7 +3,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PageIntro } from "@/components/PageIntro";
 import { Projects } from "@/components/Projects";
-import { FinalCta } from "@/components/FinalCta";
+import { ContactBand } from "@/components/ContactBand";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -18,12 +18,12 @@ export default function ProjectsPage() {
       <main id="main">
         <PageIntro
           eyebrow="Capability Evidence"
-          title="Projects."
-          intro="A place for real project photography and detail. Content is added as projects are cleared for publication."
+          title="Projects"
+          intro="Real project photography and detail. Content is added as projects are cleared for publication."
           crumbs={[{ label: "Home", href: "/" }, { label: "Projects" }]}
         />
         <Projects />
-        <FinalCta />
+        <ContactBand />
       </main>
       <Footer />
     </>

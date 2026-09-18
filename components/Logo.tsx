@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 type LogoProps = {
   variant?: "lockup" | "emblem";
@@ -26,6 +29,8 @@ function EmblemPlaceholder({ tone }: { tone: "light" | "dark" }) {
 }
 
 export function Logo({ variant = "lockup", tone = "light", className, href = "/" }: LogoProps) {
+  const pathname = usePathname();
+
   const content =
     variant === "emblem" ? (
       <span className={`block h-9 ${className ?? ""}`}>
@@ -39,7 +44,7 @@ export function Logo({ variant = "lockup", tone = "light", className, href = "/"
           alt="CJ MUNI — The Power of Partnership"
           width={900}
           height={300}
-          className="h-10 w-auto sm:h-16"
+          className="h-9 w-auto sm:h-11"
           priority
         />
       </span>
@@ -48,7 +53,17 @@ export function Logo({ variant = "lockup", tone = "light", className, href = "/"
   if (href === null) return content;
 
   return (
-    <Link href={href} aria-label="CJ MUNI home" className="inline-flex">
+    <Link
+      href={href}
+      aria-label="CJ MUNI home"
+      className="inline-flex"
+      onClick={() => {
+        // Clicking the logo always lands you at the top of the home page.
+        // When you are already on it the router has nothing to navigate to and
+        // would leave you wherever you had scrolled to, so scroll up here.
+        if (pathname === href) window.scrollTo(0, 0);
+      }}
+    >
       {content}
     </Link>
   );

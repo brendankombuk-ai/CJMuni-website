@@ -46,6 +46,12 @@ export type Capability = {
    * block on the detail page where supplied — omit it and the block disappears.
    */
   catalogue?: CapabilityCatalogueGroup[];
+  /**
+   * A full catalogue that has outgrown the detail page and lives on its own
+   * route — currently the Orica product catalogue behind Explosives
+   * Manufacture & Supply. Rendered as a link block where present.
+   */
+  catalogueLink?: { href: string; label: string; blurb: string };
   image: string;
   imageAlt: string;
   /** True where the supplied profile only gives a high-level description. */
@@ -70,6 +76,12 @@ export const PRODUCTS: Capability[] = [
       "Manufacture and bulk supply",
       "Field application capability",
     ],
+    catalogueLink: {
+      href: "/products",
+      label: "Orica Products",
+      blurb:
+        "The full Orica range we distribute — AMEX™, PENTEX™, EXEL™ MS, ENDURADET™, EXEL™ CONNECTADET™, CORDTEX™ and SENATEL™ — with product imagery and the technical specifications from the Product Catalog 2026.",
+    },
     image: "/images/library/explosives.jpg",
     imageAlt:
       "CJ MUNI crew charging a blast pattern beside an Orica Bulkmaster 7 delivery truck on a Papua New Guinea site at sunset",

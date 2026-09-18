@@ -35,7 +35,7 @@ export const PROJECTS: Project[] = [
   {
     ref: "PROJECT 02",
     category: "Drill & Blast / Supply",
-    title: "Explosives Supply - Santos, Curtain Brothers, Corman Construction",
+    title: "Paramount Safety, Logistics of all ORICA Products",
     description:
       "CJ MUNI provided reliable explosives supply solutions to major civil construction and resource-sector clients across Papua New Guinea, including Santos, Curtain Brothers, and Corman Construction.",
     location: "Central Province, PNG",

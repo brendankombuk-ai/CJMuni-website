@@ -11,6 +11,10 @@
   --muni-red: #e12129;
   --muni-charcoal: #4a4a4a;
   --muni-white: #ffffff;
+
+  /* Shared easing and timing so every interaction moves the same way. */
+  --ease-muni: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-muni: 220ms;
 }
 
 @layer base {
@@ -19,8 +23,16 @@
     text-rendering: optimizeLegibility;
   }
 
+  /**
+   * No smooth scrolling.
+   *
+   * Every link is now a real page rather than an in-page anchor, so smooth
+   * scrolling has nothing left to smooth. It also actively breaks navigation:
+   * the router scrolls to the top on a route change, smooth turns that into an
+   * animation, and the incoming page's height changes mid-animation and
+   * cancels it — landing you partway down the new page instead of the top.
+   */
   html {
-    scroll-behavior: smooth;
     scroll-padding-top: 6rem;
   }
 
@@ -43,6 +55,26 @@
   ::selection {
     background: var(--muni-gold);
     color: var(--muni-black);
+  }
+
+  /**
+   * Interactive baseline.
+   *
+   * Every link, button and form control eases between its states instead of
+   * snapping. Components can still set a longer duration for bigger movements
+   * (cards, images); this just means nothing is ever instant by omission.
+   * The reduced-motion block at the end of this file strips it all out.
+   */
+  a,
+  button,
+  summary,
+  input,
+  select,
+  textarea {
+    transition-property: color, background-color, border-color, outline-color,
+      text-decoration-color, opacity, box-shadow, transform;
+    transition-duration: var(--duration-muni);
+    transition-timing-function: var(--ease-muni);
   }
 
   /* Visible, brand-consistent focus states */

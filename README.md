@@ -33,21 +33,28 @@ app/
   api/enquiry/route.ts        validated enquiry endpoint (no email backend yet)
   capabilities/page.tsx       products & services index
   capabilities/[slug]/page.tsx  product / service page (static-generated)
-  contact/ · projects/        phase-two routes reusing landing sections
+  products/page.tsx           Orica product catalogue — one page, seven ranges
+  contact/ · projects/        contact and project pages
   sitemap.ts · robots.ts · icon.svg · not-found.tsx
 
-components/                   Navbar, Hero, Products, Services, CapabilitySection,
-                              CapabilityCard, FrontierAgri, Projects, Contact,
-                              EnquiryForm, FinalCta, Footer, Logo, SectionHeading,
-                              PageIntro, Reveal, SmartImage
+components/                   Navbar, Footer, Logo, PageIntro, SmartImage,
+                              HomeHero, CapabilityLinks, ProjectsTeaser,
+                              ContactBand, CapabilityCard, Projects, Contact,
+                              EnquiryForm, Reveal
                               (unused, kept for reuse: CapabilityGrid,
                               ConnectedCapability, WhyMuni, SupplyChainFeature,
-                              Industries)
+                              Industries, SectionHeading — these still use the
+                              older dark styling)
+
+components/products/          the /products page: ProductsHero,
+                              ProductNavigation, ProductSection,
+                              ProductGallery, ProductSpecifications,
+                              ProductRangeSummary, SmoothAnchor
 
 data/
   site.ts                     nav, brand statements, verified contact details
   capabilities.ts             PRODUCTS (2) + SERVICES (6) — single source of truth
-  frontier.ts                 Frontier Agri — the agriculture arm
+  products.ts                 Orica catalogue: 7 ranges, specs, imagery
   industries.ts · projects.ts
 
 public/images/                image slots — see public/images/README.md
@@ -72,11 +79,6 @@ The official CJ MUNI artwork is **not** in this repo. Add:
 - `public/images/logo/muni-lockup.svg` — full lockup (header/footer)
 - `public/images/logo/muni-emblem.svg` — goat emblem (compact/favicon)
 
-`public/images/logo/frontier-agri-logo.png` is the Frontier Agri mark shown in
-the Frontier Agri section. Its source PNG has an opaque white background (no
-alpha), so it is always placed on a white panel — on a dark surface the black
-wordmark would disappear.
-
 then swap the placeholder in `components/Logo.tsx`. Never distort, recolour or
 add effects to the official mark, and never alter the goat.
 
@@ -90,10 +92,33 @@ No invented statistics, certifications, clients or project history.
 
 ### Page structure
 
-The landing page runs: Hero -> Products (2) -> Services (6) -> Frontier Agri ->
-Projects -> Contact -> closing CTA. Products and services sit on black;
-Frontier Agri breaks to white so the agriculture arm reads as a separate part
-of the business.
+The site is multi-page. Every navigation link is a real route, not an in-page
+anchor:
+
+```
+/                       short signpost home page
+/capabilities           products (2) and services (6)
+/capabilities/[slug]    one page per product / service
+/products               Orica product catalogue (linked from explosives)
+/projects               project evidence
+/contact                contact details + enquiry form
+```
+
+`/products` is the one exception to "no in-page anchors": the Orica catalogue is
+a single page with seven ranges and a sticky range selector, so its navigation
+is anchors with a per-click smooth scroll rather than seven thin routes. Its
+content and photography come from the CJ MUNI / Orica Product Catalog 2026 —
+every value in `data/products.ts` is the catalogue's own, and nothing is
+estimated or expanded. See `public/images/products/README.md` for where each
+image came from.
+
+The home page runs: hero -> what we do (links to all 8 capabilities) -> recent
+work (3 projects) -> contact band. Everything on it has a fuller page behind
+it, so it stays short.
+
+Pages are light by default: white backgrounds, black text, gold as an accent.
+The one dark block is the closing contact band and the footer. Content is not
+animated in on scroll — it renders immediately.
 
 ## Enquiry form
 

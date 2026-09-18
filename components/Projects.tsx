@@ -1,78 +1,63 @@
-import { PROJECTS } from "@/data/projects";
-import { SectionHeading } from "@/components/SectionHeading";
-import { Reveal } from "@/components/Reveal";
 import { SmartImage } from "@/components/SmartImage";
+import { PROJECTS } from "@/data/projects";
 
+/**
+ * The full project list. Plain cards: photo, category, title, description and
+ * location, with an honest "details to follow" marker where the written
+ * project detail is not yet cleared for publication.
+ */
 export function Projects() {
   return (
-    <section id="projects" className="bg-white py-24 sm:py-32">
+    <section className="bg-white py-14 sm:py-20">
       <div className="frame">
-        <SectionHeading
-          eyebrow="Capability Evidence"
-          title="Projects."
-          intro="A place for real project photography and detail. The structure below is ready — content is added as projects are cleared for publication."
-        />
+        <ul className="grid gap-6 sm:grid-cols-2">
+          {PROJECTS.map((project) => (
+            <li key={project.ref} className="group border border-black/10 bg-white">
+              <div className="relative aspect-[16/10] w-full overflow-hidden bg-ink-800">
+                <div className="absolute inset-0 transition-transform duration-500 ease-muni group-hover:scale-[1.04]">
+                  <SmartImage
+                    src={project.image}
+                    alt={project.imageAlt}
+                    slotLabel={project.image}
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                  />
+                </div>
+              </div>
 
-        <div className="mt-14 grid gap-8 sm:grid-cols-2">
-          {PROJECTS.map((project, i) => (
-            <Reveal as="article" key={project.ref} delay={(i % 2) * 0.06}>
-              <div className="group border border-ink/12 bg-white transition-colors duration-500 hover:border-ink/30">
-                <div className="relative aspect-[16/10] overflow-hidden">
-                  <div className="absolute inset-0 transition-transform duration-700 ease-muni group-hover:scale-105">
-                    <SmartImage
-                      src={project.image}
-                      alt={project.imageAlt}
-                      slotLabel={project.image}
-                      sizes="(max-width: 640px) 100vw, 50vw"
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-ink/45" />
-                  <span className="absolute left-4 top-4 font-heading text-xs font-bold uppercase tracking-label text-white">
+              <div className="p-6">
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
+                  <span className="text-[11px] font-bold uppercase tracking-label text-charcoal">
                     {project.ref}
                   </span>
+                  <span className="text-[11px] font-bold uppercase tracking-label text-gold-600">
+                    {project.category}
+                  </span>
                   {project.detailsPending ? (
-                    <span className="absolute right-4 top-4 border border-white/40 px-2 py-1 font-sans text-[9px] font-bold uppercase tracking-label text-white/80">
+                    <span className="border border-black/15 px-2 py-0.5 text-[9px] font-bold uppercase tracking-label text-charcoal-light">
                       Details to follow
                     </span>
                   ) : null}
                 </div>
 
-                <div className="p-6">
-                  <span className="font-sans text-[11px] font-bold uppercase tracking-label text-gold-600">
-                    {project.category}
-                  </span>
-                  <h3 className="mt-3 font-heading text-lg font-bold uppercase leading-tight tracking-headline text-ink">
-                    {project.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-charcoal">
-                    {project.description}
-                  </p>
+                <h3 className="mt-3 font-heading text-lg font-bold uppercase leading-tight tracking-headline text-ink">
+                  {project.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-charcoal">
+                  {project.description}
+                </p>
 
-                  <div className="mt-5 flex items-end justify-between border-t border-ink/10 pt-4">
-                    <div>
-                      <span className="block font-sans text-[10px] font-bold uppercase tracking-label text-charcoal-light">
-                        Location
-                      </span>
-                      <span className="mt-1 block text-sm text-ink">
-                        {project.location}
-                      </span>
-                    </div>
-                    <svg
-                      width="24"
-                      height="8"
-                      viewBox="0 0 24 8"
-                      fill="none"
-                      className="mb-1 text-ink transition-transform duration-500 ease-muni group-hover:translate-x-1.5"
-                      aria-hidden="true"
-                    >
-                      <path d="M0 4h21M18 1l3 3-3 3" stroke="currentColor" strokeWidth="1.4" />
-                    </svg>
-                  </div>
+                <div className="mt-5 border-t border-black/10 pt-4">
+                  <span className="block text-[10px] font-bold uppercase tracking-label text-charcoal-light">
+                    Location
+                  </span>
+                  <span className="mt-1 block text-sm text-ink">
+                    {project.location}
+                  </span>
                 </div>
               </div>
-            </Reveal>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

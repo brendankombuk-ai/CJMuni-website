@@ -17,12 +17,14 @@ export const BRAND = {
 
 export type NavLink = { label: string; href: string };
 
+/**
+ * Primary navigation. Every entry is a real page — no in-page anchors — so a
+ * link always takes you somewhere with its own URL, title and back button.
+ */
 export const NAV_LINKS: NavLink[] = [
-  { label: "Products", href: "/#products" },
-  { label: "Services", href: "/#services" },
-  { label: "Frontier Agri", href: "/#frontier-agri" },
-  { label: "Projects", href: "/#projects" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Products & Services", href: "/capabilities" },
+  { label: "Projects", href: "/projects" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const CONTACT = {
@@ -35,7 +37,7 @@ export const CONTACT = {
 
 /**
  * Options for the enquiry form dropdown — mirrors the products and services in
- * data/capabilities.ts, plus the Frontier Agri arm.
+ * data/capabilities.ts.
  */
 export const ENQUIRY_SERVICES: string[] = [
   "Explosives Manufacture & Supply",
@@ -46,6 +48,5 @@ export const ENQUIRY_SERVICES: string[] = [
   "Tug & Barge",
   "End-to-End Supply Chain",
   "Sustainable Development Projects",
-  "Frontier Agri",
   "General Enquiry",
 ];

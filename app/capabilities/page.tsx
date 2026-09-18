@@ -3,8 +3,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PageIntro } from "@/components/PageIntro";
 import { CapabilityCard } from "@/components/CapabilityCard";
-import { Reveal } from "@/components/Reveal";
-import { FinalCta } from "@/components/FinalCta";
+import { ContactBand } from "@/components/ContactBand";
 import { PRODUCTS, SERVICES } from "@/data/capabilities";
 
 export const metadata: Metadata = {
@@ -25,29 +24,35 @@ export default function CapabilitiesIndexPage() {
           crumbs={[{ label: "Home", href: "/" }, { label: "Products & Services" }]}
         />
 
-        <section className="bg-ink pb-24 sm:pb-32">
+        <section className="bg-white py-14 sm:py-20">
           <div className="frame">
-            <h2 className="eyebrow text-white/70">Products</h2>
-            <div className="mt-6 grid gap-6 sm:grid-cols-2">
-              {PRODUCTS.map((capability, i) => (
-                <Reveal key={capability.slug} delay={(i % 2) * 0.06} className="flex">
-                  <CapabilityCard capability={capability} />
-                </Reveal>
+            <h2 className="font-heading text-2xl font-extrabold uppercase tracking-headline text-ink sm:text-3xl">
+              Products
+            </h2>
+            <p className="mt-2 text-sm text-charcoal">
+              What we manufacture and supply.
+            </p>
+            <div className="mt-7 grid gap-6 sm:grid-cols-2">
+              {PRODUCTS.map((capability) => (
+                <CapabilityCard key={capability.slug} capability={capability} />
               ))}
             </div>
 
-            <h2 className="eyebrow mt-20 text-white/70">Services</h2>
-            <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {SERVICES.map((capability, i) => (
-                <Reveal key={capability.slug} delay={(i % 3) * 0.06} className="flex">
-                  <CapabilityCard capability={capability} />
-                </Reveal>
+            <h2 className="mt-16 font-heading text-2xl font-extrabold uppercase tracking-headline text-ink sm:text-3xl">
+              Services
+            </h2>
+            <p className="mt-2 text-sm text-charcoal">
+              What we deliver on the ground.
+            </p>
+            <div className="mt-7 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {SERVICES.map((capability) => (
+                <CapabilityCard key={capability.slug} capability={capability} />
               ))}
             </div>
           </div>
         </section>
 
-        <FinalCta />
+        <ContactBand />
       </main>
       <Footer />
     </>

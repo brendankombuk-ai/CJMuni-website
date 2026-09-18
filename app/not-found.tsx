@@ -6,22 +6,25 @@ export default function NotFound() {
   return (
     <>
       <Navbar />
-      <main
-        id="main"
-        className="relative flex min-h-[70svh] items-center overflow-hidden bg-ink"
-      >
-        <div className="grid-overlay absolute inset-0 opacity-30" />
-        <div className="frame relative py-32 text-center">
-          <span className="eyebrow justify-center text-gold">Error 404</span>
-          <h1 className="mt-5 font-heading text-4xl font-extrabold uppercase tracking-headline text-white sm:text-5xl">
-            Page not found.
+      <main id="main" className="bg-white">
+        <div className="frame py-24 text-center sm:py-32">
+          <p className="text-[11px] font-bold uppercase tracking-label text-gold-600">
+            Error 404
+          </p>
+          <h1 className="mt-4 font-heading text-3xl font-extrabold uppercase tracking-headline text-ink sm:text-4xl">
+            Page not found
           </h1>
-          <p className="mx-auto mt-4 max-w-md text-white/60">
+          <p className="mx-auto mt-4 max-w-md text-charcoal">
             The page you are looking for has moved or does not exist.
           </p>
-          <Link href="/" className="btn-primary mt-8">
-            Back to home
-          </Link>
+          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+            <Link href="/" className="btn-primary">
+              Back to home
+            </Link>
+            <Link href="/capabilities" className="btn-outline-dark">
+              Products &amp; Services
+            </Link>
+          </div>
         </div>
       </main>
       <Footer />

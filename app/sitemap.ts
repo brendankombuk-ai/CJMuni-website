@@ -5,7 +5,13 @@ const base = "https://muni.com.pg";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const staticRoutes = ["", "/capabilities", "/projects", "/contact"].map((path) => ({
+  const staticRoutes = [
+    "",
+    "/capabilities",
+    "/products",
+    "/projects",
+    "/contact",
+  ].map((path) => ({
     url: `${base}${path}`,
     lastModified: now,
     changeFrequency: "monthly" as const,

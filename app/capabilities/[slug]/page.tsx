@@ -4,12 +4,12 @@ import { notFound } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PageIntro } from "@/components/PageIntro";
-import { Reveal } from "@/components/Reveal";
+import { ContactBand } from "@/components/ContactBand";
 import { SmartImage } from "@/components/SmartImage";
 import { CAPABILITIES, getCapability } from "@/data/capabilities";
 
 /**
- * Phase-two service page. Built entirely from the shared CAPABILITIES data so
+ * Capability detail page. Built entirely from the shared CAPABILITIES data so
  * new detail content only needs new fields on the data object — no new layout.
  */
 
@@ -57,7 +57,7 @@ export default async function CapabilityPage({
       <Navbar />
       <main id="main">
         <PageIntro
-          eyebrow={`${groupLabel} ${capability.number}`}
+          eyebrow={groupLabel}
           title={capability.title}
           intro={capability.lead}
           crumbs={[
@@ -67,141 +67,157 @@ export default async function CapabilityPage({
           ]}
         />
 
-        <section className="bg-white py-20 sm:py-28">
+        <section className="bg-white py-14 sm:py-20">
           <div className="frame grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
             <div>
-              <Reveal>
-                <span className="eyebrow text-charcoal">Overview</span>
-              </Reveal>
-              <Reveal delay={0.05}>
-                <p className="mt-5 text-lg leading-relaxed text-ink sm:text-xl">
-                  {capability.overview}
-                </p>
-              </Reveal>
+              <p className="text-lg leading-relaxed text-ink">
+                {capability.overview}
+              </p>
 
               {capability.points.length ? (
-                <Reveal delay={0.1}>
-                  <ul className="mt-10 grid gap-px border border-ink/10 bg-ink/10 sm:grid-cols-2">
-                    {capability.points.map((point) => (
-                      <li key={point} className="flex items-start gap-3 bg-white p-5">
-                        <span className="mt-1.5 block h-2 w-2 shrink-0 bg-gold" />
-                        <span className="text-sm leading-snug text-charcoal">{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </Reveal>
+                <ul className="mt-9 grid gap-px border border-black/10 bg-black/10 sm:grid-cols-2">
+                  {capability.points.map((point) => (
+                    <li key={point} className="flex items-start gap-3 bg-white p-5">
+                      <span className="mt-1.5 block h-1.5 w-1.5 shrink-0 bg-gold" />
+                      <span className="text-sm leading-snug text-charcoal">
+                        {point}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               ) : (
-                <Reveal delay={0.1}>
-                  <p className="mt-8 border-l-2 border-gold/60 pl-5 text-sm leading-relaxed text-charcoal">
-                    Detailed scope for this capability is developed with each
-                    client around project requirements. Talk to CJ MUNI about your
-                    specific need.
-                  </p>
-                </Reveal>
+                <p className="mt-8 border-l-2 border-gold pl-5 text-sm leading-relaxed text-charcoal">
+                  Detailed scope for this capability is developed with each client
+                  around project requirements. Talk to CJ MUNI about your specific
+                  need.
+                </p>
               )}
 
-              <Reveal delay={0.15}>
-                <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-                  <Link href="/#contact" className="btn-outline-dark">
-                    Request an Enquiry
-                  </Link>
-                  <Link href="/capabilities" className="btn-outline-dark">
-                    All Products &amp; Services
-                  </Link>
-                </div>
-              </Reveal>
+              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+                <Link href="/contact" className="btn-primary">
+                  Request an Enquiry
+                </Link>
+                <Link href="/capabilities" className="btn-outline-dark">
+                  All Products &amp; Services
+                </Link>
+              </div>
             </div>
 
-            <Reveal delay={0.1}>
-              <div className="relative aspect-[16/10] overflow-hidden border border-ink/10">
-                <SmartImage
-                  src={capability.image}
-                  alt={capability.imageAlt}
-                  slotLabel={capability.image}
-                  sizes="(min-width: 1024px) 42vw, 100vw"
-                  quality={90}
-                />
-                <div className="absolute inset-0 bg-ink/20" />
-                <span className="absolute left-5 top-4 font-heading text-4xl font-extrabold text-white">
-                  {capability.number}
-                </span>
-              </div>
-            </Reveal>
+            <div className="relative aspect-[16/10] w-full overflow-hidden border border-black/10 bg-ink-800">
+              <SmartImage
+                src={capability.image}
+                alt={capability.imageAlt}
+                slotLabel={capability.image}
+                sizes="(min-width: 1024px) 42vw, 100vw"
+                quality={90}
+              />
+            </div>
           </div>
         </section>
 
+        {/* Full catalogue on its own page — currently Orica products */}
+        {capability.catalogueLink ? (
+          <section className="bg-white pb-14 sm:pb-20">
+            <div className="frame">
+              <Link
+                href={capability.catalogueLink.href}
+                className="group flex flex-col gap-6 border border-black/10 bg-black/[0.02] p-6 duration-300 hover:border-ink/40 sm:p-8 lg:flex-row lg:items-center lg:justify-between"
+              >
+                <div>
+                  <span className="eyebrow text-gold-600">
+                    Product catalogue
+                  </span>
+                  <p className="mt-4 font-heading text-xl font-extrabold uppercase tracking-headline text-ink sm:text-2xl">
+                    {capability.catalogueLink.label}
+                  </p>
+                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-charcoal">
+                    {capability.catalogueLink.blurb}
+                  </p>
+                </div>
+                <span className="btn-primary shrink-0 self-start lg:self-auto">
+                  View Products
+                </span>
+              </Link>
+            </div>
+          </section>
+        ) : null}
+
         {/* Product catalogue — only where confirmed product lines are supplied */}
         {capability.catalogue?.length ? (
-          <section className="bg-white pb-20 sm:pb-28">
-            <div className="frame border-t border-ink/10 pt-16 sm:pt-20">
-              <Reveal>
-                <span className="eyebrow text-charcoal">Products we supply</span>
-              </Reveal>
-              <Reveal delay={0.05}>
-                <h2 className="mt-4 font-heading text-2xl font-extrabold uppercase tracking-headline text-ink sm:text-3xl">
-                  Product range
-                </h2>
-              </Reveal>
-              <Reveal delay={0.1}>
-                <div className="mt-10 grid gap-px border border-ink/10 bg-ink/10 lg:grid-cols-3">
-                  {capability.catalogue.map((group) => (
-                    <div
-                      key={group.heading}
-                      className="flex h-full flex-col bg-white p-6 sm:p-8"
-                    >
-                      <span className="font-heading text-xs font-bold uppercase tracking-label text-charcoal">
-                        {group.heading}
-                      </span>
-                      <span className="mt-4 block h-px w-10 bg-gold" />
-                      <ul className="mt-5 space-y-3">
-                        {group.items.map((item) => (
-                          <li key={item} className="flex items-start gap-3">
-                            <span className="mt-2 block h-1.5 w-1.5 shrink-0 bg-gold" />
-                            <span className="text-base leading-snug text-ink">
-                              {item}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
-                </div>
-              </Reveal>
+          <section className="bg-white pb-14 sm:pb-20">
+            <div className="frame border-t border-black/10 pt-12 sm:pt-16">
+              <h2 className="font-heading text-2xl font-extrabold uppercase tracking-headline text-ink sm:text-3xl">
+                Products we supply
+              </h2>
+
+              <div className="mt-8 grid gap-px border border-black/10 bg-black/10 lg:grid-cols-3">
+                {capability.catalogue.map((group) => (
+                  <div
+                    key={group.heading}
+                    className="flex h-full flex-col bg-white p-6 sm:p-7"
+                  >
+                    <span className="text-[11px] font-bold uppercase tracking-label text-gold-600">
+                      {group.heading}
+                    </span>
+                    <ul className="mt-4 space-y-2.5">
+                      {group.items.map((item) => (
+                        <li key={item} className="flex items-start gap-3">
+                          <span className="mt-2 block h-1.5 w-1.5 shrink-0 bg-gold" />
+                          <span className="text-base leading-snug text-ink">
+                            {item}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
             </div>
           </section>
         ) : null}
 
         {/* Other capabilities */}
-        <section className="bg-ink py-20 sm:py-28">
+        <section className="border-t border-black/10 bg-white py-14 sm:py-20">
           <div className="frame">
-            <span className="eyebrow text-white/60">Connected capability</span>
-            <h2 className="mt-4 font-heading text-2xl font-extrabold uppercase tracking-headline text-white sm:text-3xl">
+            <h2 className="font-heading text-2xl font-extrabold uppercase tracking-headline text-ink sm:text-3xl">
               Explore more capability
             </h2>
-            <div className="mt-10 grid gap-px border border-white/10 bg-white/10 sm:grid-cols-3">
+
+            <ul className="mt-8 grid gap-px border border-black/10 bg-black/10 sm:grid-cols-3">
               {others.map((c) => (
-                <Link
-                  key={c.slug}
-                  href={`/capabilities/${c.slug}`}
-                  className="group flex flex-col gap-4 bg-ink-800 p-6 transition-colors hover:bg-ink-700"
-                >
-                  <span className="font-heading text-2xl font-extrabold text-gold">
-                    {c.number}
-                  </span>
-                  <span className="font-heading text-base font-bold uppercase leading-tight tracking-headline text-white">
-                    {c.title}
-                  </span>
-                  <span className="mt-auto inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-label text-white/60 transition-colors group-hover:text-gold">
-                    View
-                    <svg width="20" height="8" viewBox="0 0 20 8" fill="none" aria-hidden="true">
-                      <path d="M0 4h17M15 1l3 3-3 3" stroke="currentColor" strokeWidth="1.4" />
-                    </svg>
-                  </span>
-                </Link>
+                <li key={c.slug} className="bg-white">
+                  <Link
+                    href={`/capabilities/${c.slug}`}
+                    className="group flex h-full flex-col p-6 duration-300 hover:bg-black/[0.03]"
+                  >
+                    <span className="font-heading text-base font-bold uppercase leading-tight tracking-headline text-ink">
+                      {c.title}
+                    </span>
+                    <span className="mt-4 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-label text-gold-600">
+                      View
+                      <svg
+                        width="18"
+                        height="8"
+                        viewBox="0 0 20 8"
+                        fill="none"
+                        aria-hidden="true"
+                        className="transition-transform duration-300 ease-muni group-hover:translate-x-1"
+                      >
+                        <path
+                          d="M0 4h17M15 1l3 3-3 3"
+                          stroke="currentColor"
+                          strokeWidth="1.6"
+                        />
+                      </svg>
+                    </span>
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         </section>
+
+        <ContactBand />
       </main>
       <Footer />
     </>
