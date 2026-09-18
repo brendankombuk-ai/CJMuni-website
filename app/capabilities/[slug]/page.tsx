@@ -130,6 +130,47 @@ export default async function CapabilityPage({
           </div>
         </section>
 
+        {/* Product catalogue — only where confirmed product lines are supplied */}
+        {capability.catalogue?.length ? (
+          <section className="bg-white pb-20 sm:pb-28">
+            <div className="frame border-t border-ink/10 pt-16 sm:pt-20">
+              <Reveal>
+                <span className="eyebrow text-charcoal">Products we supply</span>
+              </Reveal>
+              <Reveal delay={0.05}>
+                <h2 className="mt-4 font-heading text-2xl font-extrabold uppercase tracking-headline text-ink sm:text-3xl">
+                  Product range
+                </h2>
+              </Reveal>
+              <Reveal delay={0.1}>
+                <div className="mt-10 grid gap-px border border-ink/10 bg-ink/10 lg:grid-cols-3">
+                  {capability.catalogue.map((group) => (
+                    <div
+                      key={group.heading}
+                      className="flex h-full flex-col bg-white p-6 sm:p-8"
+                    >
+                      <span className="font-heading text-xs font-bold uppercase tracking-label text-charcoal">
+                        {group.heading}
+                      </span>
+                      <span className="mt-4 block h-px w-10 bg-gold" />
+                      <ul className="mt-5 space-y-3">
+                        {group.items.map((item) => (
+                          <li key={item} className="flex items-start gap-3">
+                            <span className="mt-2 block h-1.5 w-1.5 shrink-0 bg-gold" />
+                            <span className="text-base leading-snug text-ink">
+                              {item}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </Reveal>
+            </div>
+          </section>
+        ) : null}
+
         {/* Other capabilities */}
         <section className="bg-ink py-20 sm:py-28">
           <div className="frame">

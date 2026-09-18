@@ -21,6 +21,12 @@
 
 export type CapabilityGroup = "product" | "service";
 
+/** A named group of supplied products, listed on the capability detail page. */
+export type CapabilityCatalogueGroup = {
+  heading: string;
+  items: string[];
+};
+
 export type Capability = {
   /** Number shown on the card — restarts at 01 within each group. */
   number: string;
@@ -35,6 +41,11 @@ export type Capability = {
   overview: string;
   /** Supporting points — only included where the source material supports them. */
   points: string[];
+  /**
+   * Confirmed product lines, grouped by application. Rendered as a catalogue
+   * block on the detail page where supplied — omit it and the block disappears.
+   */
+  catalogue?: CapabilityCatalogueGroup[];
   image: string;
   imageAlt: string;
   /** True where the supplied profile only gives a high-level description. */
@@ -78,9 +89,23 @@ export const PRODUCTS: Capability[] = [
       "Water and wastewater treatment",
       "Technical support",
     ],
+    catalogue: [
+      {
+        heading: "Agricultural",
+        items: ["Urea", "Ammonium Nitrate — agriculture grade"],
+      },
+      {
+        heading: "Reagents",
+        items: ["Sodium Cyanide", "Caustic Soda", "Mining Acids"],
+      },
+      {
+        heading: "Water Treatment",
+        items: ["Chlorine", "Aluminium Sulphate", "Hydrated Lime"],
+      },
+    ],
     image: "/images/library/reagents-fertilizers.jpg",
     imageAlt:
-      "Two CJ MUNI staff with tablets in a warehouse stacked with CJ MUNI UREA, ammonium nitrate, flocculant and collector product",
+      "Two CJ MUNI staff with tablets in a warehouse stacked with Orica urea, ammonium nitrate, flocculant and collector product",
   },
 ];
 
