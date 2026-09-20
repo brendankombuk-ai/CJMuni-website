@@ -7,24 +7,24 @@ import { BRAND } from "@/data/site";
  *
  * Sized to the content rather than the viewport, so the first real section is
  * already visible without scrolling. No parallax, no entrance animation and no
- * text sitting on top of a photograph — the headline reads against plain white.
+ * text sitting on top of a photograph — the headline reads against plain black.
  */
 export function HomeHero() {
   return (
-    <section className="border-b border-black/10 bg-white">
+    <section className="border-b border-white/10 bg-ink">
       <div className="frame grid items-center gap-10 py-14 lg:grid-cols-2 lg:gap-16 lg:py-20">
         <div>
-          <p className="font-sans text-[11px] font-bold uppercase tracking-label text-gold-600">
+          <p className="font-sans text-[11px] font-bold uppercase tracking-label text-gold">
             {BRAND.idea}
           </p>
 
-          <h1 className="mt-4 font-heading text-4xl font-extrabold uppercase leading-[1.05] tracking-headline text-ink sm:text-5xl lg:text-6xl">
+          <h1 className="mt-4 font-heading text-4xl font-extrabold uppercase leading-[1.05] tracking-headline text-white sm:text-5xl lg:text-6xl">
             Connected capability.
             <br />
             Reliable delivery.
           </h1>
 
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-charcoal sm:text-lg">
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">
             {BRAND.positioning}
           </p>
 
@@ -32,7 +32,7 @@ export function HomeHero() {
             <Link href="/capabilities" className="btn-primary">
               Products &amp; Services
             </Link>
-            <Link href="/contact" className="btn-outline-dark">
+            <Link href="/contact" className="btn-outline-light">
               Request an Enquiry
             </Link>
           </div>

@@ -49,18 +49,18 @@ export function EnquiryForm() {
 
   if (status === "success") {
     return (
-      <div className="border border-black/10 bg-white p-8">
-        <span className="text-[11px] font-bold uppercase tracking-label text-gold-600">
+      <div className="border border-white/10 bg-ink-900 p-8">
+        <span className="text-[11px] font-bold uppercase tracking-label text-gold">
           Enquiry received
         </span>
-        <p className="mt-4 text-lg text-ink">
+        <p className="mt-4 text-lg text-white">
           Thank you — your enquiry has been logged. A member of the CJ MUNI team will
           be in touch.
         </p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="btn-outline-dark mt-6"
+          className="btn-outline-light mt-6"
         >
           Submit another enquiry
         </button>
@@ -103,7 +103,7 @@ export function EnquiryForm() {
       </Field>
 
       {status === "error" ? (
-        <p role="alert" className="border border-goat/50 bg-goat/5 px-4 py-3 text-sm text-ink">
+        <p role="alert" className="border border-goat-light/60 bg-goat/15 px-4 py-3 text-sm text-white">
           Something went wrong submitting your enquiry. Please try again, or email{" "}
           <span className="font-semibold">Kassman@icloud.com</span> directly.
         </p>
@@ -113,7 +113,7 @@ export function EnquiryForm() {
         {status === "submitting" ? "Submitting…" : "Request an Enquiry"}
       </button>
 
-      <p className="text-xs leading-relaxed text-charcoal-light">
+      <p className="text-xs leading-relaxed text-white/50">
         This form is ready for integration with an email or CRM backend. Until a
         service is connected, submissions are validated and acknowledged but not
         delivered by email.
@@ -123,7 +123,7 @@ export function EnquiryForm() {
 }
 
 const inputClass =
-  "w-full border border-black/20 bg-white px-4 py-3 font-sans text-sm text-ink placeholder-charcoal-light outline-none duration-200 focus:border-gold";
+  "w-full border border-white/20 bg-ink-800 px-4 py-3 font-sans text-sm text-white placeholder-white/40 outline-none duration-200 focus:border-gold";
 
 function Field({
   label,
@@ -142,14 +142,14 @@ function Field({
     <div>
       <label
         htmlFor={htmlFor}
-        className="mb-2 flex items-center gap-2 font-sans text-[11px] font-bold uppercase tracking-label text-charcoal"
+        className="mb-2 flex items-center gap-2 font-sans text-[11px] font-bold uppercase tracking-label text-white/70"
       >
         {label}
-        {optional ? <span className="text-charcoal-light">(optional)</span> : null}
+        {optional ? <span className="text-white/50">(optional)</span> : null}
       </label>
       {children}
       {error ? (
-        <p role="alert" className="mt-1.5 text-xs text-goat">
+        <p role="alert" className="mt-1.5 text-xs text-goat-light">
           {error}
         </p>
       ) : null}

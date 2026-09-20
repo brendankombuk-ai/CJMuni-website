@@ -4,14 +4,15 @@ import { SmartImage } from "@/components/SmartImage";
 
 /**
  * A capability card: photo, name, one-line description, and a link into the
- * detail page. Plain white on a light page — no overlay tint, no zoom on
- * hover, just a border that darkens so it is obvious the whole card is a link.
+ * detail page. Flat black like the page around it — no overlay tint, no zoom
+ * on hover, just a border that brightens so it is obvious the whole card is a
+ * link.
  */
 export function CapabilityCard({ capability }: { capability: Capability }) {
   return (
     <Link
       href={`/capabilities/${capability.slug}`}
-      className="group flex w-full flex-col border border-black/10 bg-white duration-300 hover:border-ink/40"
+      className="group flex w-full flex-col border border-white/10 bg-ink-900 duration-300 hover:border-white/40"
     >
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-ink-800">
         {/* Gentle lift on hover so the card reads as interactive. */}
@@ -26,14 +27,14 @@ export function CapabilityCard({ capability }: { capability: Capability }) {
       </div>
 
       <div className="flex flex-1 flex-col p-6">
-        <h3 className="font-heading text-lg font-bold uppercase leading-tight tracking-headline text-ink">
+        <h3 className="font-heading text-lg font-bold uppercase leading-tight tracking-headline text-white">
           {capability.title}
         </h3>
-        <p className="mt-3 flex-1 text-sm leading-relaxed text-charcoal">
+        <p className="mt-3 flex-1 text-sm leading-relaxed text-white/70">
           {capability.description}
         </p>
 
-        <span className="mt-5 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-label text-gold-600">
+        <span className="mt-5 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-label text-gold">
           {capability.highLevelOnly ? "Overview" : "Read more"}
           <svg
             width="18"

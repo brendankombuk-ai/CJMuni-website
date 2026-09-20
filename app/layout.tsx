@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Montserrat, Inter } from "next/font/google";
 import "./globals.css";
 import { CONTACT } from "@/data/site";
@@ -57,6 +57,16 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+/**
+ * The page is black, so the browser's own chrome should be too — otherwise a
+ * phone frames a black site in a white address bar and the overscroll at the
+ * top and bottom of a page flashes white.
+ */
+export const viewport: Viewport = {
+  themeColor: "#000000",
+  colorScheme: "dark",
+};
+
 const orgJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -82,7 +92,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${montserrat.variable} ${inter.variable}`}>
-      <body className="bg-white font-sans text-ink antialiased">
+      <body className="bg-ink font-sans text-white antialiased">
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-gold focus:px-4 focus:py-2 focus:font-sans focus:text-sm focus:font-bold focus:text-ink"

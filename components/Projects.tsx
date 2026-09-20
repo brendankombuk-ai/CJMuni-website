@@ -8,11 +8,11 @@ import { PROJECTS } from "@/data/projects";
  */
 export function Projects() {
   return (
-    <section className="bg-white py-14 sm:py-20">
+    <section className="bg-ink py-14 sm:py-20">
       <div className="frame">
         <ul className="grid gap-6 sm:grid-cols-2">
           {PROJECTS.map((project) => (
-            <li key={project.ref} className="group border border-black/10 bg-white">
+            <li key={project.ref} className="group border border-white/10 bg-ink-900">
               <div className="relative aspect-[16/10] w-full overflow-hidden bg-ink-800">
                 <div className="absolute inset-0 transition-transform duration-500 ease-muni group-hover:scale-[1.04]">
                   <SmartImage
@@ -26,31 +26,31 @@ export function Projects() {
 
               <div className="p-6">
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-                  <span className="text-[11px] font-bold uppercase tracking-label text-charcoal">
+                  <span className="text-[11px] font-bold uppercase tracking-label text-white/70">
                     {project.ref}
                   </span>
-                  <span className="text-[11px] font-bold uppercase tracking-label text-gold-600">
+                  <span className="text-[11px] font-bold uppercase tracking-label text-gold">
                     {project.category}
                   </span>
                   {project.detailsPending ? (
-                    <span className="border border-black/15 px-2 py-0.5 text-[9px] font-bold uppercase tracking-label text-charcoal-light">
+                    <span className="border border-white/20 px-2 py-0.5 text-[9px] font-bold uppercase tracking-label text-white/50">
                       Details to follow
                     </span>
                   ) : null}
                 </div>
 
-                <h3 className="mt-3 font-heading text-lg font-bold uppercase leading-tight tracking-headline text-ink">
+                <h3 className="mt-3 font-heading text-lg font-bold uppercase leading-tight tracking-headline text-white">
                   {project.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-charcoal">
+                <p className="mt-3 text-sm leading-relaxed text-white/70">
                   {project.description}
                 </p>
 
-                <div className="mt-5 border-t border-black/10 pt-4">
-                  <span className="block text-[10px] font-bold uppercase tracking-label text-charcoal-light">
+                <div className="mt-5 border-t border-white/10 pt-4">
+                  <span className="block text-[10px] font-bold uppercase tracking-label text-white/50">
                     Location
                   </span>
-                  <span className="mt-1 block text-sm text-ink">
+                  <span className="mt-1 block text-sm text-white">
                     {project.location}
                   </span>
                 </div>

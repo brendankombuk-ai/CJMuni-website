@@ -19,28 +19,28 @@ export function CapabilityLinks({
 }) {
   return (
     <div>
-      <h3 className="font-sans text-[11px] font-bold uppercase tracking-label text-charcoal">
+      <h3 className="font-sans text-[11px] font-bold uppercase tracking-label text-white/70">
         {heading}
       </h3>
 
       <ul
-        className={`mt-5 grid gap-px border border-black/10 bg-black/10 sm:grid-cols-2 ${
+        className={`mt-5 grid gap-px border border-white/10 bg-white/10 sm:grid-cols-2 ${
           columns === 3 ? "lg:grid-cols-3" : ""
         }`}
       >
         {items.map((capability) => (
-          <li key={capability.slug} className="bg-white">
+          <li key={capability.slug} className="bg-ink-900">
             <Link
               href={`/capabilities/${capability.slug}`}
-              className="group flex h-full flex-col p-6 duration-300 hover:bg-black/[0.03]"
+              className="group flex h-full flex-col p-6 duration-300 hover:bg-white/[0.04]"
             >
-              <h4 className="font-heading text-base font-bold uppercase leading-tight tracking-headline text-ink">
+              <h4 className="font-heading text-base font-bold uppercase leading-tight tracking-headline text-white">
                 {capability.title}
               </h4>
-              <p className="mt-2.5 flex-1 text-sm leading-relaxed text-charcoal">
+              <p className="mt-2.5 flex-1 text-sm leading-relaxed text-white/70">
                 {capability.description}
               </p>
-              <span className="mt-4 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-label text-gold-600">
+              <span className="mt-4 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-label text-gold">
                 {capability.highLevelOnly ? "Overview" : "Read more"}
                 <svg
                   width="18"

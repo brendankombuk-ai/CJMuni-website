@@ -13,53 +13,53 @@ export function ProductRangeSummary() {
     <section
       id="range-summary"
       aria-labelledby="range-summary-title"
-      className="scroll-mt-12 border-b border-black/10 bg-white py-14 sm:py-20"
+      className="scroll-mt-12 border-b border-white/10 bg-ink py-14 sm:py-20"
     >
       <div className="frame">
         <Reveal>
-          <p className="eyebrow text-charcoal">Catalogue overview</p>
+          <p className="eyebrow text-white/70">Catalogue overview</p>
           <h2
             id="range-summary-title"
-            className="mt-5 font-heading text-2xl font-extrabold uppercase leading-tight tracking-headline text-ink sm:text-3xl lg:text-[2.35rem]"
+            className="mt-5 font-heading text-2xl font-extrabold uppercase leading-tight tracking-headline text-white sm:text-3xl lg:text-[2.35rem]"
           >
             Product Range Summary
           </h2>
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-charcoal">
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/70">
             The seven Orica ranges CJ MUNI supplies, and what each one is for.
           </p>
         </Reveal>
 
         <Reveal delay={0.05} className="mt-9">
           {/* Tablet and desktop */}
-          <div className="hidden overflow-x-auto border border-black/10 md:block">
+          <div className="hidden overflow-x-auto border border-white/10 md:block">
             <table className="w-full min-w-[42rem] border-collapse text-left text-sm">
               <caption className="sr-only">
                 Summary of the seven Orica product ranges, their category,
                 primary function and key advantage
               </caption>
               <thead>
-                <tr className="border-b border-ink/20 bg-black/[0.03]">
+                <tr className="border-b border-white/20 bg-white/[0.04]">
                   <th
                     scope="col"
-                    className="px-6 py-4 text-[11px] font-bold uppercase tracking-label text-charcoal"
+                    className="px-6 py-4 text-[11px] font-bold uppercase tracking-label text-white/70"
                   >
                     Product Range
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-4 text-[11px] font-bold uppercase tracking-label text-charcoal"
+                    className="px-6 py-4 text-[11px] font-bold uppercase tracking-label text-white/70"
                   >
                     Category
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-4 text-[11px] font-bold uppercase tracking-label text-charcoal"
+                    className="px-6 py-4 text-[11px] font-bold uppercase tracking-label text-white/70"
                   >
                     Primary Function
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-4 text-[11px] font-bold uppercase tracking-label text-charcoal"
+                    className="px-6 py-4 text-[11px] font-bold uppercase tracking-label text-white/70"
                   >
                     Key Advantage
                   </th>
@@ -69,23 +69,23 @@ export function ProductRangeSummary() {
                 {RANGE_SUMMARY.map((row) => (
                   <tr
                     key={row.range}
-                    className="border-b border-black/10 last:border-0"
+                    className="border-b border-white/10 last:border-0"
                   >
                     <th scope="row" className="px-6 py-4 align-top">
                       <a
                         href={`#${row.id}`}
-                        className="font-heading text-sm font-bold uppercase tracking-headline text-ink underline decoration-gold decoration-2 underline-offset-4 hover:text-gold-600"
+                        className="font-heading text-sm font-bold uppercase tracking-headline text-white underline decoration-gold decoration-2 underline-offset-4 hover:text-gold"
                       >
                         {row.range}
                       </a>
                     </th>
-                    <td className="px-6 py-4 align-top leading-snug text-charcoal">
+                    <td className="px-6 py-4 align-top leading-snug text-white/70">
                       {row.category}
                     </td>
-                    <td className="px-6 py-4 align-top leading-snug text-charcoal">
+                    <td className="px-6 py-4 align-top leading-snug text-white/70">
                       {row.primaryFunction}
                     </td>
-                    <td className="px-6 py-4 align-top leading-snug text-charcoal">
+                    <td className="px-6 py-4 align-top leading-snug text-white/70">
                       {row.keyAdvantage}
                     </td>
                   </tr>
@@ -95,37 +95,37 @@ export function ProductRangeSummary() {
           </div>
 
           {/* Phones */}
-          <ul className="grid gap-px border border-black/10 bg-black/10 md:hidden">
+          <ul className="grid gap-px border border-white/10 bg-white/10 md:hidden">
             {RANGE_SUMMARY.map((row) => (
-              <li key={row.range} className="bg-white p-5">
+              <li key={row.range} className="bg-ink-900 p-5">
                 <a
                   href={`#${row.id}`}
-                  className="font-heading text-base font-bold uppercase tracking-headline text-ink underline decoration-gold decoration-2 underline-offset-4"
+                  className="font-heading text-base font-bold uppercase tracking-headline text-white underline decoration-gold decoration-2 underline-offset-4"
                 >
                   {row.range}
                 </a>
-                <dl className="mt-3 divide-y divide-black/[0.07] border-t border-black/[0.07]">
+                <dl className="mt-3 divide-y divide-white/10 border-t border-white/10">
                   <div className="grid grid-cols-[minmax(0,8rem)_1fr] gap-3 py-2.5">
-                    <dt className="text-[11px] font-bold uppercase leading-snug tracking-label text-charcoal-light">
+                    <dt className="text-[11px] font-bold uppercase leading-snug tracking-label text-white/50">
                       Category
                     </dt>
-                    <dd className="text-sm leading-snug text-ink">
+                    <dd className="text-sm leading-snug text-white">
                       {row.category}
                     </dd>
                   </div>
                   <div className="grid grid-cols-[minmax(0,8rem)_1fr] gap-3 py-2.5">
-                    <dt className="text-[11px] font-bold uppercase leading-snug tracking-label text-charcoal-light">
+                    <dt className="text-[11px] font-bold uppercase leading-snug tracking-label text-white/50">
                       Primary Function
                     </dt>
-                    <dd className="text-sm leading-snug text-ink">
+                    <dd className="text-sm leading-snug text-white">
                       {row.primaryFunction}
                     </dd>
                   </div>
                   <div className="grid grid-cols-[minmax(0,8rem)_1fr] gap-3 py-2.5">
-                    <dt className="text-[11px] font-bold uppercase leading-snug tracking-label text-charcoal-light">
+                    <dt className="text-[11px] font-bold uppercase leading-snug tracking-label text-white/50">
                       Key Advantage
                     </dt>
-                    <dd className="text-sm leading-snug text-ink">
+                    <dd className="text-sm leading-snug text-white">
                       {row.keyAdvantage}
                     </dd>
                   </div>

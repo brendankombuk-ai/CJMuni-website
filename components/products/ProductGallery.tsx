@@ -12,6 +12,11 @@ import type { ProductImage } from "@/data/products";
  * `object-fit: contain` inside a fixed frame — never cropped to fill, never
  * stretched — and the lightbox caps at the file's own size rather than
  * upscaling it into mush.
+ *
+ * The frames stay white on the otherwise black page. The catalogue shots are
+ * cut-outs on white, so a dark frame would not darken them — it would just put
+ * a ragged white rectangle inside it. A deliberate white plate reads as a
+ * product plate instead, and keeps the products themselves legible.
  */
 export function ProductGallery({
   images,
@@ -58,7 +63,7 @@ export function ProductGallery({
         ref={triggerRef}
         onClick={() => setOpen(true)}
         aria-label={`View ${active.caption} larger`}
-        className="group relative block aspect-[4/3] w-full overflow-hidden border border-black/10 bg-white duration-300 hover:border-ink/40"
+        className="group relative block aspect-[4/3] w-full overflow-hidden border border-white/15 bg-white duration-300 hover:border-gold"
       >
         <span className="absolute inset-4 flex items-center justify-center sm:inset-6">
           {/*
@@ -110,7 +115,7 @@ export function ProductGallery({
                 className={`relative block aspect-square w-full overflow-hidden border bg-white duration-300 ${
                   i === index
                     ? "border-gold ring-1 ring-gold"
-                    : "border-black/10 hover:border-ink/40"
+                    : "border-white/15 hover:border-gold"
                 }`}
               >
                 <span className="absolute inset-2">
@@ -128,10 +133,10 @@ export function ProductGallery({
         </ul>
       ) : null}
 
-      <figcaption className="mt-3 text-xs leading-relaxed text-charcoal-light">
+      <figcaption className="mt-3 text-xs leading-relaxed text-white/70">
         {active.caption}
         {count > 1 ? (
-          <span className="text-black/30">
+          <span className="text-white/50">
             {" "}
             · {index + 1} of {count}
           </span>

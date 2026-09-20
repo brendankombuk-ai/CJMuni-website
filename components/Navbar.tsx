@@ -9,7 +9,7 @@ import { NAV_LINKS } from "@/data/site";
 /**
  * Primary navigation.
  *
- * Deliberately plain: a solid white bar that is always the same height and
+ * Deliberately plain: a solid black bar that is always the same height and
  * colour, so it never animates, never changes on scroll and never sits on top
  * of the content it is covering. The current page is marked so you always know
  * where you are.
@@ -22,7 +22,7 @@ export function Navbar() {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-black/10 bg-white">
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-ink">
       <div className="frame">
         <nav
           className="flex items-center justify-between gap-6 py-4"
@@ -39,8 +39,8 @@ export function Navbar() {
                 aria-current={isCurrent(link.href) ? "page" : undefined}
                 className={`border-b-2 pb-1 text-sm font-semibold duration-300 ${
                   isCurrent(link.href)
-                    ? "border-gold text-ink"
-                    : "border-transparent text-charcoal hover:text-ink"
+                    ? "border-gold text-white"
+                    : "border-transparent text-white/70 hover:text-white"
                 }`}
               >
                 {link.label}
@@ -62,17 +62,17 @@ export function Navbar() {
           >
             <span className="relative block h-4 w-6" aria-hidden="true">
               <span
-                className={`absolute left-0 block h-0.5 w-6 bg-ink transition-all ${
+                className={`absolute left-0 block h-0.5 w-6 bg-white transition-all ${
                   open ? "top-1/2 -translate-y-1/2 rotate-45" : "top-0"
                 }`}
               />
               <span
-                className={`absolute left-0 top-1/2 block h-0.5 w-6 -translate-y-1/2 bg-ink ${
+                className={`absolute left-0 top-1/2 block h-0.5 w-6 -translate-y-1/2 bg-white ${
                   open ? "opacity-0" : "opacity-100"
                 }`}
               />
               <span
-                className={`absolute left-0 block h-0.5 w-6 bg-ink transition-all ${
+                className={`absolute left-0 block h-0.5 w-6 bg-white transition-all ${
                   open ? "bottom-1/2 translate-y-1/2 -rotate-45" : "bottom-0"
                 }`}
               />
@@ -86,7 +86,7 @@ export function Navbar() {
           takes it out of the tab order while it is shut. */}
       <div
         id="mobile-nav"
-        className={`overflow-hidden border-black/10 bg-white transition-all duration-300 ease-muni lg:hidden ${
+        className={`overflow-hidden border-white/10 bg-ink transition-all duration-300 ease-muni lg:hidden ${
           open
             ? "visible max-h-[32rem] border-t opacity-100"
             : "invisible max-h-0 opacity-0"
@@ -95,14 +95,14 @@ export function Navbar() {
         <div className="frame py-2">
           <ul>
             {NAV_LINKS.map((link) => (
-              <li key={link.href} className="border-b border-black/5 last:border-0">
+              <li key={link.href} className="border-b border-white/10 last:border-0">
                 <Link
                   href={link.href}
                   onClick={() => setOpen(false)}
                   tabIndex={open ? undefined : -1}
                   aria-current={isCurrent(link.href) ? "page" : undefined}
                   className={`block py-4 text-base font-semibold ${
-                    isCurrent(link.href) ? "text-gold-600" : "text-ink"
+                    isCurrent(link.href) ? "text-gold" : "text-white"
                   }`}
                 >
                   {link.label}

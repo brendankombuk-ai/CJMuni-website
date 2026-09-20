@@ -15,7 +15,7 @@ export function Footer() {
       <div className="frame py-14">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           <nav aria-label="Footer">
-            <h2 className="text-[11px] font-bold uppercase tracking-label text-white/40">
+            <h2 className="text-[11px] font-bold uppercase tracking-label text-white/55">
               Pages
             </h2>
             <ul className="mt-4 space-y-2.5">
@@ -38,7 +38,7 @@ export function Footer() {
           </nav>
 
           <nav aria-label="Products and services">
-            <h2 className="text-[11px] font-bold uppercase tracking-label text-white/40">
+            <h2 className="text-[11px] font-bold uppercase tracking-label text-white/55">
               Products &amp; Services
             </h2>
             <ul className="mt-4 space-y-2.5">
@@ -64,7 +64,7 @@ export function Footer() {
           </nav>
 
           <div>
-            <h2 className="text-[11px] font-bold uppercase tracking-label text-white/40">
+            <h2 className="text-[11px] font-bold uppercase tracking-label text-white/55">
               Contact
             </h2>
             <ul className="mt-4 space-y-2.5 text-sm text-white/70">
@@ -90,10 +90,10 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-2 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-xs text-white/40">
+          <p className="text-xs text-white/55">
             &copy; {year} CJ MUNI. All rights reserved.
           </p>
-          <p className="text-xs text-white/40">
+          <p className="text-xs text-white/55">
             Connected capability. Reliable delivery.
           </p>
         </div>

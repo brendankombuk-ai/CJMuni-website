@@ -31,14 +31,19 @@
    * the router scrolls to the top on a route change, smooth turns that into an
    * animation, and the incoming page's height changes mid-animation and
    * cancels it — landing you partway down the new page instead of the top.
+   *
+   * `color-scheme` is here too: the site runs dark, and telling the browser so
+   * means the furniture it draws for us — scrollbars, the select dropdown,
+   * form autofill — comes back dark instead of a white panel mid-page.
    */
   html {
     scroll-padding-top: 6rem;
+    color-scheme: dark;
   }
 
   body {
-    background-color: var(--muni-white);
-    color: var(--muni-black);
+    background-color: var(--muni-black);
+    color: var(--muni-white);
     font-family: var(--font-sans);
   }
 
@@ -107,21 +112,18 @@
 
   .btn,
   .btn-primary,
-  .btn-outline-light,
-  .btn-outline-dark {
+  .btn-outline-light {
     @apply inline-flex items-center justify-center gap-2 whitespace-nowrap font-sans text-[13px] font-bold uppercase tracking-[0.14em] transition-all duration-300 ease-muni focus-visible:outline-offset-4;
   }
 
+  /* Gold lifts to the lighter gold on hover. It used to invert to black, which
+     on a black page just made the button disappear. */
   .btn-primary {
-    @apply bg-gold px-7 py-4 text-ink hover:bg-ink hover:text-gold;
+    @apply bg-gold px-7 py-4 text-ink hover:bg-gold-400 hover:text-ink;
   }
 
   .btn-outline-light {
     @apply border border-white/40 px-7 py-4 text-white hover:border-gold hover:bg-gold hover:text-ink;
-  }
-
-  .btn-outline-dark {
-    @apply border border-ink/25 px-7 py-4 text-ink hover:border-ink hover:bg-ink hover:text-gold;
   }
 
   /* Diagonal cut inspired by the emblem geometry */

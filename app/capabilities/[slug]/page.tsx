@@ -67,26 +67,26 @@ export default async function CapabilityPage({
           ]}
         />
 
-        <section className="bg-white py-14 sm:py-20">
+        <section className="bg-ink py-14 sm:py-20">
           <div className="frame grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
             <div>
-              <p className="text-lg leading-relaxed text-ink">
+              <p className="text-lg leading-relaxed text-white">
                 {capability.overview}
               </p>
 
               {capability.points.length ? (
-                <ul className="mt-9 grid gap-px border border-black/10 bg-black/10 sm:grid-cols-2">
+                <ul className="mt-9 grid gap-px border border-white/10 bg-white/10 sm:grid-cols-2">
                   {capability.points.map((point) => (
-                    <li key={point} className="flex items-start gap-3 bg-white p-5">
+                    <li key={point} className="flex items-start gap-3 bg-ink-900 p-5">
                       <span className="mt-1.5 block h-1.5 w-1.5 shrink-0 bg-gold" />
-                      <span className="text-sm leading-snug text-charcoal">
+                      <span className="text-sm leading-snug text-white/70">
                         {point}
                       </span>
                     </li>
                   ))}
                 </ul>
               ) : (
-                <p className="mt-8 border-l-2 border-gold pl-5 text-sm leading-relaxed text-charcoal">
+                <p className="mt-8 border-l-2 border-gold pl-5 text-sm leading-relaxed text-white/70">
                   Detailed scope for this capability is developed with each client
                   around project requirements. Talk to CJ MUNI about your specific
                   need.
@@ -97,13 +97,13 @@ export default async function CapabilityPage({
                 <Link href="/contact" className="btn-primary">
                   Request an Enquiry
                 </Link>
-                <Link href="/capabilities" className="btn-outline-dark">
+                <Link href="/capabilities" className="btn-outline-light">
                   All Products &amp; Services
                 </Link>
               </div>
             </div>
 
-            <div className="relative aspect-[16/10] w-full overflow-hidden border border-black/10 bg-ink-800">
+            <div className="relative aspect-[16/10] w-full overflow-hidden border border-white/10 bg-ink-800">
               <SmartImage
                 src={capability.image}
                 alt={capability.imageAlt}
@@ -117,20 +117,20 @@ export default async function CapabilityPage({
 
         {/* Full catalogue on its own page — currently Orica products */}
         {capability.catalogueLink ? (
-          <section className="bg-white pb-14 sm:pb-20">
+          <section className="bg-ink pb-14 sm:pb-20">
             <div className="frame">
               <Link
                 href={capability.catalogueLink.href}
-                className="group flex flex-col gap-6 border border-black/10 bg-black/[0.02] p-6 duration-300 hover:border-ink/40 sm:p-8 lg:flex-row lg:items-center lg:justify-between"
+                className="group flex flex-col gap-6 border border-white/10 bg-ink-900 p-6 duration-300 hover:border-white/40 sm:p-8 lg:flex-row lg:items-center lg:justify-between"
               >
                 <div>
-                  <span className="eyebrow text-gold-600">
+                  <span className="eyebrow text-gold">
                     Product catalogue
                   </span>
-                  <p className="mt-4 font-heading text-xl font-extrabold uppercase tracking-headline text-ink sm:text-2xl">
+                  <p className="mt-4 font-heading text-xl font-extrabold uppercase tracking-headline text-white sm:text-2xl">
                     {capability.catalogueLink.label}
                   </p>
-                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-charcoal">
+                  <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/70">
                     {capability.catalogueLink.blurb}
                   </p>
                 </div>
@@ -144,26 +144,26 @@ export default async function CapabilityPage({
 
         {/* Product catalogue — only where confirmed product lines are supplied */}
         {capability.catalogue?.length ? (
-          <section className="bg-white pb-14 sm:pb-20">
-            <div className="frame border-t border-black/10 pt-12 sm:pt-16">
-              <h2 className="font-heading text-2xl font-extrabold uppercase tracking-headline text-ink sm:text-3xl">
+          <section className="bg-ink pb-14 sm:pb-20">
+            <div className="frame border-t border-white/10 pt-12 sm:pt-16">
+              <h2 className="font-heading text-2xl font-extrabold uppercase tracking-headline text-white sm:text-3xl">
                 Products we supply
               </h2>
 
-              <div className="mt-8 grid gap-px border border-black/10 bg-black/10 lg:grid-cols-3">
+              <div className="mt-8 grid gap-px border border-white/10 bg-white/10 lg:grid-cols-3">
                 {capability.catalogue.map((group) => (
                   <div
                     key={group.heading}
-                    className="flex h-full flex-col bg-white p-6 sm:p-7"
+                    className="flex h-full flex-col bg-ink-900 p-6 sm:p-7"
                   >
-                    <span className="text-[11px] font-bold uppercase tracking-label text-gold-600">
+                    <span className="text-[11px] font-bold uppercase tracking-label text-gold">
                       {group.heading}
                     </span>
                     <ul className="mt-4 space-y-2.5">
                       {group.items.map((item) => (
                         <li key={item} className="flex items-start gap-3">
                           <span className="mt-2 block h-1.5 w-1.5 shrink-0 bg-gold" />
-                          <span className="text-base leading-snug text-ink">
+                          <span className="text-base leading-snug text-white">
                             {item}
                           </span>
                         </li>
@@ -177,23 +177,23 @@ export default async function CapabilityPage({
         ) : null}
 
         {/* Other capabilities */}
-        <section className="border-t border-black/10 bg-white py-14 sm:py-20">
+        <section className="border-t border-white/10 bg-ink py-14 sm:py-20">
           <div className="frame">
-            <h2 className="font-heading text-2xl font-extrabold uppercase tracking-headline text-ink sm:text-3xl">
+            <h2 className="font-heading text-2xl font-extrabold uppercase tracking-headline text-white sm:text-3xl">
               Explore more capability
             </h2>
 
-            <ul className="mt-8 grid gap-px border border-black/10 bg-black/10 sm:grid-cols-3">
+            <ul className="mt-8 grid gap-px border border-white/10 bg-white/10 sm:grid-cols-3">
               {others.map((c) => (
-                <li key={c.slug} className="bg-white">
+                <li key={c.slug} className="bg-ink-900">
                   <Link
                     href={`/capabilities/${c.slug}`}
-                    className="group flex h-full flex-col p-6 duration-300 hover:bg-black/[0.03]"
+                    className="group flex h-full flex-col p-6 duration-300 hover:bg-white/[0.04]"
                   >
-                    <span className="font-heading text-base font-bold uppercase leading-tight tracking-headline text-ink">
+                    <span className="font-heading text-base font-bold uppercase leading-tight tracking-headline text-white">
                       {c.title}
                     </span>
-                    <span className="mt-4 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-label text-gold-600">
+                    <span className="mt-4 inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-label text-gold">
                       View
                       <svg
                         width="18"

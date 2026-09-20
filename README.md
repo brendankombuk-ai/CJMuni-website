@@ -65,21 +65,28 @@ public/images/                image slots — see public/images/README.md
 | Token | Hex | Role |
 | --- | --- | --- |
 | CJ MUNI Gold | `#F1AF21` | Primary accent — lines, numbers, buttons, hover |
-| CJ MUNI Black | `#000000` | Structure, headings, panels |
+| CJ MUNI Black | `#000000` | Primary background |
 | Goat Red | `#E12129` | Signature detail only — used sparingly |
-| Charcoal | `#4A4A4A` | Secondary text / panels |
-| White | `#FFFFFF` | Primary background |
+| White | `#FFFFFF` | Body text and headings |
+
+Off-black panels are `ink-900` (`#0A0A0A`) and `ink-800` (`#111111`); secondary
+text is white at 70%, faint labels at 50-55%. Charcoal (`#4A4A4A`) is a
+light-background colour and is not used on the page. `#E12129` is too dark to
+read as small text on black, so error text uses `goat-light` (`#EA6469`).
 
 Type: **Montserrat** (headings, 700/800) · **Inter** (body/technical).
 
 ### Logo
 
-The official CJ MUNI artwork is **not** in this repo. Add:
+`public/images/logo/muni-logo-light.png` is the supplied lockup: the artwork on
+an opaque white plate. The header uses `muni-logo-dark.png`, the reverse of it —
+white "MU", red "NI", no plate — which is generated from the supplied file:
 
-- `public/images/logo/muni-lockup.svg` — full lockup (header/footer)
-- `public/images/logo/muni-emblem.svg` — goat emblem (compact/favicon)
+```
+node scripts/make-dark-logo.mjs
+```
 
-then swap the placeholder in `components/Logo.tsx`. Never distort, recolour or
+Re-run that after replacing `muni-logo-light.png`. Never distort, recolour or
 add effects to the official mark, and never alter the goat.
 
 ## Content rules
@@ -116,9 +123,12 @@ The home page runs: hero -> what we do (links to all 8 capabilities) -> recent
 work (3 projects) -> contact band. Everything on it has a fuller page behind
 it, so it stays short.
 
-Pages are light by default: white backgrounds, black text, gold as an accent.
-The one dark block is the closing contact band and the footer. Content is not
-animated in on scroll — it renders immediately.
+Pages are black: black backgrounds, white text, gold as an accent, red kept for
+the emblem. Sections are separated by white hairlines at 10% rather than by
+changes of colour, and panels sit one step off black. The exception is the
+product frames on `/products`, which stay white on purpose — the Orica catalogue
+shots are cut-outs on white, so a white plate is what keeps them readable.
+Content is not animated in on scroll — it renders immediately.
 
 ## Enquiry form
 

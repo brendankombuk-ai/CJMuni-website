@@ -24,12 +24,12 @@ export default function CapabilitiesIndexPage() {
           crumbs={[{ label: "Home", href: "/" }, { label: "Products & Services" }]}
         />
 
-        <section className="bg-white py-14 sm:py-20">
+        <section className="bg-ink py-14 sm:py-20">
           <div className="frame">
-            <h2 className="font-heading text-2xl font-extrabold uppercase tracking-headline text-ink sm:text-3xl">
+            <h2 className="font-heading text-2xl font-extrabold uppercase tracking-headline text-white sm:text-3xl">
               Products
             </h2>
-            <p className="mt-2 text-sm text-charcoal">
+            <p className="mt-2 text-sm text-white/70">
               What we manufacture and supply.
             </p>
             <div className="mt-7 grid gap-6 sm:grid-cols-2">
@@ -38,10 +38,10 @@ export default function CapabilitiesIndexPage() {
               ))}
             </div>
 
-            <h2 className="mt-16 font-heading text-2xl font-extrabold uppercase tracking-headline text-ink sm:text-3xl">
+            <h2 className="mt-16 font-heading text-2xl font-extrabold uppercase tracking-headline text-white sm:text-3xl">
               Services
             </h2>
-            <p className="mt-2 text-sm text-charcoal">
+            <p className="mt-2 text-sm text-white/70">
               What we deliver on the ground.
             </p>
             <div className="mt-7 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

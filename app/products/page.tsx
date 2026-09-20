@@ -58,7 +58,7 @@ export default function ProductsPage() {
 
         <ProductRangeSummary />
 
-        <section className="bg-ink py-16 sm:py-20">
+        <section className="border-t border-white/10 bg-ink py-16 sm:py-20">
           <div className="frame grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-center">
             <div>
               <h2 className="font-heading text-2xl font-extrabold uppercase leading-tight tracking-headline text-white sm:text-3xl">

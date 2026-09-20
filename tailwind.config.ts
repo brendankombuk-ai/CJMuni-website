@@ -27,6 +27,9 @@ const config: Config = {
         },
         goat: {
           DEFAULT: "#E12129",
+          // The emblem red is a shade too dark to read as small text on black.
+          // This is the same red lifted towards white until it clears AA.
+          light: "#EA6469",
         },
       },
       fontFamily: {

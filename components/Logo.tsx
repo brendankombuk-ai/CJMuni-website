@@ -39,8 +39,11 @@ export function Logo({ variant = "lockup", tone = "light", className, href = "/"
       </span>
     ) : (
       <span className={`inline-flex items-center ${className ?? ""}`}>
+        {/* The reverse lockup: white "MU", red "NI", no white plate behind it.
+            Derived from the supplied light-background file by
+            scripts/make-dark-logo.mjs. */}
         <Image
-          src="/images/logo/muni-logo-light.png"
+          src="/images/logo/muni-logo-dark.png"
           alt="CJ MUNI — The Power of Partnership"
           width={900}
           height={300}

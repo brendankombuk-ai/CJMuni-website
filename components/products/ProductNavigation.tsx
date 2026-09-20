@@ -74,7 +74,7 @@ export function ProductNavigation({ items }: { items: NavItem[] }) {
   return (
     <nav
       aria-label="Product ranges"
-      className="sticky top-[68px] z-40 border-b border-black/10 bg-white/95 backdrop-blur sm:top-[76px]"
+      className="sticky top-[68px] z-40 border-b border-white/10 bg-ink/95 backdrop-blur sm:top-[76px]"
     >
       <div className="frame">
         <div
@@ -96,12 +96,12 @@ export function ProductNavigation({ items }: { items: NavItem[] }) {
                 }}
                 className={`flex shrink-0 items-center gap-2 border-b-2 px-3 py-2.5 text-[11px] font-bold uppercase tracking-label duration-300 ${
                   isActive
-                    ? "border-gold text-ink"
-                    : "border-transparent text-charcoal hover:text-ink"
+                    ? "border-gold text-white"
+                    : "border-transparent text-white/70 hover:text-white"
                 }`}
               >
                 <span
-                  className={isActive ? "text-gold-600" : "text-black/30"}
+                  className={isActive ? "text-gold" : "text-white/50"}
                   aria-hidden="true"
                 >
                   {item.number}

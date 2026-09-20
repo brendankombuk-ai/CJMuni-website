@@ -10,15 +10,16 @@ high-resolution landscape/portrait source and let `next/image` do the rest.
 Prefer authentic, operational, safety-conscious, PNG-focused photography with
 correct PPE. Avoid staged corporate handshake shots.
 
-## Logo (not bundled — add the official artwork)
+## Logo
 
 | File | Use |
 | --- | --- |
-| `logo/muni-lockup.svg` | Full CJ MUNI lockup — desktop header & footer |
-| `logo/muni-emblem.svg` | Goat emblem — compact mark / favicon |
+| `logo/muni-logo-light.png` | The supplied lockup — artwork on a white plate |
+| `logo/muni-logo-dark.png` | Reverse lockup for the black page — what the header renders |
 
-Then update `components/Logo.tsx` to render the real files. Do **not** stretch,
-recolour, rotate, add glow/shadow/3D, or alter the goat.
+The dark file is generated, not drawn: replace `muni-logo-light.png` and re-run
+`node scripts/make-dark-logo.mjs` to rebuild it. Do **not** stretch, recolour,
+rotate, add glow/shadow/3D, or alter the goat.
 
 ## Hero
 

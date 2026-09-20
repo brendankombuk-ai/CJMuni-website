@@ -21,21 +21,21 @@ export default function HomePage() {
       <main id="main">
         <HomeHero />
 
-        <section className="bg-white py-16 sm:py-20">
+        <section className="bg-ink py-16 sm:py-20">
           <div className="frame">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>
-                <h2 className="font-heading text-2xl font-extrabold uppercase tracking-headline text-ink sm:text-3xl">
+                <h2 className="font-heading text-2xl font-extrabold uppercase tracking-headline text-white sm:text-3xl">
                   What we do
                 </h2>
-                <p className="mt-3 max-w-2xl text-base leading-relaxed text-charcoal">
+                <p className="mt-3 max-w-2xl text-base leading-relaxed text-white/70">
                   Two product lines and six services, delivered through one
                   accountable partner in Papua New Guinea.
                 </p>
               </div>
               <Link
                 href="/capabilities"
-                className="text-[11px] font-bold uppercase tracking-label text-gold-600 hover:text-ink"
+                className="text-[11px] font-bold uppercase tracking-label text-gold hover:text-white"
               >
                 See all products &amp; services
               </Link>

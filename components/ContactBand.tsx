@@ -2,12 +2,14 @@ import Link from "next/link";
 import { CONTACT } from "@/data/site";
 
 /**
- * Closing call to action. One dark band at the foot of a light page so the
- * next step is obvious without another full contact form on every page.
+ * Closing call to action at the foot of every page, so the next step is
+ * obvious without another full contact form everywhere. The hairline above it
+ * is what separates it from the section before, the same way every other
+ * section on the page is separated.
  */
 export function ContactBand() {
   return (
-    <section className="bg-ink py-16 sm:py-20">
+    <section className="border-t border-white/10 bg-ink py-16 sm:py-20">
       <div className="frame grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-center">
         <div>
           <h2 className="font-heading text-2xl font-extrabold uppercase leading-tight tracking-headline text-white sm:text-3xl">

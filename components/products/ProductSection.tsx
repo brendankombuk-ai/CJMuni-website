@@ -36,8 +36,8 @@ export function ProductSection({
     <section
       id={range.id}
       aria-labelledby={titleId}
-      className={`scroll-mt-12 border-b border-black/10 py-14 sm:py-20 ${
-        flipped ? "bg-black/[0.02]" : "bg-white"
+      className={`scroll-mt-12 border-b border-white/10 py-14 sm:py-20 ${
+        flipped ? "bg-ink-900" : "bg-ink"
       }`}
     >
       <div className="frame">
@@ -55,8 +55,8 @@ export function ProductSection({
           </Reveal>
 
           <Reveal delay={0.05} className={flipped ? "lg:order-1" : undefined}>
-            <p className="flex items-center gap-3 font-sans text-[11px] font-semibold uppercase tracking-label text-charcoal">
-              <span className="font-heading font-extrabold text-gold-600">
+            <p className="flex items-center gap-3 font-sans text-[11px] font-semibold uppercase tracking-label text-white/70">
+              <span className="font-heading font-extrabold text-gold">
                 {range.number}
               </span>
               <span className="block h-px w-8 bg-gold" aria-hidden="true" />
@@ -65,21 +65,21 @@ export function ProductSection({
 
             <h2
               id={titleId}
-              className="mt-4 font-heading text-2xl font-extrabold uppercase leading-[1.08] tracking-headline text-ink sm:text-3xl lg:text-[2.35rem]"
+              className="mt-4 font-heading text-2xl font-extrabold uppercase leading-[1.08] tracking-headline text-white sm:text-3xl lg:text-[2.35rem]"
             >
               {range.name}
             </h2>
 
             <dl className="mt-6 border-l-2 border-gold pl-5">
-              <dt className="text-[11px] font-bold uppercase tracking-label text-charcoal-light">
+              <dt className="text-[11px] font-bold uppercase tracking-label text-white/50">
                 Product Category
               </dt>
-              <dd className="mt-1.5 font-heading text-base font-bold uppercase tracking-headline text-ink">
+              <dd className="mt-1.5 font-heading text-base font-bold uppercase tracking-headline text-white">
                 {range.category}
               </dd>
             </dl>
 
-            <p className="mt-6 max-w-2xl text-base leading-relaxed text-charcoal sm:text-[1.0625rem]">
+            <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/70 sm:text-[1.0625rem]">
               {range.description}
             </p>
 
