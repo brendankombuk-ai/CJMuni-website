@@ -28,6 +28,7 @@ export async function generateMetadata({
   return {
     title: capability.title,
     description: capability.overview,
+    alternates: { canonical: `/capabilities/${capability.slug}` },
   };
 }
 

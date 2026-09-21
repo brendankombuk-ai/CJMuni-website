@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Talk to CJ MUNI about your next project, supply requirement or industrial capability need in Papua New Guinea.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {

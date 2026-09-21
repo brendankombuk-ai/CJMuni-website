@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -14,6 +15,16 @@ import { PRODUCTS, SERVICES } from "@/data/capabilities";
  * little of the work, then hand people off to a real page. Everything here has
  * a fuller page behind it, so the page stays short enough to take in at once.
  */
+
+/**
+ * Title and description come from the root layout; only the canonical is
+ * page-specific. Without it the home page is the one route with no canonical,
+ * and it is the one most likely to be linked with tracking parameters.
+ */
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
+
 export default function HomePage() {
   return (
     <>

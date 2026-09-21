@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Projects",
   description:
     "CJ MUNI project and capability evidence. Structured and ready for real project photography and detail as projects are cleared for publication.",
+  alternates: { canonical: "/projects" },
 };
 
 export default function ProjectsPage() {

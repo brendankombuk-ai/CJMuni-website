@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint app components data --max-warnings 0",
     "images": "node scripts/process-images.mjs",
-    "logo": "node scripts/make-logo.mjs"
+    "logo": "node scripts/make-logo.mjs",
+    "og": "node scripts/make-og.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

@@ -69,6 +69,10 @@ const orgJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "CJ MUNI",
+  // Without url and logo the entity has nothing to attach itself to, and a
+  // knowledge panel has no mark to show.
+  url: SITE_URL,
+  logo: `${SITE_URL}/images/logo/muni-logo-light.png`,
   slogan: "Connected Capability. Reliable Delivery.",
   description:
     "A Papua New Guinea-focused industrial partner delivering critical products, field services, engineering, marine logistics and end-to-end supply-chain support.",
@@ -81,6 +85,14 @@ const orgJsonLd = {
     addressCountry: "PG",
   },
   areaServed: "Papua New Guinea",
+  contactPoint: {
+    "@type": "ContactPoint",
+    contactType: "sales",
+    email: CONTACT.email,
+    telephone: CONTACT.phones[0],
+    areaServed: "PG",
+    availableLanguage: "en",
+  },
 };
 
 export default function RootLayout({
