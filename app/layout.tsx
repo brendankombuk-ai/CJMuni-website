@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Montserrat, Inter } from "next/font/google";
 import "./globals.css";
-import { CONTACT } from "@/data/site";
+import { CONTACT, SITE_URL } from "@/data/site";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -17,10 +17,8 @@ const inter = Inter({
   display: "swap",
 });
 
-const siteUrl = "https://muni.com.pg";
-
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "CJ MUNI — Connected Capability. Reliable Delivery.",
     template: "%s | CJ MUNI",
@@ -42,7 +40,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_PG",
-    url: siteUrl,
+    url: SITE_URL,
     siteName: "CJ MUNI",
     title: "CJ MUNI — Connected Capability. Reliable Delivery.",
     description:

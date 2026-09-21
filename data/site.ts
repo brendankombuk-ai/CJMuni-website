@@ -6,6 +6,12 @@
  * footer, JSON-LD) stays consistent.
  */
 
+/**
+ * The canonical production origin. Used for metadataBase, the sitemap and
+ * robots.txt, so a domain change happens here and nowhere else.
+ */
+export const SITE_URL = "https://cjmuni.com";
+
 export const BRAND = {
   name: "CJ MUNI",
   idea: "THE POWER OF PARTNERSHIP",
