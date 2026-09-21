@@ -11,7 +11,7 @@
  *
  * Copy is limited to the approved high-level descriptions from the CJ MUNI
  * Corporate Brand Guidelines and the supplied business profile. Where the
- * source material is thin (quarry, civil, marine, sustainable development) the
+ * source material is thin (quarry, marine, sustainable development) the
  * copy is deliberately high-level and leaves room for future content.
  *
  * Images point at the shared photo library (public/images/library/). A slot
@@ -172,22 +172,6 @@ export const SERVICES: Capability[] = [
   {
     number: "03",
     group: "service",
-    title: "Civil & Earth Moving",
-    slug: "civil-earth-moving",
-    description:
-      "Civil works and earth moving supporting industrial and infrastructure projects.",
-    overview:
-      "CJ MUNI brings civil and earth-moving capability to industrial and infrastructure projects. Detailed scope is developed with each client around project requirements.",
-    points: [],
-    atmosphere: "civil",
-    image: "/images/library/engineering-civil-services.jpg",
-    imageAlt:
-      "Two CJ MUNI civil crew with site drawings in front of a CJ MUNI excavator and tip truck on a PNG earthworks site",
-    highLevelOnly: true,
-  },
-  {
-    number: "04",
-    group: "service",
     title: "Tug & Barge",
     slug: "tug-barge",
     description:
@@ -202,7 +186,7 @@ export const SERVICES: Capability[] = [
     highLevelOnly: true,
   },
   {
-    number: "05",
+    number: "04",
     group: "service",
     title: "End-to-End Supply Chain",
     slug: "supply-chain",
@@ -221,7 +205,7 @@ export const SERVICES: Capability[] = [
     imageAlt: "CJ MUNI logistics operations — from manufacture to delivery",
   },
   {
-    number: "06",
+    number: "05",
     group: "service",
     title: "Sustainable Development Projects",
     slug: "sustainable-development",

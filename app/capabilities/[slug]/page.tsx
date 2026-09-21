@@ -92,6 +92,14 @@ export default async function CapabilityPage({
                       </span>
                     </li>
                   ))}
+
+                  {/* The lattice is this list's background showing through a
+                      1px gap, so an odd number of points would leave the gap
+                      colour filling the whole missing cell. Only needed from
+                      `sm` up, where the list becomes two columns. */}
+                  {capability.points.length % 2 === 1 ? (
+                    <li aria-hidden="true" className="cell hidden sm:block" />
+                  ) : null}
                 </ul>
               ) : (
                 <p className="mt-8 border-l-2 border-gold pl-5 text-sm leading-relaxed text-white/70">

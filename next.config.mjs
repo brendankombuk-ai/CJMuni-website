@@ -22,11 +22,6 @@ const nextConfig = {
         destination: "/capabilities/fertilizer-reagents",
         permanent: true,
       },
-      {
-        source: "/capabilities/engineering-civil",
-        destination: "/capabilities/civil-earth-moving",
-        permanent: true,
-      },
     ];
   },
 };

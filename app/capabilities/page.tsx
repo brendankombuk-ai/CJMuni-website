@@ -10,7 +10,7 @@ import { PRODUCTS, SERVICES } from "@/data/capabilities";
 export const metadata: Metadata = {
   title: "Products & Services",
   description:
-    "CJ MUNI products and services — explosives manufacture and supply, fertilizer and reagents, drill and blast, quarry services, civil and earth moving, tug and barge, end-to-end supply chain and sustainable development projects.",
+    "CJ MUNI products and services — explosives manufacture and supply, fertilizer and reagents, drill and blast, quarry services, tug and barge, end-to-end supply chain and sustainable development projects.",
 };
 
 export default function CapabilitiesIndexPage() {

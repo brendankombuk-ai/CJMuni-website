@@ -17,6 +17,23 @@ export function CapabilityLinks({
   items: Capability[];
   columns?: 2 | 3;
 }) {
+  /**
+   * Cells that finish the last row.
+   *
+   * The hairline lattice is the list's own background showing through a 1px
+   * gap, so it only works while every row is full — a row that runs short
+   * leaves the gap colour filling the whole missing cell, which reads as a
+   * lit rectangle where a card should be. Five services in a three-column
+   * grid do exactly that.
+   *
+   * The count differs per breakpoint, so each spacer is shown only at the
+   * widths that actually need it rather than assuming one number covers both.
+   */
+  const spacersFor = (cols: number) => (cols - (items.length % cols)) % cols;
+  const atTwo = spacersFor(2);
+  const atThree = spacersFor(columns);
+  const spacers = Math.max(atTwo, atThree);
+
   return (
     <div>
       <h3 className="eyebrow text-white/70">{heading}</h3>
@@ -56,6 +73,16 @@ export function CapabilityLinks({
               </span>
             </Link>
           </li>
+        ))}
+
+        {Array.from({ length: spacers }, (_, i) => (
+          <li
+            key={`spacer-${i}`}
+            aria-hidden="true"
+            className={`cell ${i < atTwo ? "hidden sm:block" : "hidden"} ${
+              i < atThree ? "lg:block" : "lg:hidden"
+            }`}
+          />
         ))}
       </ul>
     </div>

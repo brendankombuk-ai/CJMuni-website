@@ -44,7 +44,6 @@ export const ENQUIRY_SERVICES: string[] = [
   "Fertilizer & Reagents",
   "Drill & Blast",
   "Quarry Services",
-  "Civil & Earth Moving",
   "Tug & Barge",
   "End-to-End Supply Chain",
   "Sustainable Development Projects",

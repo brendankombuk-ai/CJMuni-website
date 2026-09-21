@@ -103,10 +103,10 @@ the goat.
 ## Content rules
 
 Copy uses only the approved high-level descriptions from the CJ MUNI Corporate
-Brand Guidelines and the supplied business profile. **Quarry Services**, **Civil
-& Earth Moving**, **Tug & Barge** and **Sustainable Development Projects** are
-deliberately high-level — the source material does not support detailed claims.
-No invented statistics, certifications, clients or project history.
+Brand Guidelines and the supplied business profile. **Quarry Services**, **Tug
+& Barge** and **Sustainable Development Projects** are deliberately high-level —
+the source material does not support detailed claims. No invented statistics,
+certifications, clients or project history.
 
 ### Page structure
 
@@ -210,7 +210,6 @@ added without a redesign:
 /capabilities/explosives-distribution
 /capabilities/reagents-fertilizers
 /capabilities/drill-blast
-/capabilities/engineering-civil
 /capabilities/tug-barge
 /capabilities/supply-chain
 /capabilities/sustainable-development   ✅ all built from data/capabilities.ts
