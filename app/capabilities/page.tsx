@@ -3,7 +3,6 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PageIntro } from "@/components/PageIntro";
 import { CapabilityCard } from "@/components/CapabilityCard";
-import { ContactBand } from "@/components/ContactBand";
 import { Atmosphere, atmosphere } from "@/components/Atmosphere";
 import { PRODUCTS, SERVICES } from "@/data/capabilities";
 
@@ -65,8 +64,6 @@ export default function CapabilitiesIndexPage() {
             </div>
           </div>
         </section>
-
-        <ContactBand />
       </main>
       <Footer />
     </>

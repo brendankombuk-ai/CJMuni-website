@@ -4,7 +4,6 @@ import { notFound } from "next/navigation";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PageIntro } from "@/components/PageIntro";
-import { ContactBand } from "@/components/ContactBand";
 import { SmartImage } from "@/components/SmartImage";
 import { Atmosphere, atmosphere } from "@/components/Atmosphere";
 import { CAPABILITIES, getCapability } from "@/data/capabilities";
@@ -234,8 +233,6 @@ export default async function CapabilityPage({
             </ul>
           </div>
         </section>
-
-        <ContactBand />
       </main>
       <Footer />
     </>

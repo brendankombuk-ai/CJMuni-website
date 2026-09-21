@@ -3,7 +3,6 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PageIntro } from "@/components/PageIntro";
 import { Projects } from "@/components/Projects";
-import { ContactBand } from "@/components/ContactBand";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -23,7 +22,6 @@ export default function ProjectsPage() {
           crumbs={[{ label: "Home", href: "/" }, { label: "Projects" }]}
         />
         <Projects />
-        <ContactBand />
       </main>
       <Footer />
     </>

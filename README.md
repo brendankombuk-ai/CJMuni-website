@@ -41,7 +41,7 @@ components/
   Atmosphere.tsx              background-system recipes + decorative shapes
   (rest)                      Navbar, Footer, Logo, PageIntro, SmartImage,
                               HomeHero, CapabilityLinks, ProjectsTeaser,
-                              ContactBand, CapabilityCard, Projects, Contact,
+                              CapabilityCard, Projects, Contact,
                               EnquiryForm, Reveal
                               (unused, kept for reuse: CapabilityGrid,
                               ConnectedCapability, WhyMuni, SupplyChainFeature,
@@ -55,7 +55,7 @@ components/products/          the /products page: ProductsHero,
 
 data/
   site.ts                     nav, brand statements, verified contact details
-  capabilities.ts             PRODUCTS (2) + SERVICES (6) — single source of truth
+  capabilities.ts             PRODUCTS (2) + SERVICES (5) — single source of truth
   products.ts                 Orica catalogue: 7 ranges, specs, imagery
   industries.ts · projects.ts
 
@@ -115,7 +115,7 @@ anchor:
 
 ```
 /                       short signpost home page
-/capabilities           products (2) and services (6)
+/capabilities           products (2) and services (5)
 /capabilities/[slug]    one page per product / service
 /products               Orica product catalogue (linked from explosives)
 /projects               project evidence
@@ -130,9 +130,14 @@ every value in `data/products.ts` is the catalogue's own, and nothing is
 estimated or expanded. See `public/images/products/README.md` for where each
 image came from.
 
-The home page runs: hero -> what we do (links to all 8 capabilities) -> recent
-work (3 projects) -> contact band. Everything on it has a fuller page behind
-it, so it stays short.
+The home page runs: hero -> what we do (links to all 7 capabilities) -> recent
+work (3 projects). Everything on it has a fuller page behind it, so it stays
+short.
+
+No page carries a closing contact band. The details it repeated — email, the
+three numbers, the address — are in the footer of every page, and "Request an
+Enquiry" is in the sticky navigation, so the band was saying a third time what
+the page already said twice.
 
 Pages are black: black backgrounds, white text, gold as an accent, red kept for
 the emblem. Content is not animated in on scroll — it renders immediately.
