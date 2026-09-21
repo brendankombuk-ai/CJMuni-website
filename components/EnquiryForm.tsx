@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { ENQUIRY_SERVICES } from "@/data/site";
+import { CONTACT, ENQUIRY_SERVICES } from "@/data/site";
 
 const schema = z.object({
   name: z.string().min(2, "Please enter your name."),
@@ -105,7 +105,10 @@ export function EnquiryForm() {
       {status === "error" ? (
         <p role="alert" className="border border-goat-light/60 bg-goat/15 px-4 py-3 text-sm text-white">
           Something went wrong submitting your enquiry. Please try again, or email{" "}
-          <span className="font-semibold">Kassman@icloud.com</span> directly.
+          <a href={`mailto:${CONTACT.email}`} className="font-semibold underline underline-offset-4 hover:text-gold">
+            {CONTACT.email}
+          </a>{" "}
+          directly.
         </p>
       ) : null}
 

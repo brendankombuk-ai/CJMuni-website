@@ -28,8 +28,8 @@ export const NAV_LINKS: NavLink[] = [
 ];
 
 export const CONTACT = {
-  email: "Kassman@icloud.com",
-  phones: ["+675 7600 7962", "+675 7525 7882", "+675 7834 3770"],
+  email: "info@cjmuni.com",
+  phones: ["+675 7588 8314"],
   location:
     "Portion 2465, Konekaru, Papa Lealea Road, Central Province, Papua New Guinea",
   postal: "PO Box 687, Port Moresby 211, National Capital District",
