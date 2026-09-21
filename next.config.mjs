@@ -56,6 +56,10 @@ const securityHeaders = [
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // Without this Turbopack walks up looking for a lockfile, finds an unrelated
+  // package-lock.json in the home directory above the repo, and warns on every
+  // build. Pin the workspace to this project.
+  turbopack: { root: import.meta.dirname },
   images: {
     formats: ["image/avif", "image/webp"],
     // Next 16 only allows quality 75 unless listed here. 90 is used for the
