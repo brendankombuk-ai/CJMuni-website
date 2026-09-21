@@ -40,7 +40,7 @@ export const PROJECTS: Project[] = [
       "CJ MUNI provided reliable explosives supply solutions to major civil construction and resource-sector clients across Papua New Guinea, including Santos, Curtain Brothers, and Corman Construction.",
     location: "Central Province, PNG",
     image: "/images/library/project-02-explosives-supply.jpg",
-    imageAlt: "Orica-branded explosives crates, detonator cartons, Exel coils, ANFO and Pentex pallets staged dockside beside a CJ MUNI truck",
+    imageAlt: "CJ MUNI technician in branded helmet and hi-vis priming a Pentex booster with an Orica WebGen 200 unit underground",
     detailsPending: false,
   },
   {
