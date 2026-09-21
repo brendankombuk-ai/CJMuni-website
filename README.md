@@ -30,7 +30,7 @@ app/
   layout.tsx                  fonts, metadata, Organization JSON-LD, skip link
   page.tsx                    landing page section rhythm
   globals.css                 design system + reduced-motion handling
-  api/enquiry/route.ts        validated enquiry endpoint (no email backend yet)
+  api/enquiry/route.ts        validated enquiry endpoint, emailed via Resend
   capabilities/page.tsx       products & services index
   capabilities/[slug]/page.tsx  product / service page (static-generated)
   products/page.tsx           Orica product catalogue — one page, seven ranges
