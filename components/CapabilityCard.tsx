@@ -4,18 +4,21 @@ import { SmartImage } from "@/components/SmartImage";
 
 /**
  * A capability card: photo, name, one-line description, and a link into the
- * detail page. Flat black like the page around it — no overlay tint, no zoom
- * on hover, just a border that brightens so it is obvious the whole card is a
- * link.
+ * detail page.
+ *
+ * Layered into the page rather than sitting on it: a graphite surface with a
+ * lit top edge, the photograph vignetted into that surface, and on hover the
+ * whole card lifts three pixels while its border warms towards gold. The
+ * movement is transform-and-opacity only, so it composites.
  */
 export function CapabilityCard({ capability }: { capability: Capability }) {
   return (
     <Link
       href={`/capabilities/${capability.slug}`}
-      className="group flex w-full flex-col border border-white/10 bg-ink-900 duration-300 hover:border-white/40"
+      className="panel-interactive group flex w-full flex-col"
     >
-      <div className="relative aspect-[16/10] w-full overflow-hidden bg-ink-800">
-        {/* Gentle lift on hover so the card reads as interactive. */}
+      <div className="media-frame aspect-[16/10] w-full border-0 border-b border-white/10 bg-ink-800 shadow-none">
+        {/* Gentle push in on hover so the card reads as interactive. */}
         <div className="absolute inset-0 transition-transform duration-500 ease-muni group-hover:scale-[1.04]">
           <SmartImage
             src={capability.image}
@@ -26,7 +29,7 @@ export function CapabilityCard({ capability }: { capability: Capability }) {
         </div>
       </div>
 
-      <div className="flex flex-1 flex-col p-6">
+      <div className="relative z-[1] flex flex-1 flex-col p-6">
         <h3 className="font-heading text-lg font-bold uppercase leading-tight tracking-headline text-white">
           {capability.title}
         </h3>

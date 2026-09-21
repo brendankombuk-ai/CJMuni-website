@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { CAPABILITIES } from "@/data/capabilities";
 import { CONTACT, NAV_LINKS } from "@/data/site";
+import { Atmosphere, atmosphere } from "@/components/Atmosphere";
 
 /**
  * Footer. Three plain columns of links and the verified contact details —
@@ -11,7 +12,9 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-white/10 bg-ink-900">
+    <footer className={atmosphere("footer", "seam-top-quiet")}>
+      <Atmosphere variant="footer" />
+
       <div className="frame py-14">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           <nav aria-label="Footer">

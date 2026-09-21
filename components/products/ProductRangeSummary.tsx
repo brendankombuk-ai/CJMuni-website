@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/Reveal";
 import { RANGE_SUMMARY } from "@/data/products";
+import { Atmosphere, atmosphere } from "@/components/Atmosphere";
 
 /**
  * Product Range Summary — the closing table of the catalogue.
@@ -13,8 +14,13 @@ export function ProductRangeSummary() {
     <section
       id="range-summary"
       aria-labelledby="range-summary-title"
-      className="scroll-mt-12 border-b border-white/10 bg-ink py-14 sm:py-20"
+      className={atmosphere(
+        "supply-chain",
+        "scroll-mt-12 border-b border-white/5 py-14 sm:py-20",
+      )}
     >
+      <Atmosphere variant="supply-chain" />
+
       <div className="frame">
         <Reveal>
           <p className="eyebrow text-white/70">Catalogue overview</p>
@@ -97,7 +103,7 @@ export function ProductRangeSummary() {
           {/* Phones */}
           <ul className="grid gap-px border border-white/10 bg-white/10 md:hidden">
             {RANGE_SUMMARY.map((row) => (
-              <li key={row.range} className="bg-ink-900 p-5">
+              <li key={row.range} className="cell p-5">
                 <a
                   href={`#${row.id}`}
                   className="font-heading text-base font-bold uppercase tracking-headline text-white underline decoration-gold decoration-2 underline-offset-4"

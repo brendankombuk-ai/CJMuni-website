@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SmartImage } from "@/components/SmartImage";
+import { Atmosphere, atmosphere } from "@/components/Atmosphere";
 import { PROJECTS } from "@/data/projects";
 
 /**
@@ -10,13 +11,13 @@ export function ProjectsTeaser() {
   const featured = PROJECTS.slice(0, 3);
 
   return (
-    <section className="border-t border-white/10 bg-ink py-16 sm:py-20">
+    <section className={atmosphere("projects", "seam-top py-16 sm:py-20")}>
+      <Atmosphere variant="projects" />
+
       <div className="frame">
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <p className="font-sans text-[11px] font-bold uppercase tracking-label text-white/70">
-              Projects
-            </p>
+            <p className="eyebrow text-white/70">Projects</p>
             <h2 className="mt-3 font-heading text-2xl font-extrabold uppercase tracking-headline text-white sm:text-3xl">
               Recent work
             </h2>
@@ -31,8 +32,8 @@ export function ProjectsTeaser() {
 
         <ul className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {featured.map((project) => (
-            <li key={project.ref} className="group border border-white/10 bg-ink-900">
-              <div className="relative aspect-[16/10] w-full overflow-hidden bg-ink-800">
+            <li key={project.ref} className="group panel-interactive">
+              <div className="media-frame aspect-[16/10] w-full border-0 border-b border-white/10 bg-ink-800 shadow-none">
                 <div className="absolute inset-0 transition-transform duration-500 ease-muni group-hover:scale-[1.04]">
                   <SmartImage
                     src={project.image}
@@ -42,7 +43,7 @@ export function ProjectsTeaser() {
                   />
                 </div>
               </div>
-              <div className="p-5">
+              <div className="relative z-[1] p-5">
                 <p className="text-[11px] font-bold uppercase tracking-label text-white/70">
                   {project.category}
                 </p>

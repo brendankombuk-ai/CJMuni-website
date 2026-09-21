@@ -1,15 +1,23 @@
 import Link from "next/link";
+import { Atmosphere, atmosphere } from "@/components/Atmosphere";
 import { CONTACT } from "@/data/site";
 
 /**
  * Closing call to action at the foot of every page, so the next step is
- * obvious without another full contact form everywhere. The hairline above it
- * is what separates it from the section before, the same way every other
- * section on the page is separated.
+ * obvious without another full contact form everywhere. The seam above it is
+ * what separates it from the section before, the same way every other section
+ * on the page is separated.
+ *
+ * This is the one section on a page that gets the full feature treatment — a
+ * wide brand glow overhead, the technical grid and a gold seam across the top.
+ * It is the last thing on the page and the only thing being asked for, so it
+ * is allowed to be the brightest.
  */
 export function ContactBand() {
   return (
-    <section className="border-t border-white/10 bg-ink py-16 sm:py-20">
+    <section className={atmosphere("contact", "py-16 sm:py-20")}>
+      <Atmosphere variant="contact" />
+
       <div className="frame grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-center">
         <div>
           <h2 className="font-heading text-2xl font-extrabold uppercase leading-tight tracking-headline text-white sm:text-3xl">

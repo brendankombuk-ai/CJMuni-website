@@ -13,6 +13,12 @@ import { NAV_LINKS } from "@/data/site";
  * colour, so it never animates, never changes on scroll and never sits on top
  * of the content it is covering. The current page is marked so you always know
  * where you are.
+ *
+ * It stays solid — it is sticky, so content scrolls beneath it and anything
+ * translucent would turn the headline behind it into noise. The one change is
+ * its bottom edge: a rule that fades in from both ends with a little gold
+ * through the middle, matching the seams between sections rather than ruling
+ * a hard line across the top of a page that no longer has any.
  */
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -22,7 +28,7 @@ export function Navbar() {
     href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-ink">
+    <header className="seam-bottom-edge sticky top-0 z-50 bg-ink">
       <div className="frame">
         <nav
           className="flex items-center justify-between gap-6 py-4"

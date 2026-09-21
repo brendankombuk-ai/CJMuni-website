@@ -1,4 +1,5 @@
 import { SmartImage } from "@/components/SmartImage";
+import { Atmosphere, atmosphere } from "@/components/Atmosphere";
 import { PROJECTS } from "@/data/projects";
 
 /**
@@ -8,12 +9,14 @@ import { PROJECTS } from "@/data/projects";
  */
 export function Projects() {
   return (
-    <section className="bg-ink py-14 sm:py-20">
+    <section className={atmosphere("projects", "py-14 sm:py-20")}>
+      <Atmosphere variant="projects" />
+
       <div className="frame">
         <ul className="grid gap-6 sm:grid-cols-2">
           {PROJECTS.map((project) => (
-            <li key={project.ref} className="group border border-white/10 bg-ink-900">
-              <div className="relative aspect-[16/10] w-full overflow-hidden bg-ink-800">
+            <li key={project.ref} className="group panel-interactive">
+              <div className="media-frame aspect-[16/10] w-full border-0 border-b border-white/10 bg-ink-800 shadow-none">
                 <div className="absolute inset-0 transition-transform duration-500 ease-muni group-hover:scale-[1.04]">
                   <SmartImage
                     src={project.image}
@@ -24,7 +27,7 @@ export function Projects() {
                 </div>
               </div>
 
-              <div className="p-6">
+              <div className="relative z-[1] p-6">
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
                   <span className="text-[11px] font-bold uppercase tracking-label text-white/70">
                     {project.ref}

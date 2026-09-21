@@ -1,4 +1,5 @@
 import { EnquiryForm } from "@/components/EnquiryForm";
+import { Atmosphere, atmosphere } from "@/components/Atmosphere";
 import { CONTACT } from "@/data/site";
 
 /**
@@ -7,7 +8,9 @@ import { CONTACT } from "@/data/site";
  */
 export function Contact() {
   return (
-    <section className="bg-ink py-14 sm:py-20">
+    <section className={atmosphere("supply-chain", "py-14 sm:py-20")}>
+      <Atmosphere variant="supply-chain" />
+
       <div className="frame grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         <div className="space-y-7">
           <ContactBlock label="Email">
@@ -43,7 +46,7 @@ export function Contact() {
           </ContactBlock>
         </div>
 
-        <div className="border border-white/10 bg-ink-900 p-6 sm:p-8">
+        <div className="panel p-6 sm:p-8">
           <h2 className="font-heading text-xl font-extrabold uppercase tracking-headline text-white">
             Send an enquiry
           </h2>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { SmoothAnchor } from "@/components/products/SmoothAnchor";
+import { Atmosphere, atmosphere } from "@/components/Atmosphere";
 import { CATALOGUE_HERO_IMAGE, CATALOGUE_INTRO } from "@/data/products";
 
 /**
@@ -12,7 +13,9 @@ import { CATALOGUE_HERO_IMAGE, CATALOGUE_INTRO } from "@/data/products";
  */
 export function ProductsHero({ firstRangeId }: { firstRangeId: string }) {
   return (
-    <header className="border-b border-white/10 bg-ink">
+    <header className={atmosphere("explosives", "border-b border-white/5")}>
+      <Atmosphere variant="explosives" />
+
       <div className="frame py-8 sm:py-14">
         <nav aria-label="Breadcrumb" className="mb-6">
           <ol className="flex flex-wrap items-center gap-2 text-[11px] font-semibold uppercase tracking-label text-white/50">

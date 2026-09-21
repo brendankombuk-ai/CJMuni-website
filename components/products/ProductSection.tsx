@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/Reveal";
+import { Atmosphere, atmosphere } from "@/components/Atmosphere";
 import { ProductGallery } from "@/components/products/ProductGallery";
 import { ProductSpecifications } from "@/components/products/ProductSpecifications";
 import type { ProductRange } from "@/data/products";
@@ -36,10 +37,14 @@ export function ProductSection({
     <section
       id={range.id}
       aria-labelledby={titleId}
-      className={`scroll-mt-12 border-b border-white/10 py-14 sm:py-20 ${
-        flipped ? "bg-ink-900" : "bg-ink"
-      }`}
+      className={`scroll-mt-12 border-b border-white/5 py-14 sm:py-20 ${atmosphere(
+        flipped ? "explosives" : "quarry",
+      )}`}
     >
+      {/* The seven ranges alternate surface and light source, so scrolling
+          the catalogue has a rhythm to it without a new design per range. */}
+      <Atmosphere variant={flipped ? "explosives" : "quarry"} />
+
       <div className="frame">
         <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
           <Reveal

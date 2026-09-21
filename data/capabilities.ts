@@ -19,6 +19,8 @@
  * drop the file at the listed path and it appears automatically.
  */
 
+import type { AtmosphereVariant } from "@/components/Atmosphere";
+
 export type CapabilityGroup = "product" | "service";
 
 /** A named group of supplied products, listed on the capability detail page. */
@@ -54,6 +56,13 @@ export type Capability = {
   catalogueLink?: { href: string; label: string; blurb: string };
   image: string;
   imageAlt: string;
+  /**
+   * Which atmosphere this capability's pages are lit with — see
+   * components/Atmosphere.tsx. It is content, not styling: explosives is
+   * industrial, reagents is a laboratory, tug and barge is marine. Keeping it
+   * on the capability means the detail page needs no per-slug special case.
+   */
+  atmosphere: AtmosphereVariant;
   /** True where the supplied profile only gives a high-level description. */
   highLevelOnly?: boolean;
 };
@@ -82,6 +91,7 @@ export const PRODUCTS: Capability[] = [
       blurb:
         "The full Orica range we distribute — AMEX™, PENTEX™, EXEL™ MS, ENDURADET™, EXEL™ CONNECTADET™, CORDTEX™ and SENATEL™ — with product imagery and the technical specifications from the Product Catalog 2026.",
     },
+    atmosphere: "explosives",
     image: "/images/library/explosives.jpg",
     imageAlt:
       "CJ MUNI crew charging a blast pattern beside an Orica Bulkmaster 7 delivery truck on a Papua New Guinea site at sunset",
@@ -115,6 +125,7 @@ export const PRODUCTS: Capability[] = [
         items: ["Chlorine", "Aluminium Sulphate", "Hydrated Lime"],
       },
     ],
+    atmosphere: "reagents",
     image: "/images/library/reagents-fertilizers.jpg",
     imageAlt:
       "Two CJ MUNI staff with tablets in a warehouse stacked with Orica urea, ammonium nitrate, flocculant and collector product",
@@ -137,6 +148,7 @@ export const SERVICES: Capability[] = [
       "Exploration programmes",
       "Pioneer-road applications",
     ],
+    atmosphere: "drill-blast",
     image: "/images/library/drill-blast-services.jpg",
     imageAlt:
       "Two CJ MUNI crew in hi-vis at a charged blast pattern with a drill rig and explosives trucks behind them at sunset",
@@ -151,6 +163,7 @@ export const SERVICES: Capability[] = [
     overview:
       "CJ MUNI supports quarry operations across Papua New Guinea with production drilling, blasting and the technical capability to keep aggregate supply moving. Detailed scope is developed with each client around site requirements.",
     points: [],
+    atmosphere: "quarry",
     image: "/images/library/quarry-services.jpg",
     imageAlt:
       "Two CJ MUNI crew at a charged quarry pattern with a drill rig, explosives trucks and quarry benches behind them at sunset",
@@ -166,6 +179,7 @@ export const SERVICES: Capability[] = [
     overview:
       "CJ MUNI brings civil and earth-moving capability to industrial and infrastructure projects. Detailed scope is developed with each client around project requirements.",
     points: [],
+    atmosphere: "civil",
     image: "/images/library/engineering-civil-services.jpg",
     imageAlt:
       "Two CJ MUNI civil crew with site drawings in front of a CJ MUNI excavator and tip truck on a PNG earthworks site",
@@ -181,6 +195,7 @@ export const SERVICES: Capability[] = [
     overview:
       "CJ MUNI supports projects with marine transport through tug and barge operations, coordinated with its wider supply-chain capability.",
     points: [],
+    atmosphere: "marine",
     image: "/images/library/marine.jpg",
     imageAlt:
       "CJ MUNI marine crew on a wharf with a tug and loaded barge at a PNG port",
@@ -201,6 +216,7 @@ export const SERVICES: Capability[] = [
       "Tailored delivery schedules",
       "Safe and secure materials storage and handling",
     ],
+    atmosphere: "supply-chain",
     image: "/images/library/supply-chain-feature.jpg",
     imageAlt: "CJ MUNI logistics operations — from manufacture to delivery",
   },
@@ -214,6 +230,7 @@ export const SERVICES: Capability[] = [
     overview:
       "CJ MUNI approaches project development with a focus on responsible delivery and long-term value for clients and communities.",
     points: [],
+    atmosphere: "sustainable",
     image: "/images/library/sustainability.jpg",
     imageAlt:
       "CJ MUNI team with plans beside a solar array and tree planting above a PNG coastline",

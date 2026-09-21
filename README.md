@@ -37,7 +37,9 @@ app/
   contact/ · projects/        contact and project pages
   sitemap.ts · robots.ts · icon.svg · not-found.tsx
 
-components/                   Navbar, Footer, Logo, PageIntro, SmartImage,
+components/
+  Atmosphere.tsx              background-system recipes + decorative shapes
+  (rest)                      Navbar, Footer, Logo, PageIntro, SmartImage,
                               HomeHero, CapabilityLinks, ProjectsTeaser,
                               ContactBand, CapabilityCard, Projects, Contact,
                               EnquiryForm, Reveal
@@ -124,11 +126,51 @@ work (3 projects) -> contact band. Everything on it has a fuller page behind
 it, so it stays short.
 
 Pages are black: black backgrounds, white text, gold as an accent, red kept for
-the emblem. Sections are separated by white hairlines at 10% rather than by
-changes of colour, and panels sit one step off black. The exception is the
-product frames on `/products`, which stay white on purpose — the Orica catalogue
-shots are cut-outs on white, so a white plate is what keeps them readable.
-Content is not animated in on scroll — it renders immediately.
+the emblem. The exception is the product frames on `/products`, which stay white
+on purpose — the Orica catalogue shots are cut-outs on white, so a white plate is
+what keeps them readable. Content is not animated in on scroll — it renders
+immediately.
+
+### The background system
+
+Sections are not flat fills. Each one is lit by a shared system — see the
+`BACKGROUND SYSTEM` block in `app/globals.css` and `components/Atmosphere.tsx` —
+that paints two decorative layers behind the section's own content:
+
+```
+::before   seam (top rule) + brand glow + surface tint
+::after    texture, masked so it fades out
+```
+
+Both are pointer-transparent and negatively stacked, so they can never sit
+between a visitor and a link. Everything about them is driven by custom
+properties, which is what lets a section change character by changing its class
+list rather than by gaining CSS of its own:
+
+| axis        | classes                                                                                 |
+| ----------- | --------------------------------------------------------------------------------------- |
+| surface     | `section-dark` · `section-dark-alt` · `section-gradient` · `section-feature` · `section-continue` |
+| texture     | `texture-grid` · `texture-blueprint` · `texture-hatch` · `texture-diagonal` · `texture-dots` · `texture-horizon` · `texture-contour` · `texture-grain` |
+| light source| `atmo-tl/tr/bl/br/top/left/right` · `atmo-soft/medium/strong` · `atmo-wide/tight` · `atmo-warm` |
+| seam        | `seam-top` · `seam-top-quiet` · `seam-bottom-edge`                                        |
+
+`components/Atmosphere.tsx` names the combinations. `atmosphere("marine")`
+returns the class list for a section, `<Atmosphere variant="marine" />` renders
+that variant's oversized background shapes, and each capability in
+`data/capabilities.ts` carries the variant its pages are lit with — so explosives
+reads industrial, reagents reads like a laboratory, tug and barge reads marine,
+and all of them are built from the same primitives.
+
+Two rules hold the whole thing together:
+
+- **Every surface is a translucent tint, never an opaque fill.** An opaque
+  section has to end somewhere and leaves a step wherever it does. A tint that
+  fades out at its own edges has nothing to step against, so the page background
+  runs unbroken underneath and sections dissolve into one another.
+- **No `filter: blur()` anywhere.** Soft radial gradients reach the same place
+  without asking the compositor to blur a 40rem surface every frame. Motion is
+  `transform`/`opacity` only, and every keyframe rests at 0% and 100% so the
+  reduced-motion override collapses it to a no-op rather than a jump.
 
 ## Enquiry form
 

@@ -19,20 +19,21 @@ export function CapabilityLinks({
 }) {
   return (
     <div>
-      <h3 className="font-sans text-[11px] font-bold uppercase tracking-label text-white/70">
-        {heading}
-      </h3>
+      <h3 className="eyebrow text-white/70">{heading}</h3>
 
+      {/* The hairline grid is the same as it was — a 1px gap showing the
+          border colour through. What changed is the cell: a graphite gradient
+          instead of a flat fill, and a gold wash that fades in on hover. */}
       <ul
         className={`mt-5 grid gap-px border border-white/10 bg-white/10 sm:grid-cols-2 ${
           columns === 3 ? "lg:grid-cols-3" : ""
         }`}
       >
         {items.map((capability) => (
-          <li key={capability.slug} className="bg-ink-900">
+          <li key={capability.slug} className="cell cell-interactive">
             <Link
               href={`/capabilities/${capability.slug}`}
-              className="group flex h-full flex-col p-6 duration-300 hover:bg-white/[0.04]"
+              className="group relative z-[1] flex h-full flex-col p-6"
             >
               <h4 className="font-heading text-base font-bold uppercase leading-tight tracking-headline text-white">
                 {capability.title}

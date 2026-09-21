@@ -4,6 +4,7 @@ import { Footer } from "@/components/Footer";
 import { PageIntro } from "@/components/PageIntro";
 import { CapabilityCard } from "@/components/CapabilityCard";
 import { ContactBand } from "@/components/ContactBand";
+import { Atmosphere, atmosphere } from "@/components/Atmosphere";
 import { PRODUCTS, SERVICES } from "@/data/capabilities";
 
 export const metadata: Metadata = {
@@ -24,7 +25,14 @@ export default function CapabilitiesIndexPage() {
           crumbs={[{ label: "Home", href: "/" }, { label: "Products & Services" }]}
         />
 
-        <section className="bg-ink py-14 sm:py-20">
+        {/* Products and services were one section with two headings in it.
+            They are two sections now, on different surfaces and lit from
+            different sides, so scrolling from one to the other is a change in
+            the environment rather than a gap between two headings. The
+            content, order and headings are exactly as they were. */}
+        <section className={atmosphere("alt", "py-14 sm:py-20")}>
+          <Atmosphere variant="alt" />
+
           <div className="frame">
             <h2 className="font-heading text-2xl font-extrabold uppercase tracking-headline text-white sm:text-3xl">
               Products
@@ -37,8 +45,14 @@ export default function CapabilitiesIndexPage() {
                 <CapabilityCard key={capability.slug} capability={capability} />
               ))}
             </div>
+          </div>
+        </section>
 
-            <h2 className="mt-16 font-heading text-2xl font-extrabold uppercase tracking-headline text-white sm:text-3xl">
+        <section className={atmosphere("supply-chain", "py-14 sm:py-20")}>
+          <Atmosphere variant="supply-chain" />
+
+          <div className="frame">
+            <h2 className="font-heading text-2xl font-extrabold uppercase tracking-headline text-white sm:text-3xl">
               Services
             </h2>
             <p className="mt-2 text-sm text-white/70">

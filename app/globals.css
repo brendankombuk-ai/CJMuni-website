@@ -15,6 +15,35 @@
   /* Shared easing and timing so every interaction moves the same way. */
   --ease-muni: cubic-bezier(0.22, 1, 0.36, 1);
   --duration-muni: 220ms;
+
+  /**
+   * Atmosphere system.
+   *
+   * The brand colours again, as bare `r g b` triplets. Every layer in the
+   * background system needs them at an opacity — `rgb(var(--accent) / 8%)` —
+   * and a hex cannot be given one. Nothing new is introduced here: --accent is
+   * the CJ MUNI gold and --accent-warm is the Goat red from the emblem.
+   */
+  --accent: 241 175 33;
+  --accent-warm: 225 33 41;
+
+  /* The dark surfaces the whole site is built on, darkest first. */
+  --surface-0: #000000;
+  --surface-1: #070707;
+  --surface-2: #0d0d0d;
+
+  /**
+   * Per-section atmosphere. A section sets these through the classes further
+   * down — choosing its surface, moving its light source, resizing it,
+   * deciding how strong it is — so sections can feel different from one
+   * another without any section needing CSS of its own.
+   */
+  --surface: none;
+  --atmo-x: 82%;
+  --atmo-y: -10%;
+  --atmo-size: 46rem;
+  --atmo-strength: 0.07;
+  --atmo-hue: var(--accent);
 }
 
 @layer base {
@@ -45,6 +74,23 @@
     background-color: var(--muni-black);
     color: var(--muni-white);
     font-family: var(--font-sans);
+    /**
+     * The one background that runs behind the whole document rather than
+     * behind a section. Every section's surface is a translucent tint laid
+     * over this, so this is what is actually visible in the gaps between
+     * them, behind their fades, and in the overscroll at either end — and
+     * what makes the page one continuous environment rather than a stack.
+     *
+     * Left to scroll with the document rather than fixed: a fixed background
+     * has to be repainted on every scroll frame, and on a phone that is a
+     * real cost for an effect nobody would notice.
+     */
+    background-image: radial-gradient(
+        120rem 60rem at 50% 0,
+        rgb(var(--accent) / 0.055),
+        transparent 62%
+      ),
+      linear-gradient(180deg, #060606, #000000 1400px);
   }
 
   h1,
@@ -117,13 +163,22 @@
   }
 
   /* Gold lifts to the lighter gold on hover. It used to invert to black, which
-     on a black page just made the button disappear. */
+     on a black page just made the button disappear. The glow is that same gold
+     thrown behind the button, so the hover reads as light rather than motion. */
   .btn-primary {
-    @apply bg-gold px-7 py-4 text-ink hover:bg-gold-400 hover:text-ink;
+    @apply relative bg-gold px-7 py-4 text-ink hover:bg-gold-400 hover:text-ink;
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 10px 28px -12px rgb(var(--accent) / 0.6);
   }
 
   .btn-outline-light {
     @apply border border-white/40 px-7 py-4 text-white hover:border-gold hover:bg-gold hover:text-ink;
+  }
+
+  .btn-outline-light:hover {
+    box-shadow: 0 10px 28px -14px rgb(var(--accent) / 0.5);
   }
 
   /* Diagonal cut inspired by the emblem geometry */
@@ -133,6 +188,492 @@
 
   .tech-panel {
     @apply relative border border-white/10 bg-ink-800;
+  }
+
+  /* ==================================================================
+     BACKGROUND SYSTEM
+     ------------------------------------------------------------------
+     One shell plus a set of modifiers, rather than a bespoke effect per
+     section. `.section-shell` paints two decorative layers behind its own
+     content and nothing else; every modifier below only sets custom
+     properties that those two layers read. That is what lets a section be
+     industrial, or marine, or a technical grid, by changing its class list
+     instead of adding CSS.
+
+       layer 1 (::before) — seam, brand glow, dark surface gradient
+       layer 2 (::after)  — the texture, masked so it fades out
+
+     Both are pointer-transparent and sit behind the content in the shell's
+     own stacking context, so nothing here can intercept a click, cover a
+     link, or escape into the section above.
+     ================================================================== */
+
+  .section-shell {
+    @apply relative isolate overflow-hidden;
+  }
+
+  .section-shell::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    pointer-events: none;
+    background-image: var(--seam, none),
+      radial-gradient(
+        var(--atmo-size) var(--atmo-size) at var(--atmo-x) var(--atmo-y),
+        rgb(var(--atmo-hue) / var(--atmo-strength)),
+        transparent 68%
+      ),
+      var(--surface, none);
+    background-size: 100% 1px, auto, auto;
+    background-position: top left, center, center;
+    background-repeat: no-repeat;
+  }
+
+  .section-shell::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: var(--texture, none);
+    background-size: var(--texture-size, auto);
+    opacity: var(--texture-opacity, 1);
+    -webkit-mask-image: var(--texture-mask, none);
+    mask-image: var(--texture-mask, none);
+  }
+
+  /* ---- surfaces ---------------------------------------------------- */
+
+  /**
+   * Every surface is a translucent tint laid over the page, never an opaque
+   * fill — which is the single decision that makes the site flow.
+   *
+   * An opaque section has to end somewhere, and wherever it ends it leaves a
+   * step against whatever the next section starts on. A tint that fades to
+   * transparent at its own edges has nothing to step against: the page
+   * background runs unbroken underneath every section, and a surface simply
+   * emerges and dissolves. That is also why each of these is a white at
+   * single-digit percent rather than a named grey — it is the same black
+   * page throughout, lit differently.
+   */
+
+  /* The default: barely a lift at the top, gone by halfway down. */
+  .section-dark {
+    --surface: linear-gradient(
+      180deg,
+      rgb(255 255 255 / 0.018),
+      transparent 55%
+    );
+  }
+
+  /* The alternate surface — graphite. Fades in and back out, so it reads as
+     a band of lighter material rather than a panel with two edges. */
+  .section-dark-alt {
+    --surface: linear-gradient(
+      180deg,
+      transparent,
+      rgb(255 255 255 / 0.03) 26%,
+      rgb(255 255 255 / 0.03) 74%,
+      transparent
+    );
+  }
+
+  /* A transition band: opens on graphite and resolves into the page, so a
+     lit section can hand over to a quiet one mid-air. */
+  .section-gradient {
+    --surface: linear-gradient(
+      180deg,
+      rgb(255 255 255 / 0.028),
+      transparent 62%
+    );
+  }
+
+  /* The heaviest treatment, for the one or two moments on a page that should
+     feel like a feature rather than a section. */
+  .section-feature {
+    --surface: linear-gradient(
+      180deg,
+      rgb(255 255 255 / 0.05),
+      rgb(255 255 255 / 0.012) 55%,
+      transparent
+    );
+    --atmo-strength: 0.13;
+    --atmo-size: 58rem;
+  }
+
+  /* ---- light source ------------------------------------------------ */
+
+  .atmo-tl {
+    --atmo-x: 8%;
+    --atmo-y: -8%;
+  }
+
+  .atmo-tr {
+    --atmo-x: 88%;
+    --atmo-y: -10%;
+  }
+
+  .atmo-bl {
+    --atmo-x: 4%;
+    --atmo-y: 104%;
+  }
+
+  .atmo-br {
+    --atmo-x: 92%;
+    --atmo-y: 106%;
+  }
+
+  .atmo-top {
+    --atmo-x: 50%;
+    --atmo-y: -16%;
+  }
+
+  .atmo-left {
+    --atmo-x: -6%;
+    --atmo-y: 42%;
+  }
+
+  .atmo-right {
+    --atmo-x: 104%;
+    --atmo-y: 48%;
+  }
+
+  .atmo-soft {
+    --atmo-strength: 0.05;
+  }
+
+  .atmo-medium {
+    --atmo-strength: 0.09;
+  }
+
+  .atmo-strong {
+    --atmo-strength: 0.14;
+  }
+
+  .atmo-wide {
+    --atmo-size: 64rem;
+  }
+
+  .atmo-tight {
+    --atmo-size: 32rem;
+  }
+
+  /* The one place the emblem red is allowed to light a section: the
+     explosives line, where the warmth belongs. */
+  .atmo-warm {
+    --atmo-hue: var(--accent-warm);
+  }
+
+  /**
+   * A section that continues the one above it.
+   *
+   * Where a page splits what the eye reads as a single stretch across two or
+   * three <section> elements — the capability detail pages do, because the
+   * catalogue blocks are conditional — this drops the surface and the light
+   * so only the first section in the run is lit. The texture stays, which is
+   * what carries the run's character down through it.
+   *
+   * It has to be declared after the .atmo-* modifiers: these are all
+   * single-class selectors of equal specificity, so source order decides, and
+   * --atmo-strength must land on zero regardless of which one is also set.
+   */
+  .section-continue {
+    --surface: none;
+    --atmo-strength: 0;
+  }
+
+  /* ---- section seam ------------------------------------------------ */
+
+  /**
+   * Replaces `border-top: 1px solid rgba(255,255,255,.1)`. Same weight, same
+   * place, but it fades in from nothing at both ends and carries a touch of
+   * gold through the middle — so sections are still separated, without a
+   * ruled line running wall to wall.
+   */
+  .seam-top {
+    --seam: linear-gradient(
+      90deg,
+      transparent,
+      rgb(255 255 255 / 0.1) 16%,
+      rgb(var(--accent) / 0.34) 50%,
+      rgb(255 255 255 / 0.1) 84%,
+      transparent
+    );
+  }
+
+  .seam-top-quiet {
+    --seam: linear-gradient(
+      90deg,
+      transparent,
+      rgb(255 255 255 / 0.12) 28%,
+      rgb(255 255 255 / 0.12) 72%,
+      transparent
+    );
+  }
+
+  /**
+   * The same seam as a bottom edge, for elements that draw their own
+   * background rather than going through `.section-shell` — the navigation,
+   * which has to stay opaque because content scrolls under it.
+   */
+  .seam-bottom-edge {
+    @apply relative;
+  }
+
+  .seam-bottom-edge::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 1px;
+    pointer-events: none;
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      rgb(255 255 255 / 0.1) 16%,
+      rgb(var(--accent) / 0.34) 50%,
+      rgb(255 255 255 / 0.1) 84%,
+      transparent
+    );
+  }
+
+  /* ---- textures ---------------------------------------------------- */
+
+  /**
+   * All of these are deliberately near-invisible — between 2% and 5% white on
+   * black. They are here to stop a large dark area reading as a void, not to
+   * be looked at. Each fades out through its own mask, so none of them ever
+   * reaches a hard edge or lines up into an obvious repeat.
+   */
+
+  /* Engineering grid — the technical, systems-and-logistics texture. */
+  .texture-grid {
+    --texture: linear-gradient(rgb(255 255 255 / 0.034) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(255 255 255 / 0.034) 1px, transparent 1px);
+    --texture-size: 72px 72px;
+    --texture-mask: radial-gradient(
+      80% 75% at 50% 30%,
+      #000 0%,
+      rgb(0 0 0 / 0.45) 55%,
+      transparent 100%
+    );
+  }
+
+  /* Blueprint — a fine grid inside a coarse one, for the civil work. */
+  .texture-blueprint {
+    --texture: linear-gradient(rgb(255 255 255 / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(255 255 255 / 0.03) 1px, transparent 1px),
+      linear-gradient(rgb(255 255 255 / 0.016) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(255 255 255 / 0.016) 1px, transparent 1px);
+    --texture-size: 128px 128px, 128px 128px, 32px 32px, 32px 32px;
+    --texture-mask: linear-gradient(
+      180deg,
+      transparent,
+      #000 22%,
+      #000 68%,
+      transparent
+    );
+  }
+
+  /* Fine industrial hatch — a machined, technical surface. */
+  .texture-hatch {
+    --texture: repeating-linear-gradient(
+      135deg,
+      rgb(255 255 255 / 0.028) 0 1px,
+      transparent 1px 13px
+    );
+    --texture-mask: radial-gradient(90% 80% at 78% 10%, #000, transparent 100%);
+  }
+
+  /* Wide construction diagonals — structural, for drill and blast. */
+  .texture-diagonal {
+    --texture: repeating-linear-gradient(
+      68deg,
+      rgb(255 255 255 / 0.032) 0 1px,
+      transparent 1px 84px
+    );
+    --texture-mask: linear-gradient(105deg, #000, transparent 88%);
+  }
+
+  /* Fine dots — the laboratory surface for fertilizer and reagents. */
+  .texture-dots {
+    --texture: radial-gradient(rgb(255 255 255 / 0.05) 1px, transparent 1px);
+    --texture-size: 26px 26px;
+    --texture-mask: radial-gradient(75% 70% at 22% 18%, #000, transparent 100%);
+  }
+
+  /* Soft horizontal bands — water and movement, without drawing water. */
+  .texture-horizon {
+    --texture: repeating-linear-gradient(
+      180deg,
+      rgb(255 255 255 / 0.026) 0 1px,
+      transparent 1px 22px
+    );
+    --texture-mask: linear-gradient(
+      180deg,
+      transparent,
+      #000 38%,
+      #000 64%,
+      transparent
+    );
+  }
+
+  /* Contour lines — the land, for the sustainable development work. */
+  .texture-contour {
+    --texture: repeating-radial-gradient(
+      60rem 30rem at 16% 112%,
+      transparent 0 58px,
+      rgb(255 255 255 / 0.03) 58px 59px
+    );
+    --texture-mask: linear-gradient(0deg, #000, transparent 85%);
+  }
+
+  /**
+   * Grain. A tiny SVG turbulence tile, repeated — one 300-byte data URI and
+   * one small rasterised tile, rather than a grain photograph. Kept low
+   * enough that it only registers as the absence of a perfectly flat surface.
+   */
+  .texture-grain {
+    --texture: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+    --texture-size: 160px 160px;
+    --texture-opacity: 0.045;
+    --texture-mask: none;
+  }
+
+  /* ==================================================================
+     PANELS AND CARDS
+     ------------------------------------------------------------------
+     A card should look like it was lit where it sits rather than pasted on
+     top. The surface is a graphite gradient instead of a flat fill, the top
+     edge catches a little light, and a shadow underneath is what separates
+     it from the section behind.
+     ================================================================== */
+
+  .panel {
+    @apply relative border border-white/[0.09];
+    background-image: linear-gradient(
+        180deg,
+        rgb(255 255 255 / 0.05),
+        rgb(255 255 255 / 0.012) 44%,
+        transparent 80%
+      ),
+      linear-gradient(180deg, #0c0c0c, #070707);
+    box-shadow:
+      inset 0 1px 0 0 rgb(255 255 255 / 0.05),
+      0 20px 44px -32px rgb(0 0 0 / 0.95);
+  }
+
+  /**
+   * The interactive version. `transform` and `opacity` only, so the hover is
+   * composited rather than repainted: the card lifts a little, its border
+   * warms towards gold, and a gold wash fades in from the top edge.
+   */
+  .panel-interactive {
+    @apply panel transition-[transform,border-color,box-shadow] duration-300 ease-muni;
+  }
+
+  /**
+   * No z-index, deliberately. The wash then paints with the card's other
+   * positioned children in tree order — over the surface and over the
+   * photograph, which is the point — while the text block, which carries an
+   * explicit z-[1], stays above it and is never tinted.
+   */
+  .panel-interactive::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 300ms var(--ease-muni);
+    background-image: linear-gradient(
+      180deg,
+      rgb(var(--accent) / 0.1),
+      transparent 55%
+    );
+  }
+
+  .panel-interactive:hover,
+  .panel-interactive:focus-within,
+  .group:hover > .panel-interactive {
+    @apply border-gold/40;
+    transform: translateY(-3px);
+    box-shadow:
+      inset 0 1px 0 0 rgb(255 255 255 / 0.08),
+      0 28px 52px -30px rgb(0 0 0 / 0.95),
+      0 0 36px -14px rgb(var(--accent) / 0.35);
+  }
+
+  .panel-interactive:hover::after,
+  .panel-interactive:focus-within::after,
+  .group:hover > .panel-interactive::after {
+    opacity: 1;
+  }
+
+  /**
+   * A cell inside one of the hairline `gap-px` grids. It cannot lift — it is
+   * welded to its neighbours — so it warms and glows in place instead.
+   */
+  .cell {
+    @apply relative;
+    background-image: linear-gradient(
+        180deg,
+        rgb(255 255 255 / 0.028),
+        transparent 70%
+      ),
+      linear-gradient(180deg, #0a0a0a, #060606);
+  }
+
+  .cell-interactive::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 300ms var(--ease-muni);
+    background-image: linear-gradient(
+      180deg,
+      rgb(var(--accent) / 0.09),
+      transparent 60%
+    );
+  }
+
+  .cell-interactive:hover::after,
+  .cell-interactive:focus-within::after {
+    opacity: 1;
+  }
+
+  /**
+   * Image framing. Photography here used to be a rectangle cut out of the
+   * page; this sits it into the environment instead — a hairline frame, a
+   * vignette that carries the corners back into the background, and a single
+   * gold edge-light along the top.
+   */
+  /* `isolate` so the vignette's z-index is scoped to the frame. Without it
+     the frame's stacking order leaks into whatever card it sits in, and a
+     vignette meant for a photograph starts competing with body copy. */
+  .media-frame {
+    @apply relative isolate overflow-hidden border border-white/10;
+    box-shadow: 0 30px 60px -40px rgb(0 0 0 / 0.95);
+  }
+
+  .media-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background-image: linear-gradient(
+        180deg,
+        rgb(var(--accent) / 0.18),
+        transparent 3px
+      ),
+      radial-gradient(
+        120% 100% at 50% 38%,
+        transparent 42%,
+        rgb(0 0 0 / 0.4) 100%
+      ),
+      linear-gradient(0deg, rgb(0 0 0 / 0.32), transparent 45%);
   }
 }
 
@@ -146,6 +687,154 @@
       linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
       linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
     background-size: 64px 64px;
+  }
+
+  /* ==================================================================
+     LARGE ABSTRACT SHAPES
+     ------------------------------------------------------------------
+     Oversized decorative forms, positioned by whichever section uses them
+     and allowed to run past its edge — which is why `.section-shell`
+     clips. Every one of these is a gradient or a border: there is no
+     `filter: blur()` anywhere in this file, because a soft radial gradient
+     arrives at the same place without asking the compositor to blur a
+     40rem surface on every frame.
+     ================================================================== */
+
+  .atmo-orb {
+    @apply pointer-events-none absolute -z-10 rounded-full;
+    background-image: radial-gradient(
+      circle at 50% 50%,
+      rgb(var(--atmo-hue) / var(--orb-strength, 0.13)),
+      rgb(var(--atmo-hue) / 0.035) 45%,
+      transparent 70%
+    );
+  }
+
+  .atmo-orb-cool {
+    @apply pointer-events-none absolute -z-10 rounded-full;
+    background-image: radial-gradient(
+      circle at 50% 50%,
+      rgb(255 255 255 / var(--orb-strength, 0.05)),
+      transparent 68%
+    );
+  }
+
+  /**
+   * A soft rectangular glow, sized to whatever it is placed behind — used to
+   * bed a photograph into the page so its frame is not the first hard edge
+   * the eye finds. Unlike `.atmo-orb` it is not a circle, so it can hug the
+   * shape of the image.
+   */
+  .atmo-halo {
+    @apply pointer-events-none absolute -z-10;
+    background-image: radial-gradient(
+      70% 70% at 50% 50%,
+      rgb(var(--atmo-hue) / var(--orb-strength, 0.1)),
+      transparent 72%
+    );
+  }
+
+  /* A thin technical ring — the mark a gauge or a bearing leaves. */
+  .atmo-ring {
+    @apply pointer-events-none absolute -z-10 rounded-full border;
+    border-color: rgb(255 255 255 / 0.05);
+  }
+
+  .atmo-ring-gold {
+    border-color: rgb(var(--accent) / 0.16);
+  }
+
+  /* An angular translucent form — the emblem's diagonal, made large. */
+  .atmo-shard {
+    @apply pointer-events-none absolute -z-10;
+    clip-path: polygon(0 0, 100% 22%, 100% 100%, 22% 78%);
+    background-image: linear-gradient(
+      145deg,
+      rgb(255 255 255 / 0.035),
+      transparent 62%
+    );
+  }
+
+  /* A single fine line, rotated. Structural rather than decorative. */
+  .atmo-line {
+    @apply pointer-events-none absolute -z-10 h-px;
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      rgb(var(--accent) / 0.22),
+      transparent
+    );
+  }
+
+  .atmo-line-cool {
+    background-image: linear-gradient(
+      90deg,
+      transparent,
+      rgb(255 255 255 / 0.12),
+      transparent
+    );
+  }
+
+  /* ---- motion ------------------------------------------------------
+     Slow enough to read as the light changing rather than as something
+     moving. Every keyframe below starts and ends at rest, so the
+     reduced-motion block at the foot of this file — which collapses an
+     animation to a single 0.001ms pass — leaves each element exactly
+     where it started.                                                  */
+
+  .atmo-drift {
+    animation: atmo-drift 34s var(--ease-muni) infinite;
+  }
+
+  .atmo-drift-slow {
+    animation: atmo-drift 52s var(--ease-muni) infinite;
+  }
+
+  .atmo-breathe {
+    animation: atmo-breathe 18s ease-in-out infinite;
+  }
+
+  /* Phones: the decorative layer steps back so the content has the screen,
+     and the phone GPU has materially less to composite. */
+  @media (max-width: 640px) {
+    .atmo-orb,
+    .atmo-orb-cool {
+      --orb-strength: 0.075;
+    }
+
+    .atmo-ring,
+    .atmo-shard,
+    .atmo-line {
+      opacity: 0.5;
+    }
+
+    .section-shell::after {
+      opacity: calc(var(--texture-opacity, 1) * 0.7);
+    }
+
+    .atmo-hide-mobile {
+      display: none;
+    }
+  }
+}
+
+@keyframes atmo-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(3%, -4%, 0) scale(1.06);
+  }
+}
+
+@keyframes atmo-breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
   }
 }
 

@@ -5,6 +5,7 @@ import { HomeHero } from "@/components/HomeHero";
 import { CapabilityLinks } from "@/components/CapabilityLinks";
 import { ProjectsTeaser } from "@/components/ProjectsTeaser";
 import { ContactBand } from "@/components/ContactBand";
+import { Atmosphere, atmosphere } from "@/components/Atmosphere";
 import { PRODUCTS, SERVICES } from "@/data/capabilities";
 
 /**
@@ -21,7 +22,8 @@ export default function HomePage() {
       <main id="main">
         <HomeHero />
 
-        <section className="bg-ink py-16 sm:py-20">
+        <section className={atmosphere("alt", "py-16 sm:py-20")}>
+          <Atmosphere variant="alt" />
           <div className="frame">
             <div className="flex flex-wrap items-end justify-between gap-4">
               <div>

@@ -1,12 +1,15 @@
 import Link from "next/link";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { Atmosphere, atmosphere } from "@/components/Atmosphere";
 
 export default function NotFound() {
   return (
     <>
       <Navbar />
-      <main id="main" className="bg-ink">
+      <main id="main" className={atmosphere("page-intro")}>
+        <Atmosphere variant="page-intro" />
+
         <div className="frame py-24 text-center sm:py-32">
           <p className="text-[11px] font-bold uppercase tracking-label text-gold">
             Error 404

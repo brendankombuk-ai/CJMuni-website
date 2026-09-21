@@ -6,6 +6,7 @@ import { ProductsHero } from "@/components/products/ProductsHero";
 import { ProductNavigation } from "@/components/products/ProductNavigation";
 import { ProductRangeSummary } from "@/components/products/ProductRangeSummary";
 import { ProductSection } from "@/components/products/ProductSection";
+import { Atmosphere, atmosphere } from "@/components/Atmosphere";
 import { PRODUCT_RANGES } from "@/data/products";
 import { CONTACT } from "@/data/site";
 
@@ -58,7 +59,9 @@ export default function ProductsPage() {
 
         <ProductRangeSummary />
 
-        <section className="border-t border-white/10 bg-ink py-16 sm:py-20">
+        <section className={atmosphere("contact", "py-16 sm:py-20")}>
+          <Atmosphere variant="contact" />
+
           <div className="frame grid gap-10 lg:grid-cols-[1.4fr_1fr] lg:items-center">
             <div>
               <h2 className="font-heading text-2xl font-extrabold uppercase leading-tight tracking-headline text-white sm:text-3xl">
