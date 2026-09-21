@@ -81,12 +81,21 @@ export function ImagePlaceholder({
         <path d="M4 4l16 16M36 4L20 20v16" fill="none" stroke="currentColor" strokeWidth="1.5" />
       </svg>
 
-      <p className="px-4 text-center font-heading text-[11px] font-bold uppercase tracking-label text-white/70">
-        Image slot
-      </p>
-      <p className="mt-1 max-w-[80%] break-all px-4 text-center font-sans text-[10px] text-white/35">
-        {label}
-      </p>
+      {/*
+        The slot path is a note to whoever is dropping the file in, so it is
+        shown while developing and withheld in production — a visitor should
+        not be reading our directory layout off the page.
+      */}
+      {process.env.NODE_ENV === "development" ? (
+        <>
+          <p className="px-4 text-center font-heading text-[11px] font-bold uppercase tracking-label text-white/70">
+            Image slot
+          </p>
+          <p className="mt-1 max-w-[80%] break-all px-4 text-center font-sans text-[10px] text-white/35">
+            {label}
+          </p>
+        </>
+      ) : null}
     </div>
   );
 }
