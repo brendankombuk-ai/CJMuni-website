@@ -465,7 +465,12 @@
     top: 0;
     left: 0;
     height: 2px;
-    width: 200px;
+    /* Scales with the viewport rather than sitting at a fixed length: a band
+       long enough to read across a desktop bar would be wider than a phone,
+       and a light covering the whole rule at once stops looking like it
+       travels. The floor is the length this used to be at every width, so it
+       is never shorter than before — only longer, from about 667px up. */
+    width: clamp(200px, 30vw, 520px);
     background-image: linear-gradient(
       90deg,
       rgb(var(--accent) / 0) 0%,
@@ -475,9 +480,9 @@
       rgb(var(--accent) / 0) 100%
     );
     box-shadow:
-      0 0 10px 1px rgb(var(--accent) / 0.55),
-      0 0 24px 6px rgb(var(--accent) / 0.28);
-    animation: nav-beam 9s linear infinite;
+      0 0 12px 1px rgb(var(--accent) / 0.55),
+      0 0 28px 7px rgb(var(--accent) / 0.26);
+    animation: nav-beam 26s linear infinite;
   }
 
   /* ---- textures ---------------------------------------------------- */
@@ -881,17 +886,20 @@
 }
 
 /**
- * The navigation light, crossing the full width and a beam-length of runway at
- * either end so it enters and leaves cleanly. 100vw rather than 100% because
- * the strip is as wide as the viewport; overshooting into the scrollbar's width
- * costs nothing, since the strip clips.
+ * The navigation light, crossing the full width.
+ *
+ * Expressed against the beam's own width at the start and the viewport at the
+ * end, so the travel stays exact however long the beam is: -100% puts its
+ * trailing edge on the left edge of the bar, 100vw puts its leading edge past
+ * the right one. Nothing is hard-coded, so changing the width above does not
+ * silently leave the light stopping short or idling off-screen.
  */
 @keyframes nav-beam {
   from {
-    transform: translateX(-200px);
+    transform: translateX(-100%);
   }
   to {
-    transform: translateX(calc(100vw + 200px));
+    transform: translateX(100vw);
   }
 }
 
