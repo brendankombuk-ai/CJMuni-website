@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint app components data --ext .ts,.tsx",
-    "images": "node scripts/process-images.mjs"
+    "images": "node scripts/process-images.mjs",
+    "logo": "node scripts/make-logo.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

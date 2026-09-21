@@ -80,16 +80,25 @@ Type: **Montserrat** (headings, 700/800) · **Inter** (body/technical).
 
 ### Logo
 
-`public/images/logo/muni-logo-light.png` is the supplied lockup: the artwork on
-an opaque white plate. The header uses `muni-logo-dark.png`, the reverse of it —
-white "MU", red "NI", no plate — which is generated from the supplied file:
+`public/images/logo/muni-logo-light.png` is the supplied lockup, exactly as
+supplied: the official artwork on an opaque white plate. The header uses
+`muni-logo.png`, which is the same artwork with that plate made transparent:
 
-```
-node scripts/make-dark-logo.mjs
+```bash
+npm run logo
 ```
 
-Re-run that after replacing `muni-logo-light.png`. Never distort, recolour or
-add effects to the official mark, and never alter the goat.
+Re-run that after replacing `muni-logo-light.png`. Nothing about the mark is
+changed by it — no recolouring, no redrawing — only the plate is cleared, so
+the lockup sits on the navigation instead of on a white rectangle inside it.
+
+The plate is found by flooding inward from the image border, not by keying
+white globally. The rock the goat stands on is not a white shape of its own, it
+is plate showing through the shield, so a global white key would punch a hole
+through the middle of the emblem.
+
+Never distort, recolour or add effects to the official mark, and never alter
+the goat.
 
 ## Content rules
 
@@ -126,10 +135,22 @@ work (3 projects) -> contact band. Everything on it has a fuller page behind
 it, so it stays short.
 
 Pages are black: black backgrounds, white text, gold as an accent, red kept for
-the emblem. The exception is the product frames on `/products`, which stay white
-on purpose — the Orica catalogue shots are cut-outs on white, so a white plate is
-what keeps them readable. Content is not animated in on scroll — it renders
-immediately.
+the emblem. Content is not animated in on scroll — it renders immediately.
+
+Two deliberate exceptions to the black:
+
+- **The navigation is a solid white bar.** It is sticky, so it cannot be
+  translucent without turning the content scrolling beneath it into noise, and
+  the lockup is artwork on a white plate, so white is what lets the mark sit in
+  the navigation rather than on a card inside it. Its links are charcoal on
+  white; the current page is marked with gold rule rather than gold type,
+  because the brand gold is only 2.8:1 on white. Its bottom edge is a gold rule
+  with a single light travelling along it — the site's only continuous
+  animation, decoration only, and hidden outright under reduced motion, leaving
+  the rule it travels along in place.
+- **The product frames on `/products` stay white**, because the Orica catalogue
+  shots are cut-outs on white and a dark frame would put a ragged white
+  rectangle inside one.
 
 ### The background system
 

@@ -39,14 +39,15 @@ export function Logo({ variant = "lockup", tone = "light", className, href = "/"
       </span>
     ) : (
       <span className={`inline-flex items-center ${className ?? ""}`}>
-        {/* The reverse lockup: white "MU", red "NI", no white plate behind it.
-            Derived from the supplied light-background file by
-            scripts/make-dark-logo.mjs. */}
+        {/* The official lockup, unaltered — gold ring, black shield, red goat,
+            black "MU", red "NI". The only thing done to the supplied file is
+            making its white plate transparent, by scripts/make-logo.mjs, so
+            the mark sits on the navigation rather than on a white rectangle. */}
         <Image
-          src="/images/logo/muni-logo-dark.png"
+          src="/images/logo/muni-logo.png"
           alt="CJ MUNI — The Power of Partnership"
-          width={900}
-          height={300}
+          width={1200}
+          height={400}
           className="h-9 w-auto sm:h-11"
           priority
         />

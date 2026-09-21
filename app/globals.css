@@ -413,29 +413,71 @@
   }
 
   /**
-   * The same seam as a bottom edge, for elements that draw their own
-   * background rather than going through `.section-shell` — the navigation,
-   * which has to stay opaque because content scrolls under it.
+   * The navigation's bottom edge.
+   *
+   * A static gold rule at low opacity, with a single bright travelling light
+   * running left to right along it. The rule is the thing that actually
+   * separates the white bar from the black page, so it is drawn by the strip
+   * itself and does not depend on the animation: if the light never runs —
+   * reduced motion, an old browser, a paused tab — the edge still reads as a
+   * finished gold line rather than as a missing border.
    */
-  .seam-bottom-edge {
-    @apply relative;
+  /**
+   * The strip is 20px tall but only its top 2px sit on the bar's edge; the
+   * other 18px hang below it, over the page. That overhang is what the glow
+   * needs — a light clipped to its own 2px line is just a brighter line, and
+   * the bloom falling onto the black page beneath is the whole effect. It
+   * clips horizontally so the light enters and leaves rather than popping in
+   * and out, and it clips the bloom upward, which keeps the white bar clean.
+   */
+  .nav-beam {
+    position: absolute;
+    inset-inline: 0;
+    bottom: -18px;
+    height: 20px;
+    overflow: hidden;
+    pointer-events: none;
   }
 
-  .seam-bottom-edge::after {
+  /* The rule the light travels along. */
+  .nav-beam::before {
     content: "";
     position: absolute;
     inset-inline: 0;
-    bottom: 0;
-    height: 1px;
-    pointer-events: none;
+    top: 0;
+    height: 2px;
     background-image: linear-gradient(
       90deg,
-      transparent,
-      rgb(255 255 255 / 0.1) 16%,
-      rgb(var(--accent) / 0.34) 50%,
-      rgb(255 255 255 / 0.1) 84%,
-      transparent
+      rgb(var(--accent) / 0.25),
+      rgb(var(--accent) / 0.55) 50%,
+      rgb(var(--accent) / 0.25)
     );
+  }
+
+  /**
+   * The light itself: a narrow band with a hot core, moved with `transform`
+   * alone so it composites on the GPU and never lays out or repaints the bar
+   * above it.
+   */
+  .nav-beam::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 2px;
+    width: 200px;
+    background-image: linear-gradient(
+      90deg,
+      rgb(var(--accent) / 0) 0%,
+      rgb(var(--accent) / 0.85) 38%,
+      #ffe08a 50%,
+      rgb(var(--accent) / 0.85) 62%,
+      rgb(var(--accent) / 0) 100%
+    );
+    box-shadow:
+      0 0 10px 1px rgb(var(--accent) / 0.55),
+      0 0 24px 6px rgb(var(--accent) / 0.28);
+    animation: nav-beam 9s linear infinite;
   }
 
   /* ---- textures ---------------------------------------------------- */
@@ -838,6 +880,21 @@
   }
 }
 
+/**
+ * The navigation light, crossing the full width and a beam-length of runway at
+ * either end so it enters and leaves cleanly. 100vw rather than 100% because
+ * the strip is as wide as the viewport; overshooting into the scrollbar's width
+ * costs nothing, since the strip clips.
+ */
+@keyframes nav-beam {
+  from {
+    transform: translateX(-200px);
+  }
+  to {
+    transform: translateX(calc(100vw + 200px));
+  }
+}
+
 /* Respect reduced-motion: strip transitions, animations and smooth scroll */
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -851,5 +908,18 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+
+  /**
+   * The atmosphere keyframes all rest at their start and end, so collapsing
+   * them to a single instant pass leaves those elements exactly where they
+   * began. The navigation light is the one animation that travels rather than
+   * cycles: collapsed, it would finish instantly and snap back to its starting
+   * position, parking a bright band at the left-hand edge of the bar. It is
+   * decoration, so it simply does not run here — the gold rule it travels
+   * along is a separate element and stays.
+   */
+  .nav-beam::after {
+    display: none;
   }
 }
