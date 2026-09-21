@@ -30,9 +30,49 @@ const schema = z.object({
   phone: z.string().max(40).optional().or(z.literal("")),
   service: z.string().min(1).max(120),
   message: z.string().min(10).max(4000),
+  /** Honeypot — hidden in the form, so a value here means a bot filled it. */
+  website: z.string().max(200).optional(),
 });
 
 type Enquiry = z.infer<typeof schema>;
+
+/**
+ * Best-effort per-IP rate limit.
+ *
+ * This endpoint is public, unauthenticated and sends mail, so an open loop
+ * against it costs real money and buries genuine enquiries. The window is held
+ * in instance memory: Fluid Compute reuses instances across requests, so this
+ * stops the ordinary case, but it is not a guarantee across every instance.
+ * The durable layer is a rate-limit rule on the Vercel Firewall — see README.
+ */
+const RATE_LIMIT = { max: 5, windowMs: 10 * 60 * 1000 };
+const hits = new Map<string, number[]>();
+
+function rateLimited(ip: string) {
+  const now = Date.now();
+  const recent = (hits.get(ip) ?? []).filter((t) => now - t < RATE_LIMIT.windowMs);
+
+  if (recent.length >= RATE_LIMIT.max) {
+    hits.set(ip, recent);
+    return true;
+  }
+
+  recent.push(now);
+  hits.set(ip, recent);
+
+  // The map would otherwise grow for the life of the instance.
+  if (hits.size > 5000) {
+    for (const [key, times] of hits) {
+      if (times.every((t) => now - t >= RATE_LIMIT.windowMs)) hits.delete(key);
+    }
+  }
+
+  return false;
+}
+
+/** Vercel sets x-forwarded-for; the client address is the first entry. */
+const clientIp = (request: Request) =>
+  request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
 
 /** Resend's shared sender. Works with no DNS set up; replace once verified. */
 const DEFAULT_FROM = "CJ MUNI Website <onboarding@resend.dev>";
@@ -80,6 +120,13 @@ function render(enquiry: Enquiry) {
 }
 
 export async function POST(request: Request) {
+  if (rateLimited(clientIp(request))) {
+    return NextResponse.json(
+      { ok: false, error: "Too many enquiries — please try again shortly" },
+      { status: 429, headers: { "Retry-After": "600" } },
+    );
+  }
+
   let body: unknown;
   try {
     body = await request.json();
@@ -95,16 +142,32 @@ export async function POST(request: Request) {
     );
   }
 
-  const enquiry = parsed.data;
+  const { website, ...enquiry } = parsed.data;
+
+  // Answer 200 so the bot records a success and moves on, rather than probing
+  // for what tripped it. Nothing is sent.
+  if (website && website.trim() !== "") {
+    console.warn("[CJ MUNI enquiry] Honeypot tripped — not sending");
+    return NextResponse.json({ ok: true });
+  }
+
   const apiKey = process.env.RESEND_API_KEY;
 
   if (!apiKey) {
     // Deliberately a failure. Answering "ok" with no mail configured loses the
     // enquiry silently — the visitor believes they have been in touch and
     // nobody ever sees it. Failing sends them to the address on the page.
+    // Log enough to chase the lead by hand, but not the whole submission —
+    // these logs are retained by the platform and the message body is the
+    // customer's, not ours.
     console.error(
       "[CJ MUNI enquiry] RESEND_API_KEY is not set — enquiry NOT delivered",
-      { ...enquiry, receivedAt: new Date().toISOString() },
+      {
+        name: enquiry.name,
+        company: enquiry.company,
+        email: enquiry.email,
+        receivedAt: new Date().toISOString(),
+      },
     );
     return NextResponse.json(
       { ok: false, error: "Email is not configured" },

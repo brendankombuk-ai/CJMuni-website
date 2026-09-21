@@ -16,6 +16,12 @@ const schema = z.object({
     .refine((v) => !v || /[0-9+()\-\s]{6,}/.test(v), "Enter a valid phone number."),
   service: z.string().min(1, "Please select a service or capability."),
   message: z.string().min(10, "Please add a few words about your requirement."),
+  /**
+   * Honeypot. Hidden from people and from screen readers, so anything that
+   * fills it in is automated. Validated server-side, not here — a bot does not
+   * run this resolver.
+   */
+  website: z.string().optional(),
 });
 
 type FormValues = z.infer<typeof schema>;
@@ -54,8 +60,8 @@ export function EnquiryForm() {
           Enquiry received
         </span>
         <p className="mt-4 text-lg text-white">
-          Thank you — your enquiry has been logged. A member of the CJ MUNI team will
-          be in touch.
+          Thank you — your enquiry has been sent to the CJ MUNI team. A member of
+          the team will be in touch.
         </p>
         <button
           type="button"
@@ -112,14 +118,31 @@ export function EnquiryForm() {
         </p>
       ) : null}
 
+      <div className="absolute left-[-9999px] top-auto h-px w-px overflow-hidden" aria-hidden="true">
+        <label htmlFor="website">Website (leave this field empty)</label>
+        <input
+          id="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          {...register("website")}
+        />
+      </div>
+
       <button type="submit" disabled={status === "submitting"} className="btn-primary w-full sm:w-auto">
         {status === "submitting" ? "Submitting…" : "Request an Enquiry"}
       </button>
 
       <p className="text-xs leading-relaxed text-white/50">
-        This form is ready for integration with an email or CRM backend. Until a
-        service is connected, submissions are validated and acknowledged but not
-        delivered by email.
+        Your enquiry is emailed directly to the CJ MUNI team. We use the details
+        you provide only to respond to it. Prefer email? Write to{" "}
+        <a
+          href={`mailto:${CONTACT.email}`}
+          className="underline underline-offset-4 hover:text-gold"
+        >
+          {CONTACT.email}
+        </a>
+        .
       </p>
     </form>
   );
