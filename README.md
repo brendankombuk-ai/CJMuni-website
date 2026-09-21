@@ -200,10 +200,32 @@ Two rules hold the whole thing together:
 
 ## Enquiry form
 
-`POST /api/enquiry` validates with zod and acknowledges the submission. It does
-**not** send email. To connect a backend, add a provider call at the marked
-integration point in `app/api/enquiry/route.ts` (e.g. Resend / SendGrid / SMTP
-/ CRM webhook) and set the relevant env vars.
+`POST /api/enquiry` validates with zod and emails the submission to CJ MUNI
+through [Resend](https://resend.com). Resend is called over its REST API with
+`fetch` rather than through its SDK — that would be a dependency, a bundle and
+a version to track in exchange for wrapping one POST request.
+
+| Variable | | |
+| --- | --- | --- |
+| `RESEND_API_KEY` | **required** | From the Resend dashboard. |
+| `ENQUIRY_FROM` | optional | Sender, which must be on a domain verified in Resend. Defaults to Resend's shared `onboarding@resend.dev`, which works immediately but is only meant for testing. Set it to something like `CJ MUNI Website <enquiries@cjmuni.com>` once the domain is verified. |
+| `ENQUIRY_TO` | optional | Defaults to the public address in `data/site.ts`. |
+
+Set them on the Vercel project (all three environments), then `vercel env pull`
+for local work.
+
+**Without `RESEND_API_KEY` the endpoint returns 503, it does not pretend to
+have sent.** Answering "ok" with no mail configured loses the enquiry silently:
+the visitor believes they have been in touch and nobody ever sees it. Failing
+puts the form into its error state, which shows the address on the page and
+invites them to email directly.
+
+Two details that matter for deliverability:
+
+- The message is sent **from** the verified domain, never from the visitor's
+  address. Sending as the visitor fails SPF and DMARC and lands in spam.
+- `reply_to` is set to the visitor, so replying in the mail client goes to the
+  person who enquired rather than back to the sending domain.
 
 ## Phase two
 
