@@ -72,7 +72,7 @@ export default function ProductsPage() {
                 requirements and project needs.
               </p>
               <Link href="/contact" className="btn-primary mt-8">
-                Contact MUNI
+                Contact CJ MUNI
               </Link>
             </div>
 
@@ -97,6 +97,22 @@ export default function ProductsPage() {
               ))}
               <li className="pt-2 text-white/55">{CONTACT.location}</li>
             </ul>
+          </div>
+
+          {/* The ranges on this page are Orica's marks, not ours. We supply the
+              products as their licensed distributing agent in PNG; saying so
+              plainly is both accurate and the ordinary courtesy for using
+              another company's trademarks throughout a page. */}
+          <div className="frame mt-14 border-t border-white/10 pt-6">
+            <p className="max-w-3xl text-xs leading-relaxed text-white/45">
+              AMEX, PENTEX, EXEL, ENDURADET, CONNECTADET, CORDTEX and SENATEL
+              are trademarks of the Orica group of companies. CJ MUNI Limited is
+              the licensed distributing agent of Orica products in Papua New
+              Guinea and is not affiliated with Orica beyond that appointment.
+              Product information is reproduced from Orica&rsquo;s published
+              material; always work from the current manufacturer documentation
+              and safety data sheets.
+            </p>
           </div>
         </section>
       </main>

@@ -65,7 +65,7 @@ export function ProductsHero({ firstRangeId }: { firstRangeId: string }) {
                 Explore Products
               </SmoothAnchor>
               <Link href="/contact" className="btn-outline-light">
-                Contact MUNI
+                Contact CJ MUNI
               </Link>
             </div>
           </div>

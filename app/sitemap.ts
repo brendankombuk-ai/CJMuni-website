@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/products",
     "/projects",
     "/contact",
+    "/privacy",
   ].map((path) => ({
     url: `${SITE_URL}${path}`,
     lastModified: now,

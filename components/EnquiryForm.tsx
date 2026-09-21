@@ -135,7 +135,11 @@ export function EnquiryForm() {
 
       <p className="text-xs leading-relaxed text-white/50">
         Your enquiry is emailed directly to the CJ MUNI team. We use the details
-        you provide only to respond to it. Prefer email? Write to{" "}
+        you provide only to respond to it — see our{" "}
+        <a href="/privacy" className="underline underline-offset-4 hover:text-gold">
+          privacy policy
+        </a>
+        . Prefer email? Write to{" "}
         <a
           href={`mailto:${CONTACT.email}`}
           className="underline underline-offset-4 hover:text-gold"

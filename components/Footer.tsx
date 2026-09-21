@@ -96,9 +96,15 @@ export function Footer() {
           <p className="text-xs text-white/55">
             &copy; {year} CJ MUNI. All rights reserved.
           </p>
-          <p className="text-xs text-white/55">
-            Connected capability. Reliable delivery.
-          </p>
+          <div className="flex items-center gap-4 text-xs text-white/55">
+            <Link href="/privacy" className="hover:text-gold">
+              Privacy
+            </Link>
+            <span aria-hidden="true" className="text-white/25">
+              /
+            </span>
+            <p>Connected capability. Reliable delivery.</p>
+          </div>
         </div>
       </div>
     </footer>

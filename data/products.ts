@@ -57,7 +57,7 @@ export type ProductRange = {
 
 /** Catalogue cover copy — the introduction on page 1. */
 export const CATALOGUE_INTRO =
-  "CJ Muni Limited is the licensed distributing agent of Orica products in PNG. Orica is a global leader in commercial explosives and blasting systems, supplying mining, quarrying, construction, and civil infrastructure projects worldwide. Orica's product portfolio is engineered to deliver safety, reliability, productivity, and precision blast outcomes.";
+  "CJ MUNI Limited is the licensed distributing agent of Orica products in PNG. Orica is a global leader in commercial explosives and blasting systems, supplying mining, quarrying, construction, and civil infrastructure projects worldwide. Orica's product portfolio is engineered to deliver safety, reliability, productivity, and precision blast outcomes.";
 
 /** The image that opens the page — the bulk delivery photograph from page 1. */
 export const CATALOGUE_HERO_IMAGE: ProductImage = {
