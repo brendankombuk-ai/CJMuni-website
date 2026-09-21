@@ -227,6 +227,39 @@ Two details that matter for deliverability:
 - `reply_to` is set to the visitor, so replying in the mail client goes to the
   person who enquired rather than back to the sending domain.
 
+### Abuse protection
+
+The endpoint is public, unauthenticated and sends mail, so an open loop against
+it costs real money and buries genuine enquiries under noise. Three layers:
+
+- **Honeypot.** The form carries a hidden `website` field. People never see it;
+  bots that fill every input do. A submission with it filled gets a `200` and is
+  silently dropped — answering with an error would only tell the bot what to
+  change.
+- **Per-IP rate limit.** Five submissions per ten minutes, then `429` with
+  `Retry-After`. The window lives in instance memory: Fluid Compute reuses
+  instances across requests, so this stops the ordinary case, but it is not a
+  guarantee across every instance.
+- **Vercel Firewall.** The durable layer, and the one that is *not* yet set up.
+  Add a rate-limit rule on `/api/enquiry` in the project's Firewall settings so
+  abuse is turned away at the edge, before it reaches a function at all.
+
+## Security headers
+
+`next.config.mjs` sets a CSP plus `X-Frame-Options`, `X-Content-Type-Options`,
+`Referrer-Policy`, `Permissions-Policy` and HSTS on every route.
+
+The CSP allows `'unsafe-inline'` for scripts because Next injects its bootstrap
+inline and the organisation JSON-LD in `app/layout.tsx` is an inline tag. That
+weakens the script rule against an injected inline payload, but the policy still
+blocks scripts from any other origin — the realistic risk for a site with no
+third-party embeds. If a third-party script is ever added (analytics, chat,
+tag manager), switch to per-request nonces in middleware rather than widening
+the policy.
+
+Fonts are self-hosted — `next/font` downloads Montserrat and Inter at build time
+and serves them from `/_next` — so no Google origin is needed at runtime.
+
 ## Phase two
 
 The design system, components and data are structured so these routes can be
