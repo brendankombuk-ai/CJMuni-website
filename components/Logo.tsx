@@ -46,9 +46,9 @@ export function Logo({ variant = "lockup", tone = "light", className, href = "/"
         <Image
           src="/images/logo/muni-logo.png"
           alt="CJ MUNI — The Power of Partnership"
-          width={1200}
-          height={400}
-          className="h-16 w-auto sm:h-20"
+          width={1170}
+          height={267}
+          className="h-11 w-auto sm:h-14"
           priority
         />
       </span>

@@ -34,7 +34,7 @@ export function Navbar() {
     <header className="sticky top-0 z-50 bg-white">
       <div className="frame">
         <nav
-          className="flex items-center justify-between gap-6 py-4"
+          className="flex items-center justify-between gap-6 py-3"
           aria-label="Primary"
         >
           <Logo />

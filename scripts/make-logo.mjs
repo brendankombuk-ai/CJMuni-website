@@ -94,7 +94,10 @@ async function main() {
     cleared++;
   }
 
+  // Trim the cleared plate from every edge, so the file is only as tall as
+  // the mark and the navigation bar is not padded by empty pixels.
   await sharp(data, { raw: { width, height, channels } })
+    .trim({ threshold: 0 })
     .png({ compressionLevel: 9, palette: false })
     .toFile(OUTPUT);
 
