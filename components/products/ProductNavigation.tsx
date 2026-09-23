@@ -74,7 +74,7 @@ export function ProductNavigation({ items }: { items: NavItem[] }) {
   return (
     <nav
       aria-label="Product ranges"
-      className="sticky top-[108px] z-40 border-b border-white/10 bg-ink/95 backdrop-blur sm:top-[124px]"
+      className="sticky top-[92px] z-40 border-b border-white/10 bg-ink/95 backdrop-blur sm:top-[108px]"
     >
       <div className="frame">
         <div
