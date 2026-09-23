@@ -41,8 +41,7 @@ export default function HomePage() {
                   What we do
                 </h2>
                 <p className="mt-3 max-w-2xl text-base leading-relaxed text-white/70">
-                  Two product lines and six services, delivered through one
-                  accountable partner in Papua New Guinea.
+                  Orica mining services PNG partner
                 </p>
               </div>
               <Link

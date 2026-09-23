@@ -17,7 +17,7 @@ export const BRAND = {
   idea: "THE POWER OF PARTNERSHIP",
   promise: "CONNECTED CAPABILITY. RELIABLE DELIVERY.",
   positioning:
-    "A Papua New Guinea-focused industrial partner delivering critical products, field services, engineering, marine logistics and end-to-end supply-chain support for demanding projects.",
+    "Your PNG industrial partner for critical products, engineering, field services, marine logistics and supply-chain solutions.",
   character: ["Strong", "Technical", "Reliable", "Connected", "Responsible"],
 } as const;
 

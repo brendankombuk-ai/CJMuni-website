@@ -17,8 +17,8 @@ import { BRAND } from "@/data/site";
  * data/capabilities.ts, and the Konekaru address in data/site.ts. Nothing here
  * is a number invented to fill a slot.
  *
- * The height is the viewport minus the sticky navigation (h-10 logo + py-4 =
- * 72px, h-12 + py-4 = 80px from `sm`), so the hero fills the screen exactly
+ * The height is the viewport minus the sticky navigation (h-20 logo + py-4 =
+ * 112px, h-24 + py-4 = 128px from `sm`), so the hero fills the screen exactly
  * rather than pushing a scrollbar's worth of black below it. `svh` rather than
  * `vh` so mobile browser chrome collapsing does not jump the layout.
  *
@@ -38,7 +38,7 @@ export function HomeHero() {
     <section
       className={atmosphere(
         "hero",
-        "flex min-h-[calc(100svh-4.5rem)] flex-col justify-between border-b border-white/5 sm:min-h-[calc(100svh-5rem)]",
+        "flex min-h-[calc(100svh-7rem)] flex-col justify-between border-b border-white/5 sm:min-h-[calc(100svh-8rem)]",
       )}
     >
       {/* The photograph, full bleed and pushed behind every other layer. */}
@@ -71,7 +71,7 @@ export function HomeHero() {
       {/* Content */}
       <div className="frame flex flex-1 items-center py-16 sm:py-20">
         <div className="max-w-2xl">
-          <p className="font-sans text-[11px] font-bold uppercase tracking-label text-gold">
+          <p className="font-sans text-[16px] font-bold uppercase tracking-label text-gold">
             {BRAND.idea}
           </p>
 
