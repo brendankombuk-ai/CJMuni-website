@@ -131,6 +131,42 @@ export default async function CapabilityPage({
           </div>
         </section>
 
+        {/* Additional photography — a band of extra images under the overview.
+            One photo runs as a wide banner; two or more sit side by side. */}
+        {capability.gallery?.length ? (
+          <section className={atmosphere(capability.atmosphere, "section-continue pb-14 sm:pb-20")}>
+            <div
+              className={`frame grid gap-6 ${
+                capability.gallery.length > 1 ? "sm:grid-cols-2" : ""
+              }`}
+            >
+              {capability.gallery.map((photo) => (
+                <div
+                  key={photo.src}
+                  className={`media-frame w-full bg-ink-800 ${
+                    photo.aspect ??
+                    (capability.gallery!.length > 1
+                      ? "aspect-[4/3]"
+                      : "aspect-[16/9] sm:aspect-[21/9]")
+                  }`}
+                >
+                  <SmartImage
+                    src={photo.src}
+                    alt={photo.alt}
+                    slotLabel={photo.src}
+                    sizes={
+                      capability.gallery!.length > 1
+                        ? "(min-width: 640px) 50vw, 100vw"
+                        : "100vw"
+                    }
+                    quality={90}
+                  />
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
         {/* Full catalogue on its own page — currently Orica products */}
         {capability.catalogueLink ? (
           <section className={atmosphere(capability.atmosphere, "section-continue pb-14 sm:pb-20")}>

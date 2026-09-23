@@ -57,6 +57,17 @@ export type Capability = {
   image: string;
   imageAlt: string;
   /**
+   * Extra photographs shown as a band on the detail page, below the overview.
+   * Additional to `image`, never a replacement for it. One photo renders as a
+   * wide banner, two or more as a grid. Photos only — no captions.
+   */
+  gallery?: {
+    src: string;
+    alt: string;
+    /** Tailwind aspect class to override the default frame shape. */
+    aspect?: string;
+  }[];
+  /**
    * Which atmosphere this capability's pages are lit with — see
    * components/Atmosphere.tsx. It is content, not styling: explosives is
    * industrial, reagents is a laboratory, tug and barge is marine. Keeping it
@@ -93,6 +104,14 @@ export const PRODUCTS: Capability[] = [
     },
     atmosphere: "explosives",
     image: "/images/library/explosives.jpg",
+    gallery: [
+      {
+        src: "/images/gallery/explosives-orica-site.jpg",
+        alt: "Orica signage beside a walkway as a woman walks towards the stairs",
+        // Portrait subject: keep the full frame rather than a letterbox crop.
+        aspect: "aspect-[16/9]",
+      },
+    ],
     imageAlt:
       "CJ MUNI crew charging a blast pattern beside an Orica Bulkmaster 7 delivery truck on a Papua New Guinea site at sunset",
   },
@@ -127,6 +146,16 @@ export const PRODUCTS: Capability[] = [
     ],
     atmosphere: "reagents",
     image: "/images/library/reagents-fertilizers.jpg",
+    gallery: [
+      {
+        src: "/images/gallery/reagents-drum-storage.jpg",
+        alt: "Palletised chemical drums and IBC containers stacked in storage",
+      },
+      {
+        src: "/images/gallery/reagents-drum-handling.jpg",
+        alt: "Operator in protective clothing lifting a reagent drum with a hoist and drum clamp",
+      },
+    ],
     imageAlt:
       "Two CJ MUNI staff with tablets in a warehouse stacked with Orica urea, ammonium nitrate, flocculant and collector product",
   },
@@ -150,6 +179,12 @@ export const SERVICES: Capability[] = [
     ],
     atmosphere: "drill-blast",
     image: "/images/library/drill-blast-services.jpg",
+    gallery: [
+      {
+        src: "/images/gallery/drill-blast-pattern-design.jpg",
+        alt: "Quarry bench with a digital blast-hole pattern overlaid along the face",
+      },
+    ],
     imageAlt:
       "Two CJ MUNI crew in hi-vis at a charged blast pattern with a drill rig and explosives trucks behind them at sunset",
   },
