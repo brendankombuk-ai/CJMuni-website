@@ -2,11 +2,13 @@ import Link from "next/link";
 import { CAPABILITIES } from "@/data/capabilities";
 import { CONTACT, NAV_LINKS } from "@/data/site";
 import { Atmosphere, atmosphere } from "@/components/Atmosphere";
+import { SmartImage } from "@/components/SmartImage";
 
 /**
  * Footer. Three plain columns of links and the verified contact details —
  * the same destinations as the main navigation, so there is nothing here that
- * cannot be reached from the top of the page too.
+ * cannot be reached from the top of the page too. Under the page links sits
+ * the community support photo.
  */
 export function Footer() {
   const year = new Date().getFullYear();
@@ -17,28 +19,44 @@ export function Footer() {
 
       <div className="frame py-14">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-          <nav aria-label="Footer">
-            <h2 className="text-[11px] font-bold uppercase tracking-label text-white/55">
-              Pages
-            </h2>
-            <ul className="mt-4 space-y-2.5">
-              <li>
-                <Link href="/" className="text-sm text-white/70 hover:text-gold">
-                  Home
-                </Link>
-              </li>
-              {NAV_LINKS.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-white/70 hover:text-gold"
-                  >
-                    {link.label}
+          <div>
+            <nav aria-label="Footer">
+              <h2 className="text-[11px] font-bold uppercase tracking-label text-white/55">
+                Pages
+              </h2>
+              <ul className="mt-4 space-y-2.5">
+                <li>
+                  <Link href="/" className="text-sm text-white/70 hover:text-gold">
+                    Home
                   </Link>
                 </li>
-              ))}
-            </ul>
-          </nav>
+                {NAV_LINKS.map((link) => (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className="text-sm text-white/70 hover:text-gold"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+
+            <div className="mt-10">
+              <h2 className="text-[11px] font-bold uppercase tracking-label text-white/55">
+                Community Support
+              </h2>
+              <div className="media-frame mt-4 aspect-[16/9] w-full max-w-[18rem] bg-ink-800">
+                <SmartImage
+                  src="/images/community/rugby-scrum.webp"
+                  alt="Rugby players packing down for a scrum during a match"
+                  slotLabel="/images/community/rugby-scrum.webp"
+                  sizes="288px"
+                />
+              </div>
+            </div>
+          </div>
 
           <nav aria-label="Products and services">
             <h2 className="text-[11px] font-bold uppercase tracking-label text-white/55">
