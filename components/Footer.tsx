@@ -8,7 +8,7 @@ import { SmartImage } from "@/components/SmartImage";
  * Footer. Three plain columns of links and the verified contact details —
  * the same destinations as the main navigation, so there is nothing here that
  * cannot be reached from the top of the page too. Under the page links sits
- * the community support photo.
+ * the community support photo, which links through to the Community page.
  */
 export function Footer() {
   const year = new Date().getFullYear();
@@ -47,14 +47,20 @@ export function Footer() {
               <h2 className="text-[11px] font-bold uppercase tracking-label text-white/55">
                 Community Support
               </h2>
-              <div className="media-frame mt-4 aspect-[16/9] w-full max-w-[18rem] bg-ink-800">
-                <SmartImage
-                  src="/images/community/rugby-scrum.webp"
-                  alt="Rugby players packing down for a scrum during a match"
-                  slotLabel="/images/community/rugby-scrum.webp"
-                  sizes="288px"
-                />
-              </div>
+              <Link
+                href="/community"
+                aria-label="Community support: read about CJ MUNI's community work"
+                className="media-frame group mt-4 block aspect-[16/9] w-full max-w-[18rem] bg-ink-800 hover:border-gold/50"
+              >
+                <div className="absolute inset-0 transition-transform duration-500 ease-muni group-hover:scale-[1.04]">
+                  <SmartImage
+                    src="/images/community/rugby-scrum.webp"
+                    alt="Rugby players packing down for a scrum during a match"
+                    slotLabel="/images/community/rugby-scrum.webp"
+                    sizes="288px"
+                  />
+                </div>
+              </Link>
             </div>
           </div>
 

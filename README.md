@@ -34,6 +34,7 @@ app/
   capabilities/page.tsx       products & services index
   capabilities/[slug]/page.tsx  product / service page (static-generated)
   products/page.tsx           Orica product catalogue — one page, seven ranges
+  community/page.tsx          community commitment, focus areas, sponsorship
   contact/ · projects/        contact and project pages
   sitemap.ts · robots.ts · icon.svg · not-found.tsx
 
@@ -53,10 +54,15 @@ components/products/          the /products page: ProductsHero,
                               ProductGallery, ProductSpecifications,
                               ProductRangeSummary, SmoothAnchor
 
+components/community/         the /community page: CommunityHero,
+                              CommunityApproach, CommunityFocusAreas,
+                              CommunitySponsorship, ImageCredit
+
 data/
   site.ts                     nav, brand statements, verified contact details
   capabilities.ts             PRODUCTS (2) + SERVICES (5) — single source of truth
   products.ts                 Orica catalogue: 7 ranges, specs, imagery
+  community.ts                community page copy, focus areas, photo credits
   industries.ts · projects.ts
 
 public/images/                image slots — see public/images/README.md

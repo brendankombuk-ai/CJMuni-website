@@ -52,6 +52,19 @@ rotate, add glow/shadow/3D, or alter the goat.
 `water.jpg`, `infrastructure.jpg`, `quarries.jpg`, `exploration.jpg`,
 `industrial.jpg`
 
+## Community
+
+| File | Use |
+| --- | --- |
+| `community/community-meeting.jpg` | Community page hero (AusAID / DFAT, CC BY 2.0) |
+| `community/wairavanua-school-opening.jpg` | Community page, "Where we contribute" (Anthony Mason / AusAID, CC BY 2.0) |
+| `community/rugby-scrum.webp` | Community page sponsorship band, and the footer's Community Support photo |
+
+The two AusAID photos are CC BY 2.0: they may be used commercially only with
+the credit shown beside them. The credits live with the images in
+`data/community.ts`. When CJ MUNI's own community photography replaces one,
+update its entry there and remove its `credit`.
+
 ## Projects
 
 `projects/project-01.jpg` … `projects/project-04.jpg`

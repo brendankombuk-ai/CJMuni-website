@@ -41,6 +41,7 @@ export type AtmosphereVariant =
   | "supply-chain"
   | "sustainable"
   | "projects"
+  | "community"
   | "contact"
   | "footer";
 
@@ -97,6 +98,11 @@ const SECTION_CLASSES: Record<AtmosphereVariant, string> = {
 
   // Project work: grain and a low, wide light.
   projects: "section-shell section-gradient texture-grain atmo-br atmo-soft",
+
+  // Community sponsorship: the supply-chain surface without its network —
+  // the same grid and side light, so a photograph-led band still reads as
+  // part of the site's technical world rather than a charity page.
+  community: "section-shell section-dark texture-grid atmo-right atmo-medium",
 
   // The closing call to action — the one moment that is a feature.
   contact:
@@ -278,6 +284,13 @@ const SHAPES: Record<AtmosphereVariant, ReactNode> = {
     <>
       <div className="atmo-orb -right-56 -bottom-32 h-[36rem] w-[36rem]" />
       <div className="atmo-orb-cool atmo-hide-mobile -left-52 top-0 h-[30rem] w-[30rem]" />
+    </>
+  ),
+
+  community: (
+    <>
+      <div className="atmo-orb -right-52 top-0 h-[38rem] w-[38rem]" />
+      <div className="atmo-line atmo-line-cool atmo-hide-mobile right-0 bottom-12 w-1/2" />
     </>
   ),
 
