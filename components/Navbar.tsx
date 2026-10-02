@@ -39,14 +39,16 @@ export function Navbar() {
         >
           <Logo />
 
-          {/* Desktop links */}
-          <div className="hidden items-center gap-9 lg:flex">
+          {/* Desktop links. Four links, the CTA and the full-size lockup only
+              just share a 1024px bar, so the spacing tightens until `xl` and
+              no label is allowed to break onto a second line. */}
+          <div className="hidden items-center gap-6 lg:flex xl:gap-9">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 aria-current={isCurrent(link.href) ? "page" : undefined}
-                className={`border-b-2 pb-1 text-sm font-semibold duration-300 ${
+                className={`whitespace-nowrap border-b-2 pb-1 text-sm font-semibold duration-300 ${
                   isCurrent(link.href)
                     ? "border-gold text-ink"
                     : "border-transparent text-charcoal hover:text-ink"
